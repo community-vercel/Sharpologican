@@ -1,0 +1,183 @@
+h2 {
+    font-size: 2.25rem;
+    color: #2a2a2a;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-align: center;
+  }
+  
+  form {
+    background-color: #fff;
+    
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 0 auto;
+    margin-top: 20;
+    margin-bottom: 20;
+
+    font-size: 1rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    color: #333;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-color: #0066cc;
+    box-shadow: 0 0 10px rgba(0, 102, 204, 0.2);
+    outline: none;
+  }
+  
+  textarea {
+    resize: vertical;
+    min-height: 150px;
+  }
+  
+  button[type='submit'] {
+    background-color: #0066cc;
+    color: #fff;
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    display: block;
+    width: 100%;
+  }
+  
+  button[type='submit']:hover {
+    background-color: #005bb5;
+    transform: translateY(-2px);
+  }
+  
+  button[type='submit']:active {
+    background-color: #004a8d;
+    transform: translateY(0);
+  }
+  
+  /* Services Required Checkboxes */
+  .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+  }
+  
+  .checkbox-item label {
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding-left: 0.5rem;
+  }
+  
+  .checkbox-item input {
+    margin-right: 0.5rem;
+  }
+  
+  .checkbox-item input:checked + label {
+    color: #0066cc;
+  }
+  
+  /* Budget and Start Time Dropdown */
+  select {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    color: #333;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  select:focus {
+    border-color: #0066cc;
+    box-shadow: 0 0 10px rgba(0, 102, 204, 0.2);
+  }
+  
+  /* Toast Notification */
+  .Toastify__toast-container {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .Toastify__toast {
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .Toastify__toast--success {
+    background-color: #28a745;
+  }
+  
+  .Toastify__toast--error {
+    background-color: #dc3545;
+  }
+  
+  /* Scroll To Top Button */
+  .rn-page-title-area {
+    background-color: #0066cc;
+    color: #fff;
+    padding-top: 120px;
+    padding-bottom: 150px;
+    text-align: center;
+  }
+  
+  .rn-page-title-area h2 {
+    font-size: 3rem;
+    color: #fff;
+  }
+  
+  .rn-page-title-area .backto-top {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .quote-form-container {
+      padding: 1rem;
+    }
+  
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .submit-btn {
+      width: 100%;
+    }
+  
+    .quote-form {
+      padding: 1.5rem;
+    }
+  }
