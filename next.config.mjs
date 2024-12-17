@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
  
-  basePath: '/new',
-
- 
+  basePath: '/new', 
     images: {
       domains: [ "community-hazel.vercel.app","sharplogicians.com","localhost:3000/new","localhost:3002","127.0.0.1", "127.0.0.1:8000","picsum.photos"],
       remotePatterns: [
