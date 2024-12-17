@@ -126,7 +126,7 @@ const ServiceDetails=()=>{
                             src={serverurl+service?.image2}
                             alt="Service Images"
                           />
-                             <div className="header-btn">
+                             <div className="header-btn" style={{marginTop:'20px'}}>
               <a className="rn-btn" href="/quote">
                 <span>Get a quote</span>
               </a>

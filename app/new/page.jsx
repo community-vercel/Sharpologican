@@ -440,7 +440,7 @@ secondDescription
                             <div className="inner">
                               <p>{value.title}</p>
                               <h4>
-                                <Link href="/portfolio-details">{value.heading}</Link>
+                                <Link href={`/portfolio/${value.slug}`}>{value.heading}</Link>
                               </h4>
                               <div className="portfolio-button">
                                 <Link className="rn-btn" href={`/portfolio/${value.slug}`}>
