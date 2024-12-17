@@ -136,15 +136,31 @@ const CreativeLanding = () => {
 
   // Menu toggle
   const handleMenuToggle = () => setMenuOpen((prevMenuOpen) => !prevMenuOpen);
-
-  // Menu close logic
-  const closeMenu = () => {
-    document.querySelector(".header-wrapper")?.classList.remove("menu-open");
-    setMenuOpen(false);
+  const menuTrigger = () => {
+    document.querySelector(".header-wrapper")?.classList.toggle("menu-open");
   };
+
+  const closeMenuTrigger = () => {
+    document.querySelector(".header-wrapper")?.classList.remove("menu-open");
+  };
+
+  useEffect(() => {
+    // Submenu toggle logic
+    const elements = document.querySelectorAll(".has-droupdown > a");
+    elements.forEach((element) => {
+      element.onclick = () => {
+        const submenu = element.parentElement.querySelector(".submenu");
+        if (submenu) {
+          submenu.classList.toggle("active");
+        }
+        element.classList.toggle("open");
+      };
+    });
+  }, []); 
 
   // Menu dropdown logic
   useEffect(() => {
+  
     const dropdownLinks = document.querySelectorAll(".has-dropdown > a");
     dropdownLinks.forEach((link) => {
       link.onclick = () => {
@@ -195,6 +211,7 @@ const CreativeLanding = () => {
             <nav className="mainmenunav d-lg-block">
               <ul className="mainmenu">
                 <ScrollSpy
+
                   sectionIds={[
                     "#home",
                     "#service",
@@ -218,13 +235,14 @@ const CreativeLanding = () => {
             </div>
             {/* Start Humberger Menu */}
             <div className="humberger-menu d-block d-lg-none pl--20">
-              <span onClick={handleMenuToggle} className="menutrigger text-white">
+              
+              <span onClick={menuTrigger} className="menutrigger text-white">
                 <FiMenu />
               </span>
             </div>
             {/* End Humberger Menu */}
             <div className="close-menu d-block d-lg-none">
-              <span onClick={handleMenuToggle} className="closeTrigger">
+              <span onClick={closeMenuTrigger} className="closeTrigger">
                 <FiX />
               </span>
             </div>

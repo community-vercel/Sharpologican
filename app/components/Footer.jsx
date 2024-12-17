@@ -19,10 +19,12 @@ const Footer=({heading3})=>{
    
   
     const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
+    const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
+
    useEffect(() => {
       const getDetails = async () => {
     
-          const response2 = await fetch(`${serverurl}contact/`);
+          const response2 = await fetch(`${serverurls}contact/`);
   
           if (response2.ok) {
             const data7 = await response2.json();
