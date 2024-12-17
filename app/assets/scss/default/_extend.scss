@@ -368,11 +368,13 @@ p:last-child {
 }
 
 .theme-gradient {
-    background: linear-gradient(-259deg, #f81f01 0, #ee076e 100%);
+    // background: linear-gradient(-259deg, #f81f01 0, #ee076e 100%);
+    background: linear-gradien(-259deg,  rgba(73,143,150) 0%, rgba(73,143,150) 100%);
+
 }
 .bg-theme-gradient {
-    background: #f81f01;
-    background: linear-gradient(145deg, #f81f01 0%, #ee076e 100%);
+    background: rgb(73,143,150);
+    background: -moz-linear-gradient(145deg,  rgba(73,143,150) 0%, rgba(73,143,150) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f81f01', endColorstr='#ee076e',GradientType=1 );
 }
 

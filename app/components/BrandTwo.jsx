@@ -8,6 +8,7 @@ const BrandTwo = ({ clientImages }) => {
   
       },[])
   const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
+  const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
 
   return (
     <>
