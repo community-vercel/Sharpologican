@@ -31,7 +31,7 @@ const  PortfolioDetail=()=>{
   };
   getDetails();
 }, []);
-  
+    
     return (
      <PortfolioDetails portfolio={service} />
     );

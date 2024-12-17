@@ -24,18 +24,7 @@ h2 {
     font-weight: 700;
     text-align: center;
   }
-  form {
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 2rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    max-width: 900px;
-    width: 100%; /* Ensures the form takes full width of the container up to the max-width */
-    margin: 0 auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-size: 1rem;
-  }
+ 
   
   .form-group {
     margin-bottom: 1.5rem;
@@ -55,7 +44,7 @@ h2 {
     width: 100%;
     padding: 0.75rem 1rem;
     border-radius: 8px;
-    border: 1px solid #ddd;
+    border: 1px solid rgb(73,143,150);
     font-size: 1rem;
     color: #333;
     transition: border-color 0.3s, box-shadow 0.3s;
@@ -64,18 +53,20 @@ h2 {
   input:focus,
   select:focus,
   textarea:focus {
-    border-color: #0066cc;
-    box-shadow: 0 0 10px rgba(0, 102, 204, 0.2);
-    outline: none;
+    border-color: rgb(73,143,150);;
+    /* box-shadow: 0 0 10px rgba(0, 102, 204, 0.2);
+    outline: none; */
   }
   
   textarea {
     resize: vertical;
     min-height: 150px;
+        border-color: rgb(73,143,150);;
+
   }
   
   button[type='submit'] {
-    background-color: #0066cc;
+    background-color: rgb(73,143,150);;
     color: #fff;
     padding: 1rem 2rem;
     font-size: 1.125rem;
@@ -88,12 +79,12 @@ h2 {
   }
   
   button[type='submit']:hover {
-    background-color: #005bb5;
+    background-color: rgb(73,143,150);;
     transform: translateY(-2px);
   }
   
   button[type='submit']:active {
-    background-color: #004a8d;
+    background-color: rgb(73,143,150);;
     transform: translateY(0);
   }
   
@@ -121,13 +112,13 @@ h2 {
   }
   
   .checkbox-item input:checked + label {
-    color: #0066cc;
+    color: rgb(73,143,150);
   }
   
   /* Budget and Start Time Dropdown */
   select {
     background-color: #fff;
-    border: 1px solid #ddd;
+    border: 1px solid rgb(73,143,150);
     color: #333;
     padding: 0.75rem 1rem;
     border-radius: 8px;
@@ -136,8 +127,8 @@ h2 {
   }
   
   select:focus {
-    border-color: #0066cc;
-    box-shadow: 0 0 10px rgba(0, 102, 204, 0.2);
+    border-color: rgb(73,143,150);;
+    box-shadow: 0 0 10px rgb(73,143,150);
   }
   
   /* Toast Notification */
@@ -162,7 +153,7 @@ h2 {
   
   /* Scroll To Top Button */
   .rn-page-title-area {
-    background-color: #0066cc;
+    background-color: rgb(73,143,150);;
     color: #fff;
     padding-top: 120px;
     padding-bottom: 150px;

@@ -16,7 +16,7 @@
             @extend %transition;
         }
         &::after {
-            background: linear-gradient(to bottom, #fc004d 0, #000000 100%);
+            background: linear-gradient(to bottom, $theme-color 0, #000000 100%);
             position: absolute;
             left: 0;
             right: 0;

@@ -41,7 +41,7 @@ const ServiceDetails=()=>{
         {/* Start Pagehelmet  */}
 <Helmet>
       <meta charSet="utf-8" />
-      <title>{service && service.metaname?service.metaname:service && news.service_title?service.service_title:'SharpLogicians | Creative Digital Agency'}</title>
+      <title>{service && service.metaname?service.metaname:service && service.service_title?service.service_title:'SharpLogicians | Creative Digital Agency'}</title>
       <meta name="description" content={service && service.metades?service.metades:"SharpLogicians | Creative Digital Agency"} />
       <meta
         name="keywords"
@@ -95,7 +95,7 @@ const ServiceDetails=()=>{
                         <div className="thumb">
                           <img
                             className="w-100"
-                            src={serverurl+service?.image1.replace("/media/",'media/')}
+                            src={serverurl+service?.image1}
                             alt="Service Images"
                           />
                         </div>
@@ -123,7 +123,7 @@ const ServiceDetails=()=>{
                         <div className="thumb position-relative">
                         <img
                             className="w-100"
-                            src={serverurl+service?.image2.replace("/media/",'media/')}
+                            src={serverurl+service?.image2}
                             alt="Service Images"
                           />
                           {/* <Image

@@ -21,8 +21,24 @@ const Contact = () => {
 
   const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
   const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
+  const [homeDetail, setHomeDetail] = useState({
+    metaname: "",
+    metadescription: "",
+    keywords: '',
+    metanamecontact: "",
+    metadescriptioncontact: "",
+    keywordscontact:'',
+    metanamequote: "",
+    metadescriptionquote: "",
+    keywordsquote:'',
+    heading: "",
+    detail: "",
+    footeremail: "",
+    footeremail2: "",
+  });
 useEffect(() => {
 
+  
     const getDetails = async () => {
 
       try {
@@ -30,6 +46,9 @@ useEffect(() => {
         const data = await response.json();
 
         const response2 = await fetch(`${serverurls}contact/`);
+        const response33 = await fetch(`${serverurls}get-home-detail/`);
+        const data33=await response33.json()
+        setHomeDetail(data33);
 
         if (response.ok) {
           const data7 = await response2.json();
@@ -54,13 +73,13 @@ useEffect(() => {
     <>
   
   <Helmet>
-        <meta charSet="utf-8" />
-        <title>SharpLogicians | Creative Digital Agency</title>
-        <meta name="description" content="SharpLogicians | Creative Digital Agency" />
+  <meta charSet="utf-8" />
+        <title>{homeDetail && homeDetail?homeDetail?.metanamecontact:'SharpLogicians | Creative Digital Agency' } </title>
+        <meta name="description" content={homeDetail && homeDetail?homeDetail?.metadescriptioncontact:'SharpLogicians | Creative Digital Agency'} />
         <meta
           name="keywords"
-          content="bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative"
-        />
+          content={homeDetail && homeDetail?homeDetail?.keywordscontact:"bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative"} />
+  
         <meta name="author" content="Createx Studio" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
