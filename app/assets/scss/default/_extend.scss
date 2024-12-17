@@ -357,7 +357,7 @@ p:last-child {
 
 
 %gradientDefault {
-    background: linear-gradient(to right, #f81f01 50%, #ee076e 50%);
+    background: linear-gradient(to right, rgb(73,143,150) 50%, rgb(73,143,150) 50%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -382,7 +382,7 @@ p:last-child {
 
 
 %theme-gradient {
-    background: linear-gradient(-259deg, #f81f01 0, #ee076e 100%);
+    background: linear-gradient(-259deg, rgb(73,143,150) 0, rgb(73,143,150) 100%);
 }
 
 

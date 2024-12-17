@@ -4,6 +4,7 @@ import {
   FaInstagram,
   FaFacebookF,
   FaLinkedinIn,
+  FaWordpress,
 } from "react-icons/fa";
 
 import logo from "../assets/images/logo/logo-light.png";
@@ -11,11 +12,12 @@ import Image from "next/image";
 import logoLight from "../assets/images/logo/logo-light.png";
 
 const SocialShare = [
-  { Social: <FaFacebookF />, link: "https://www.facebook.com/" },
-  { Social: <FaLinkedinIn />, link: "https://www.linkedin.com/" },
-  { Social: <FaInstagram />, link: "https://www.instagram.com/" },
-  { Social: <FaTwitter />, link: "https://twitter.com/" },
+  { Social: <FaFacebookF />, link: "https://www.facebook.com/SharpLogicians/" },
+  { Social: <FaLinkedinIn />, link: "https://www.linkedin.com/company/sharplogicians/" },
+  { Social: <FaWordpress />, link: "https://www.upwork.com/agencies/425295923279892480/" },
+  { Social: <FaTwitter />, link: "https://x.com/sharplogicians" },
 ];
+
 
 const FooterTwo = () => {
   return (

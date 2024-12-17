@@ -5,13 +5,14 @@ import {
   FaInstagram,
   FaFacebookF,
   FaLinkedinIn,
+  FaWordpress,
 } from "react-icons/fa";
 
 const SocialShare = [
-  { Social: <FaFacebookF />, link: "https://sharplogicians.com/contact" },
-  { Social: <FaLinkedinIn />, link: "https://sharplogicians.com/contact" },
-  { Social: <FaInstagram />, link: "https://sharplogicians.com/contact" },
-  { Social: <FaTwitter />, link: "https://sharplogicians.com/contact" },
+  { Social: <FaFacebookF />, link: "https://www.facebook.com/SharpLogicians/" },
+  { Social: <FaLinkedinIn />, link: "https://www.linkedin.com/company/sharplogicians/" },
+  { Social: <FaWordpress />, link: "https://www.upwork.com/agencies/425295923279892480/" },
+  { Social: <FaTwitter />, link: "https://x.com/sharplogicians" },
 ];
 
 const Footer=({heading3})=>{
@@ -91,11 +92,11 @@ const Footer=({heading3})=>{
                         <ul className="ft-link">
                           <li>
                             <a href="mailto:adil@gmail.com.com">
-                             adil@gmail.com.com
+                             support@sharplogician.com
                             </a>
                           </li>
                           <li>
-                            <a href="mailto:adeel.sheikh@sharpoligicans.com">adeel.sheikh@sharpoligicans.com</a>
+                            <a href="mailto:adeel.sheikh@sharpoligicans.com">adeel@sharplogician.com</a>
                           </li>
                         </ul>
 
