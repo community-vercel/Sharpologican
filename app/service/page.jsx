@@ -13,11 +13,12 @@ import { useState, useEffect, Fragment } from "react";
 
 const Service =()=>{
     const [services, setServices] = useState([]);
-    const serverurl=process.env.NEXT_PUBLIC_DJANGO_URL;
+    const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
+    const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
     
   useEffect(() => {
     const fetchServices = async () => {
-      const response = await fetch(`${serverurl}services/`);
+      const response = await fetch(`${serverurls}services/`);
       const data = await response.json();
       setServices(data.data);
 

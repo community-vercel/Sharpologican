@@ -73,7 +73,9 @@ const CreativeLanding = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
   const [services, setServices] = useState([]);
-  const serverurl=process.env.NEXT_PUBLIC_DJANGO_URL;
+  const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
+    const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
+
   const [aboutUsData, setAboutUsData] = useState(null);
   const [portfolioData, setPortfolioData] = useState();
   const [teamData, setTeamData] = useState();
@@ -88,33 +90,33 @@ const CreativeLanding = () => {
   useEffect(() => {
     const fetchServices = async () => {
       
-      const response = await fetch(`${serverurl}services/`);
+      const response = await fetch(`${serverurls}services/`);
       const data = await response.json();
       setServices(data.data);
-      const response4 = await fetch(`${serverurl}about-us/`);
+      const response4 = await fetch(`${serverurls}about-us/`);
       const data2 = await response4.json();
       setAboutUsData(data2.data);
-      const response5 = await fetch(`${serverurl}portfolio/`);
+      const response5 = await fetch(`${serverurls}portfolio/`);
       const data3 = await response5.json();
       setPortfolioData(data3.data);
-      const response6 = await fetch(`${serverurl}team/`);
+      const response6 = await fetch(`${serverurls}team/`);
       const data4 = await response6.json();
       setTeamData(data4.data);
-      const response7 = await fetch(`${serverurl}testimonials/`);
+      const response7 = await fetch(`${serverurls}testimonials/`);
       const data5 = await response7.json();
       setTestimonials(data5.data);
-      const response9 = await fetch(`${serverurl}news/`);
+      const response9 = await fetch(`${serverurls}news/`);
       const data6 = await response9.json();
       setnewsData(data6.data);
 
-      const response2 = await fetch(`${serverurl}contact/`);
+      const response2 = await fetch(`${serverurls}contact/`);
         const data7 = await response2.json();
         setnewtitle(data7.data.title)
         setContactImage(serverurl+data7.data.contact_image);
-        const response3 = await fetch(`${serverurl}clients/`);
+        const response3 = await fetch(`${serverurls}clients/`);
         const data8 = await response3.json();
         setClientImages(data8.data);
-        const response8 = await fetch(`${serverurl}get-count/`);
+        const response8 = await fetch(`${serverurls}get-count/`);
         const data9 = await response8.json();
         setcounts(data9.data);
       

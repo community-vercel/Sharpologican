@@ -20,15 +20,16 @@ const Contact = () => {
   const [image, setimage] = useState();
 
   const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
-  useEffect(() => {
+  const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
+useEffect(() => {
 
     const getDetails = async () => {
 
       try {
-        const response = await fetch(`${serverurl}get-contactus/`);
+        const response = await fetch(`${serverurls}get-contactus/`);
         const data = await response.json();
 
-        const response2 = await fetch(`${serverurl}contact/`);
+        const response2 = await fetch(`${serverurls}contact/`);
 
         if (response.ok) {
           const data7 = await response2.json();

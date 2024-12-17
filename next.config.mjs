@@ -5,7 +5,7 @@ const nextConfig = {
 
  
     images: {
-      domains: [ "community-hazel.vercel.app","localhost:3000/new","localhost:3002","127.0.0.1", "127.0.0.1:8000","picsum.photos"],
+      domains: [ "community-hazel.vercel.app","sharplogicians.com","localhost:3000/new","localhost:3002","127.0.0.1", "127.0.0.1:8000","picsum.photos"],
       remotePatterns: [
         {
           protocol: "https",
@@ -14,7 +14,7 @@ const nextConfig = {
           pathname: "**",
         },
       ],
-    },
+    },  
     experimental: {
       workerThreads: false,
       cpus: 1,

@@ -30,12 +30,13 @@ const QuoteForm = () => {
   const budgetOptions = ["$10-$99", "$100-$500", "$500+"];
   const startOptions = ["Immediately", "Within a week", "Within a month", "Later"];
   const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
+  const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
 
   // Fetch services dynamically from the backend
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await fetch(`${serverurl}services/`);
+        const response = await fetch(`${serverurls}services/`);
         const data = await response.json();
         
         setServicesOptions(data.data.map((value)=>value.title)); // Assuming the response contains an array of services

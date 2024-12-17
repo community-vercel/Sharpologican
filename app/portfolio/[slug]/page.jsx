@@ -7,6 +7,7 @@ import PortfolioDetails from "@/app/components/PortfolioDetails";
 const  PortfolioDetail=()=>{
     const params=useParams()
     const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
+    const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
   const [service, setServices] = useState();
   useEffect(() => {
     const getDetails = async () => {
@@ -14,7 +15,7 @@ const  PortfolioDetail=()=>{
       formData.append("slug", params.slug);
 
       try {
-        const response = await fetch(`${serverurl}get-portfoliodetails/`, {
+        const response = await fetch(`${serverurls}get-portfoliodetails/`, {
           method: "POST",
 
           body: formData,

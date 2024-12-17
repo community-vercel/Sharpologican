@@ -9,6 +9,7 @@ import NewsDetails from "@/app/components/NewsDetails";
 const  newDetail=()=>{
     const params=useParams()
     const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
+    const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
   const [service, setServices] = useState();
   useEffect(() => {
     const getDetails = async () => {
@@ -16,7 +17,7 @@ const  newDetail=()=>{
       formData.append("slug", params.slug);
 
       try {
-        const response = await fetch(`${serverurl}get-newsdetails/`, {
+        const response = await fetch(`${serverurls}get-newsdetails/`, {
           method: "POST",
 
           body: formData,

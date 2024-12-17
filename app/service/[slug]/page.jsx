@@ -11,6 +11,7 @@ import Image from "next/image";
 const ServiceDetails=()=>{
     const params=useParams()
     const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
+    const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
   const [service, setServices] = useState();
   useEffect(() => {
     const getDetails = async () => {
@@ -18,7 +19,7 @@ const ServiceDetails=()=>{
       formData.append("slug", params.slug);
 
       try {
-        const response = await fetch(`${serverurl}get-servicedetails/`, {
+        const response = await fetch(`${serverurls}get-servicedetails/`, {
           method: "POST",
 
           body: formData,
