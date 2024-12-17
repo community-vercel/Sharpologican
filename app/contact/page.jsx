@@ -8,6 +8,7 @@ import { FiChevronUp } from "react-icons/fi";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Helmet } from "react-helmet-async";
+import Breadcrumb from "../components/Breadcrumb";
 
 const Contact = () => {
   const [textField, setTextField] = useState("");
@@ -111,18 +112,20 @@ useEffect(() => {
         logoname="logo.png"
       />
 
+
       {/* Start Breadcrump Area */}
       <div
         className="rn-page-title-area pt--120 pb--190 bg_image bg_image--17"
         data-black-overlay="6"
       >
+        
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
               <div className="rn-page-title text-center pt--100">
                 <h2 className="title theme-gradient">{heading && heading?heading:''}</h2>
                 <p>
-                    {title && title?title:''}.{" "}
+                    {title && title?title:''}{" "}
                   </p>
               </div>
             </div>

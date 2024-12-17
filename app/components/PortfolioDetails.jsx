@@ -109,8 +109,16 @@ const PortfolioDetails=({portfolio})=>{
                     <div
       dangerouslySetInnerHTML={{__html: portfolio?.detail}}
     />
-
+<div className="header-btn" style={{ display: 'flex',justifyContent: 'flex-end' }}>
+  <a className="rn-btn" href="/quote">
+    <span>Get a quote</span>
+  </a>
+</div>
+          
                   </div>
+                
+             
+            
               
                 </div>
               </div>

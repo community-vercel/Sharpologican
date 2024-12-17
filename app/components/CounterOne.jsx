@@ -3,6 +3,7 @@ import React, { Component, Fragment } from "react";
 import CounterComponent from "./Counter";
 
 const CounterOne =({count})=>{
+  
 
     return (
       <Fragment>

@@ -82,7 +82,7 @@ const [homeDetail, setHomeDetail] = useState({
                 </div>
               </div>
               <div className="col-lg-6">
-                <div className="footer-right" data-black-overlay="6">
+                <div className="footer-right bg_image bg_image--8" data-black-overlay="6">
                   <div className="row">
                     {/* Start Single Widget  */}
                     <div className="col-lg-6 col-sm-6 col-12">
