@@ -126,6 +126,11 @@ const ServiceDetails=()=>{
                             src={serverurl+service?.image2}
                             alt="Service Images"
                           />
+                             <div className="header-btn">
+              <a className="rn-btn" href="/quote">
+                <span>Get a quote</span>
+              </a>
+            </div>
                           {/* <Image
                             className="w-100"
                             src={serverurl+service?.image2.replace("/media/",'media/')}

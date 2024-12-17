@@ -203,7 +203,7 @@ const CreativeLanding = () => {
   name="description"
   content={
     homeDetail?.metadescription
-      ? String(homeDetail.metasdescription)
+      ? String(homeDetail.metadescription)
       : "SharpLogicians | Creative Digital Agency"
   }
 />
