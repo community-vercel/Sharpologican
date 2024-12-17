@@ -10,7 +10,7 @@ import { FiCast , FiLayers , FiUsers , FiMonitor } from "react-icons/fi";
 const ServiceThree = ({column,service}) => {
     const serverurl=process.env.NEXT_PUBLIC_DJANGO_URL;
 
-        const ServiceContent = service.slice(0 , service.length);
+        const ServiceContent = service.slice(0 , service?.length);
 
         
         return(

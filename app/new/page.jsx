@@ -85,13 +85,30 @@ const CreativeLanding = () => {
   const [clientImages, setClientImages] = useState([]);
   const [title, setnewtitle] = useState();
   const [counts, setcounts] = useState([]);
-
+  const [homeDetail, setHomeDetail] = useState({
+    metaname: "",
+    metadescription: "",
+    keywords: '',
+    metanamecontact: "",
+    metadescriptioncontact: "",
+    keywordscontact:'',
+    metanamequote: "",
+    metadescriptionquote: "",
+    keywordsquote:'',
+    heading: "",
+    detail: "",
+    footeremail: "",
+    footeremail2: "",
+  });
 
   useEffect(() => {
     const fetchServices = async () => {
       
       const response = await fetch(`${serverurls}services/`);
       const data = await response.json();
+      const response33 = await fetch(`${serverurls}get-home-detail/`);
+      const data33=await response33.json()
+      setHomeDetail(data33);
       setServices(data.data);
       const response4 = await fetch(`${serverurls}about-us/`);
       const data2 = await response4.json();
@@ -177,12 +194,12 @@ const CreativeLanding = () => {
     
       <Helmet>
         <meta charSet="utf-8" />
-        <title>SharpLogicians | Creative Digital Agency</title>
-        <meta name="description" content="SharpLogicians | Creative Digital Agency" />
+        <title>{homeDetail && homeDetail?homeDetail?.metaname:'SharpLogicians | Creative Digital Agency' } </title>
+        <meta name="description" content={homeDetail && homeDetail?homeDetail?.metadescription:'SharpLogicians | Creative Digital Agency'} />
         <meta
           name="keywords"
-          content="bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative"
-        />
+          content={homeDetail && homeDetail?homeDetail?.keywords:"bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative"} />
+  
         <meta name="author" content="Createx Studio" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
@@ -266,13 +283,13 @@ const CreativeLanding = () => {
                   <div className="col-lg-12">
                     <div className={`inner ${value.textPosition}`}>
                       {value.category ? <span>{value.category}</span> : ""}
-                      {value.title ? (
-                        <h1 className="title theme-gradient">{value.title}</h1>
+                      {homeDetail.heading ? (
+                        <h1 className="title theme-gradient">{homeDetail?.heading}</h1>
                       ) : (
                         ""
                       )}
-                      {value.description ? (
-                        <p className="description">{value.description}</p>
+                      {homeDetail.detail ? (
+                        <p className="description">{homeDetail?.detail}</p>
                       ) : (
                         ""
                       )}

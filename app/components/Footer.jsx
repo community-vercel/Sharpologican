@@ -21,11 +21,28 @@ const Footer=({heading3})=>{
   
     const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
     const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
-
+const [homeDetail, setHomeDetail] = useState({
+      metaname: "",
+      metadescription: "",
+      keywords: '',
+      metanamecontact: "",
+      metadescriptioncontact: "",
+      keywordscontact:'',
+      metanamequote: "",
+      metadescriptionquote: "",
+      keywordsquote:'',
+      heading: "",
+      detail: "",
+      footeremail: "",
+      footeremail2: "",
+    });
    useEffect(() => {
       const getDetails = async () => {
     
           const response2 = await fetch(`${serverurls}contact/`);
+          const response33 = await fetch(`${serverurls}get-home-detail/`);
+          const data33=await response33.json()
+          setHomeDetail(data33);
   
           if (response2.ok) {
             const data7 = await response2.json();
@@ -91,12 +108,14 @@ const Footer=({heading3})=>{
                         <h4>Say Hello</h4>
                         <ul className="ft-link">
                           <li>
-                            <a href="mailto:adil@gmail.com.com">
-                             support@sharplogician.com
+                            <a href={`mailto:${homeDetail?.footeremail}`}>
+                           {homeDetail && homeDetail?homeDetail?.footeremail:' support@sharplogician.com'} 
                             </a>
                           </li>
                           <li>
-                            <a href="mailto:adeel.sheikh@sharpoligicans.com">adeel@sharplogician.com</a>
+                          <a href={`mailto:${homeDetail?.footeremail2}`}>
+                          {homeDetail && homeDetail?homeDetail?.footeremail2:' support@sharplogician.com'} 
+                          </a>
                           </li>
                         </ul>
 

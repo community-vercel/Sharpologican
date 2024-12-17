@@ -32,11 +32,29 @@ const QuoteForm = () => {
   const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
   const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
 
-  // Fetch services dynamically from the backend
+   const [homeDetail, setHomeDetail] = useState({
+      metaname: "",
+      metadescription: "",
+      keywords: '',
+      metanamecontact: "",
+      metadescriptioncontact: "",
+      keywordscontact:'',
+      metanamequote: "",
+      metadescriptionquote: "",
+      keywordsquote:'',
+      heading: "",
+      detail: "",
+      footeremail: "",
+      footeremail2: "",
+    });
+
   useEffect(() => {
     const fetchServices = async () => {
       try {
         const response = await fetch(`${serverurls}services/`);
+        const response33 = await fetch(`${serverurls}get-home-detail/`);
+        const data33=await response33.json()
+        setHomeDetail(data33);
         const data = await response.json();
         
         setServicesOptions(data.data.map((value)=>value.title)); // Assuming the response contains an array of services
@@ -68,7 +86,7 @@ console.log("service",servicesOptions)
         ...formData,
         servicesRequired: selectedServices,  // Ensuring it's an array of strings
       };
-    fetch('http://localhost:8000/submit-quote/', {
+    fetch(`${serverurls}submit-quote/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -107,7 +125,6 @@ console.log("service",servicesOptions)
         readyToStart: '',
       });
 
-      console.log('Response:', response);
     } catch (error) {
       // Handle error
       console.error('Error submitting form:', error);
@@ -119,12 +136,12 @@ console.log("service",servicesOptions)
     <>
         <Helmet>
         <meta charSet="utf-8" />
-        <title>SharpLogicians | Creative Digital Agency</title>
-        <meta name="description" content="SharpLogicians | Creative Digital Agency" />
+        <title>{homeDetail && homeDetail?homeDetail?.metanamequote:'SharpLogicians | Creative Digital Agency' } </title>
+        <meta name="description" content={homeDetail && homeDetail?homeDetail?.metadescriptionquote:'SharpLogicians | Creative Digital Agency'} />
         <meta
           name="keywords"
-          content="bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative"
-        />
+          content={homeDetail && homeDetail?homeDetail?.keywordsquote:"bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative"} />
+  
         <meta name="author" content="Createx Studio" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
@@ -351,13 +368,7 @@ console.log("service",servicesOptions)
               pauseOnFocusLoss
               draggable
               pauseOnHover
-              style={{
-                width: "400px", // Adjust width here as needed
-                height:'900px',
-                marginTop:'300px',
-                marginRight:'900px',
-                whiteSpace: "nowrap",
-              }}
+           
             />
     </>
   );
