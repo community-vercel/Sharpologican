@@ -73,13 +73,27 @@ useEffect(() => {
     <>
   
   <Helmet>
-  <meta charSet="utf-8" />
-        <title>{homeDetail && homeDetail?homeDetail?.metanamecontact:'SharpLogicians | Creative Digital Agency' } </title>
-        <meta name="description" content={homeDetail && homeDetail?homeDetail?.metadescriptioncontact:'SharpLogicians | Creative Digital Agency'} />
-        <meta
-          name="keywords"
-          content={homeDetail && homeDetail?homeDetail?.keywordscontact:"bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative"} />
-  
+  <title>
+  {homeDetail?.metanamecontact
+    ? String(homeDetail.metanamecontact) 
+    : "SharpLogicians | Creative Digital Agency"}
+</title>      
+<meta
+  name="description"
+  content={
+    homeDetail?.metadescriptioncontact
+      ? String(homeDetail.metadescriptioncontact)
+      : "SharpLogicians | Creative Digital Agency"
+  }
+/>
+<meta
+  name="keywords"
+  content={
+    homeDetail?.keywordscontact
+      ? String(homeDetail.keywordscontact)
+      : "bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative"
+  }
+/>
         <meta name="author" content="Createx Studio" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
