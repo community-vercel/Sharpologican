@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const ScrollSpy = ({ sectionIds, activeClass = "is-current" }) => {
+const ScrollSpy = ({ sectionIds, activeClass = "is-current", closeMenu }) => {
   const [activeSection, setActiveSection] = useState(
     sectionIds[0].replace("#", "")
   );
 
   useEffect(() => {
-    // Create an IntersectionObserver to track visibility of sections
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Update active section when the section is visible in the viewport
             setActiveSection(entry.target.id);
           }
         });
@@ -21,7 +19,6 @@ const ScrollSpy = ({ sectionIds, activeClass = "is-current" }) => {
       }
     );
 
-    // Observe each section
     sectionIds.forEach((id) => {
       const element = document.querySelector(id);
       if (element) {
@@ -30,7 +27,6 @@ const ScrollSpy = ({ sectionIds, activeClass = "is-current" }) => {
     });
 
     return () => {
-      // Cleanup the observer when the component unmounts
       observer.disconnect();
     };
   }, [sectionIds]);
@@ -40,6 +36,8 @@ const ScrollSpy = ({ sectionIds, activeClass = "is-current" }) => {
     document
       .querySelector(id)
       .scrollIntoView({ behavior: "smooth", block: "center" });
+    setActiveSection(id.replace("#", "")); // Set the active section
+    closeMenu(); // Close the menu after clicking
   };
 
   return (

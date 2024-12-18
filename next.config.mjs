@@ -3,7 +3,7 @@ const nextConfig = {
  
   basePath: '/new', 
     images: {
-      domains: [ "community-hazel.vercel.app","sharplogicians.com","localhost:3000/new","localhost:3002","127.0.0.1", "127.0.0.1:8000","picsum.photos"],
+      domains: [ "community-hazel.vercel.app","sharplogicians.com","sharplogicians.com/new","sharplogicians.comundefined","localhost:3000/new","localhost:3002","127.0.0.1", "127.0.0.1:8000","picsum.photos"],
       remotePatterns: [
         {
           protocol: "https",

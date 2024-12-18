@@ -74,7 +74,7 @@ const CreativeLanding = ({homeDetail}) => {
   const [services, setServices] = useState([]);
   const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
     const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
-
+const frontend=process.env.NEXT_PUBLIC_FRONT_URL;
   const [aboutUsData, setAboutUsData] = useState(null);
   const [portfolioData, setPortfolioData] = useState();
   const [teamData, setTeamData] = useState();
@@ -124,10 +124,13 @@ const CreativeLanding = ({homeDetail}) => {
 
     fetchServices();
   }, []);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Manage menu state
+  const [isSticky, setIsSticky] = useState(false); // Manage sticky header
+
   
   useEffect(() => {
     const handleScroll = () => {
-      setSticky(window.scrollY > 100);
+      setIsSticky(window.scrollY > 100);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -136,99 +139,78 @@ const CreativeLanding = ({homeDetail}) => {
     };
   }, []);
 
-  // Menu toggle
-  const handleMenuToggle = () => setMenuOpen((prevMenuOpen) => !prevMenuOpen);
-  const menuTrigger = () => {
-    document.querySelector(".header-wrapper")?.classList.toggle("menu-open");
-  };
+  // Toggle menu visibility
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
-  const closeMenuTrigger = () => {
-    document.querySelector(".header-wrapper")?.classList.remove("menu-open");
-  };
-
-  useEffect(() => {
-    // Submenu toggle logic
-    const elements = document.querySelectorAll(".has-droupdown > a");
-    elements.forEach((element) => {
-      element.onclick = () => {
-        const submenu = element.parentElement.querySelector(".submenu");
-        if (submenu) {
-          submenu.classList.toggle("active");
-        }
-        element.classList.toggle("open");
-      };
-    });
-  }, []); 
-
-  // Menu dropdown logic
-  useEffect(() => {
-  
-    const dropdownLinks = document.querySelectorAll(".has-dropdown > a");
-    dropdownLinks.forEach((link) => {
-      link.onclick = () => {
-        link.parentElement.querySelector(".submenu")?.classList.toggle("active");
-        link.classList.toggle("open");
-      };
-    });
-  }, []);
-
+  // Close menu
+  const closeMenu = () => setIsMenuOpen(false);
+  const metadata =  {
+      title: homeDetail?.metaname?String(homeDetail.metaname):'SharpLogicians | Creative Digital Agency',
+      description:
+      homeDetail?.metadescription?String(homeDetail?.metadescription):'SharpLogicians | Creative Digital Agency',
+      keywords: homeDetail?.keywords? String(homeDetail.keywords):'bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative',
+      openGraph: {
+        title: homeDetail?.metaname || homeDetail?.metaname || "SharpLogicians | Creative Digital Agency",
+        description:
+        homeDetail?.metadescription ||
+          `SharpLogicians | Creative Digital Agency`,
+        url: `${frontend} || "default-slug"}`,
+        images: [
+       "/logo-light.png",
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: homeDetail?.metaname || homeDetail?.metaname || "SharpLogicians | Creative Digital Agency",
+        description:
+        homeDetail?.metadescription ||
+          `SharpLogicians | Creative Digital Agency`,
+        url: `${frontend} || "default-slug"}`,
+        images: [
+       "/logo-light.png",
+        ],
+      },
+    }
+ 
   return (
     <>
-    
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>
-  {homeDetail?.metaname
-    ? String(homeDetail.metaname) 
-    : "SharpLogicians | Creative Digital Agency"}
-</title> 
-<meta
-  name="description"
-  content={
-    homeDetail?.metadescription
-      ? String(homeDetail.metadescription)
-      : "SharpLogicians | Creative Digital Agency"
-  }
-/>
-<meta
-  name="keywords"
-  content={
-    homeDetail?.keywords
-      ? String(homeDetail.keywords)
-      : "bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative"
-  }
-/>
-        <meta name="author" content="Createx Studio" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-        <link rel="manifest" href="site.webmanifest" />
-        <link rel="mask-icon" color="#5bbad5" href="safari-pinned-tab.svg" />
-        <meta name="msapplication-TileColor" content="#766df4" />
-        <meta name="theme-color" content="#ffffff" />
-      </Helmet>
+        <title>{metadata.title}</title>
+      <meta name="description" content={metadata.description} />
+      <meta name="keywords" content={metadata.keywords} />
+      <meta property="og:title" content={metadata.openGraph.title} />
+      <meta
+        property="og:description"
+        content={metadata.openGraph.description}
+      />
+      <meta property="og:url" content={metadata.openGraph.url} />
+      <meta property="og:image" content={metadata.openGraph.images} />
+      <meta name="twitter:title" content={metadata.twitter.title} />
+      <meta name="twitter:description" content={metadata.twitter.description} />
+      <meta name="twitter:image" content={metadata.twitter.images} />
+     
 
-      {/* Start Header Area */}
-      <header className={`header-area formobile-menu header--fixed default-color ${sticky ? "sticky" : ""}`}>
-        <div className="header-wrapper" id="header-wrapper" onClick={handleMenuToggle}>
-          
+      {/* Header */}
+      <header
+        className={`header-area formobile-menu header--fixed default-color ${
+          isSticky ? "sticky" : ""
+        }`}
+      >
+        <div className={`header-wrapper ${isMenuOpen ? "menu-open" : ""}`}>
+          {/* Logo */}
           <div className="header-left">
             <div className="logo">
               <a href="/">
-              {/* <Image src={logoLight} alt="Logo" className="logo-1" />
-              <Image src={logoLight} width={0} height={0} alt='Logo images' className="logo-2" /> */}
-
-                <img className="logo-1" src='/logo-light.png' alt="Logo Images" />
-                <img className="logo-2" src='/logo-light.png' alt="Logo Images" />
+                <img className="logo-1" src="/logo-light.png" alt="Logo" />
+                <img className="logo-2" src="/logo-light.png" alt="Logo" />
               </a>
             </div>
           </div>
+
+          {/* Main Menu */}
           <div className="header-right">
             <nav className="mainmenunav d-lg-block">
               <ul className="mainmenu">
                 <ScrollSpy
-
                   sectionIds={[
                     "#home",
                     "#service",
@@ -239,28 +221,23 @@ const CreativeLanding = ({homeDetail}) => {
                     "#blog",
                     "#contact",
                   ]}
+                  activeClass="is-current" // Add your active class name
+                  closeMenu={closeMenu} // Pass the closeMenu function here
                 />
               </ul>
             </nav>
+
+            {/* Quote Button */}
             <div className="header-btn">
-              <a
-                className="rn-btn"
-                href="/quote"
-              >
+              <a className="rn-btn" href="/quote">
                 <span>Get Quote</span>
               </a>
             </div>
-            {/* Start Humberger Menu */}
+
+            {/* Hamburger Menu */}
             <div className="humberger-menu d-block d-lg-none pl--20">
-              
-              <span onClick={menuTrigger} className="menutrigger text-white">
-                <FiMenu />
-              </span>
-            </div>
-            {/* End Humberger Menu */}
-            <div className="close-menu d-block d-lg-none">
-              <span onClick={closeMenuTrigger} className="closeTrigger">
-                <FiX />
+              <span onClick={toggleMenu} className="menutrigger text-white">
+                {isMenuOpen ? <FiX /> : <FiMenu />}
               </span>
             </div>
           </div>
@@ -336,9 +313,9 @@ const CreativeLanding = ({homeDetail}) => {
             <div className="row row--35 align-items-center">
               <div className="col-lg-5">
                 <div className="thumbnail">
-              {aboutUsData &&  <img className="w-100" src={serverurl+aboutUsData?.image} alt="About Images" />}
+              {/* {aboutUsData &&  <img className="w-100" src={serverurl+aboutUsData?.image} alt="About Images" />} */}
 
-                  {/* <Image width={230} height={230} className="w-100" src={serverurl+aboutUsData?.image} alt="About Images" /> */}
+                  <Image width={500} height={665} className="w-100" src={serverurl+aboutUsData?.image} alt="About Images" />
                 </div>
               </div>
               <div className="col-lg-7">
@@ -406,13 +383,9 @@ secondDescription
                           <div className="thumbnail-inner">
                             <div>
                             <div className={`thumbnail ${serverurl}${value.image}`}></div>
-                           
-                            <img
-  className="thumbnail"
-  src={`${serverurl}${value?.image}`}
-  alt={value.title?value.title:'Portfolio'}
- // Use priority only for critical images
-/>                       
+                            <Image width={500} height={665}   className="thumbnail"  src={`${serverurl}${value?.image}`}alt={value.title?value.title:'Portfolio'} />
+
+                   
                             </div>
                                  
                             <div
@@ -511,9 +484,9 @@ secondDescription
                     <div className="blog blog-style--1" key={i}>
                       <div className="thumbnail">
                         <Link href={`/news/${value.slug}`}>
-                        <img src={serverurl+value?.image} alt="Blog Images" />
+                        {/* <img src={serverurl+value?.image} alt="Blog Images" /> */}
 
-                        {/* <Image width={1230} height={530}src={serverurl+value.image} alt="Blog Images" /> */}
+                        <Image width={390} height={532}src={serverurl+value?.image} alt="News Images" />
                         </Link>
                       </div>
                       <div className="content">
