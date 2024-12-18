@@ -11,9 +11,9 @@ const Team = ({column,team}) => {
           <div className={`${column}`} key={i}>
             <div className="team">
               <div className="thumbnail">
-              <img src={serverurl+value.image} alt="Blog Images" />
+              {/* <img src={serverurl+value.image} alt="Blog Images" /> */}
 
-              {/* <Image width={220} height={220} src={serverurl+value.image} alt="Placeholder" /> */}
+              <Image width={500} height={665} src={serverurl+value.image} alt="Team " />
               </div>
               <div className="content">
                 <h4 className="title">{value.name}</h4>

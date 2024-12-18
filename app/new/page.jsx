@@ -74,7 +74,7 @@ const CreativeLanding = ({homeDetail}) => {
   const [services, setServices] = useState([]);
   const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
     const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
-
+const frontend=process.env.NEXT_PUBLIC_FRONT_URL;
   const [aboutUsData, setAboutUsData] = useState(null);
   const [portfolioData, setPortfolioData] = useState();
   const [teamData, setTeamData] = useState();
@@ -145,35 +145,50 @@ const CreativeLanding = ({homeDetail}) => {
 
   // Close menu
   const closeMenu = () => setIsMenuOpen(false);
-
+  const metadata =  {
+      title: homeDetail?.metaname?String(homeDetail.metaname):'SharpLogicians | Creative Digital Agency',
+      description:
+      homeDetail?.metadescription?String(homeDetail?.metadescription):'SharpLogicians | Creative Digital Agency',
+      keywords: homeDetail?.keywords? String(homeDetail.keywords):'bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative',
+      openGraph: {
+        title: homeDetail?.metaname || homeDetail?.metaname || "SharpLogicians | Creative Digital Agency",
+        description:
+        homeDetail?.metadescription ||
+          `SharpLogicians | Creative Digital Agency`,
+        url: `${frontend} || "default-slug"}`,
+        images: [
+       "/logo-light.png",
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: homeDetail?.metaname || homeDetail?.metaname || "SharpLogicians | Creative Digital Agency",
+        description:
+        homeDetail?.metadescription ||
+          `SharpLogicians | Creative Digital Agency`,
+        url: `${frontend} || "default-slug"}`,
+        images: [
+       "/logo-light.png",
+        ],
+      },
+    }
+ 
   return (
     <>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>
-          {homeDetail?.metaname
-            ? String(homeDetail.metaname)
-            : "SharpLogicians | Creative Digital Agency"}
-        </title>
-        <meta
-          name="description"
-          content={
-            homeDetail?.metadescription
-              ? String(homeDetail.metadescription)
-              : "SharpLogicians | Creative Digital Agency"
-          }
-        />
-        <meta
-          name="keywords"
-          content={
-            homeDetail?.keywords
-              ? String(homeDetail.keywords)
-              : "bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative"
-          }
-        />
-        <meta name="author" content="Createx Studio" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Helmet>
+        <title>{metadata.title}</title>
+      <meta name="description" content={metadata.description} />
+      <meta name="keywords" content={metadata.keywords} />
+      <meta property="og:title" content={metadata.openGraph.title} />
+      <meta
+        property="og:description"
+        content={metadata.openGraph.description}
+      />
+      <meta property="og:url" content={metadata.openGraph.url} />
+      <meta property="og:image" content={metadata.openGraph.images} />
+      <meta name="twitter:title" content={metadata.twitter.title} />
+      <meta name="twitter:description" content={metadata.twitter.description} />
+      <meta name="twitter:image" content={metadata.twitter.images} />
+     
 
       {/* Header */}
       <header
@@ -299,9 +314,9 @@ const CreativeLanding = ({homeDetail}) => {
             <div className="row row--35 align-items-center">
               <div className="col-lg-5">
                 <div className="thumbnail">
-              {aboutUsData &&  <img className="w-100" src={serverurl+aboutUsData?.image} alt="About Images" />}
+              {/* {aboutUsData &&  <img className="w-100" src={serverurl+aboutUsData?.image} alt="About Images" />} */}
 
-                  {/* <Image width={230} height={230} className="w-100" src={serverurl+aboutUsData?.image} alt="About Images" /> */}
+                  <Image width={500} height={665} className="w-100" src={serverurl+aboutUsData?.image} alt="About Images" />
                 </div>
               </div>
               <div className="col-lg-7">
@@ -369,13 +384,9 @@ secondDescription
                           <div className="thumbnail-inner">
                             <div>
                             <div className={`thumbnail ${serverurl}${value.image}`}></div>
-                           
-                            <img
-  className="thumbnail"
-  src={`${serverurl}${value?.image}`}
-  alt={value.title?value.title:'Portfolio'}
- // Use priority only for critical images
-/>                       
+                            <Image width={500} height={665}   className="thumbnail"  src={`${serverurl}${value?.image}`}alt={value.title?value.title:'Portfolio'} />
+
+                   
                             </div>
                                  
                             <div
@@ -474,9 +485,9 @@ secondDescription
                     <div className="blog blog-style--1" key={i}>
                       <div className="thumbnail">
                         <Link href={`/news/${value.slug}`}>
-                        <img src={serverurl+value?.image} alt="Blog Images" />
+                        {/* <img src={serverurl+value?.image} alt="Blog Images" /> */}
 
-                        {/* <Image width={1230} height={530}src={serverurl+value.image} alt="Blog Images" /> */}
+                        <Image width={390} height={532}src={serverurl+value?.image} alt="News Images" />
                         </Link>
                       </div>
                       <div className="content">

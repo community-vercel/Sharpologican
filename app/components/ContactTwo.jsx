@@ -25,9 +25,9 @@ import Image from "next/image";
             </div>
             <div className="col-lg-6 order-1 order-lg-2">
               <div className="thumbnail mb_md--30 mb_sm--30">
-             {image && <img src={image?image:''} alt="trydo" /> }
+             {/* {image && <img src={image?image:''} alt="trydo" /> } */}
 
-                {/* <Image width={229} height={322} src={image?image:''} alt="trydo" /> */}
+                <Image width={800} height={845} src={image?image:''} alt="Contact Us" />
               </div>
             </div>
           </div>

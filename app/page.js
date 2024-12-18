@@ -8,7 +8,9 @@ export default function Home() {
   const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
 
    useEffect(() => {
-      const fetchServices = async () => {
+    if (homeDetail) return;
+
+      const fetchServicess = async () => {
         
        
         const response33 = await fetch(`${serverurls}get-home-detail/`);
@@ -16,8 +18,9 @@ export default function Home() {
         setHomeDetail(data33);
 
       }
-      fetchServices()
-    }),[];
+      fetchServicess()
+    }),[homeDetail];
+   
   return (
   <CreativeLanding homeDetail={homeDetail} />
   );

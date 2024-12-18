@@ -15,17 +15,17 @@ const BrandTwo = ({ clientImages }) => {
       <ul className="brand-style-2">
         {clientImages?.map((image) => (
           <li>
-            {image && <img src={serverurl + image.image} alt="Logo Images" />}
+            {/* {image && <img src={serverurl + image.image} alt="Logo Images" />} */}
 
-            {/* <Image
-             width={780}
-             height={30}
-             src={serverurl + image.image}
-             alt="Logo Images"
+            <Image
+             width={177}
+             height={111}
+             src={serverurl + image?.image}
+             alt="Clients"
             //  className="rounded-full"
              style={{ borderRadius: "50%" }}
 
-           /> */}
+           />
           </li>
         ))}
       </ul>
