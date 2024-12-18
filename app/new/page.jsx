@@ -20,6 +20,7 @@ import logoAllDark from "../assets/images/logo/logo-all-dark.png";
 import ScrollSpy from "../components/ScrollSpy";
 import ScrollToTop from "react-scroll-up";
 import Image from "next/image";
+
 const SlideList = [
   {
     textPosition: "text-center",
@@ -67,7 +68,7 @@ const slickDot = {
 ]
 };
 
-const CreativeLanding = () => {
+const CreativeLanding = ({homeDetail}) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
   const [services, setServices] = useState([]);
@@ -83,30 +84,14 @@ const CreativeLanding = () => {
   const [clientImages, setClientImages] = useState([]);
   const [title, setnewtitle] = useState();
   const [counts, setcounts] = useState([]);
-  const [homeDetail, setHomeDetail] = useState({
-    metaname: "",
-    metadescription: "",
-    keywords: '',
-    metanamecontact: "",
-    metadescriptioncontact: "",
-    keywordscontact:'',
-    metanamequote: "",
-    metadescriptionquote: "",
-    keywordsquote:'',
-    heading: "",
-    detail: "",
-    footeremail: "",
-    footeremail2: "",
-  });
+
 
   useEffect(() => {
     const fetchServices = async () => {
       
       const response = await fetch(`${serverurls}services/`);
       const data = await response.json();
-      const response33 = await fetch(`${serverurls}get-home-detail/`);
-      const data33=await response33.json()
-      setHomeDetail(data33);
+      
       setServices(data.data);
       const response4 = await fetch(`${serverurls}about-us/`);
       const data2 = await response4.json();
@@ -296,12 +281,12 @@ const CreativeLanding = () => {
                   <div className="col-lg-12">
                     <div className={`inner ${value.textPosition}`}>
                       {value.category ? <span>{value.category}</span> : ""}
-                      {homeDetail.heading ? (
+                      {homeDetail?.heading ? (
                         <h1 className="title theme-gradient">{homeDetail?.heading}</h1>
                       ) : (
                         ""
                       )}
-                      {homeDetail.detail ? (
+                      {homeDetail?.detail ? (
                         <p className="description">{homeDetail?.detail}</p>
                       ) : (
                         ""
@@ -534,7 +519,7 @@ secondDescription
                       <div className="content">
                         <p className="blogtype">{value?.title}</p>
                         <h4 className="title">
-                          <a href="/blog-details">{value?.content}</a>
+                          <a href={`/news/${value.slug}`}>{value?.content}</a>
                         </h4>
                         <div className="blog-btn">
                           <Link className="rn-btn text-white" href={`/news/${value?.slug}`}>
