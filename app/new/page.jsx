@@ -6,7 +6,6 @@ import { FiChevronUp, FiX, FiMenu } from "react-icons/fi";
 import Slider from "react-slick";
 import ServiceList from '../components/ServiceList'
 import Team from "../components/Team";
-import ServiceThree from "../components/ServiceList";
 import BrandTwo from "../components/BrandTwo";// Assuming the path to 
 import Contact from "../components/ContactTwo"
 import Testimonial from "../components/Testimonial";
@@ -18,7 +17,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import logoLight from "../assets/images/logo/logo-light.png";
 import logoAllDark from "../assets/images/logo/logo-all-dark.png";
-import aboutImg from "../assets/images/about/about-3.jpg";
 import ScrollSpy from "../components/ScrollSpy";
 import ScrollToTop from "react-scroll-up";
 import Image from "next/image";

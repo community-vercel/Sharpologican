@@ -29,8 +29,8 @@ const Service =()=>{
             <>
 <Helmet>
       <meta charSet="utf-8" />
-      <title>SharpLogicians | Creative Digital Agency</title>
-      <meta name="description" content="SharpLogicians | Creative Digital Agency" />
+      <title>SharpLogicians | Creative Digital Agency | Service</title>
+      <meta name="description" content="SharpLogicians | Creative Digital Agency | Service" />
       <meta
         name="keywords"
         content="bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative"
