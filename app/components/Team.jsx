@@ -13,7 +13,7 @@ const Team = ({column,team}) => {
               <div className="thumbnail">
               {/* <img src={serverurl+value.image} alt="Blog Images" /> */}
 
-              <Image width={500} height={665} src={serverurl+value.image} alt="Team " />
+              <Image width={396} height={450} src={serverurl+value.image} alt="Team " />
               </div>
               <div className="content">
                 <h4 className="title">{value.name}</h4>
