@@ -124,11 +124,10 @@ const frontend=process.env.NEXT_PUBLIC_FRONT_URL;
 
     fetchServices();
   }, []);
-  
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Manage menu state
   const [isSticky, setIsSticky] = useState(false); // Manage sticky header
 
-  // Sticky header on scroll
+  
   useEffect(() => {
     const handleScroll = () => {
       setIsSticky(window.scrollY > 100);
