@@ -21,8 +21,8 @@ const ServiceThree = ({column,service}) => {
                             <Link href={`/service/${val.slug}`}>
                                 <div className="service service__style--2">
                                     <div className="icon">
-                                        <Image src={serverurl+val.image} width={49} height={49}   layout="responsive" 
-                                        />
+                                        {/* <imgs rc={serverurl+val.image} /> */}
+                                        <Image src={serverurl+val.image} width={49} height={49}/>
                                     </div>
                                     <div className="content">
                                         <h3 className="title">{val.title}</h3>
