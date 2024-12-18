@@ -20,6 +20,7 @@ const BrandTwo = ({ clientImages }) => {
              alt="Clients"
             //  className="rounded-full"
              style={{ borderRadius: "50%" }}
+             layout="responsive" 
 
            />
           </li>

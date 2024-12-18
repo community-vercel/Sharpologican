@@ -136,11 +136,7 @@ font-family: 'Poppins', sans-serif;
 
 
 .bg_image {
-    width: 100%; // Set appropriate width
-    height: 950px; // Fixed height or use aspect ratio
-    // background-image: url(../../images/bg/bg-image-#{$i}.jpg) !important;
-    background-size: cover; // Ensures proper scaling of the background image
-    background-position: center;
+    
     @extend %bgImagePosition;
 }
 

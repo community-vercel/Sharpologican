@@ -10,10 +10,10 @@ import Link from "next/link";
 import { Helmet } from 'react-helmet-async';
 const NewsDetail=({news})=> {
     const formattedDate = new Date(news?.published_date).toLocaleDateString("en-US", {
-        weekday: "long", // 'Monday'
-        year: "numeric", // '2024'
-        month: "long", // 'December'
-        day: "numeric", // '13'
+      month: "long", // 'December'
+      day: "numeric", // '13'
+
+      year: "numeric" // '2024'
       });
     return (
       <>
@@ -57,11 +57,11 @@ const NewsDetail=({news})=> {
                       <FiClock />
                       {formattedDate}
                     </li>
-                   
+{/*                    
                     <li>
                       <FiHeart />
                       Like
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
               </div>

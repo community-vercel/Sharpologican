@@ -27,7 +27,8 @@ import Image from "next/image";
               <div className="thumbnail mb_md--30 mb_sm--30">
              {/* {image && <img src={image?image:''} alt="trydo" /> } */}
 
-                <Image width={550} height={665} src={image?image:''} alt="Contact Us" />
+                <Image width={550} height={665} src={image?image:''} alt="Contact Us"   layout="responsive" 
+                />
               </div>
             </div>
           </div>

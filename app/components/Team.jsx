@@ -13,7 +13,10 @@ const Team = ({column,team}) => {
               <div className="thumbnail">
               {/* <img src={serverurl+value.image} alt="Blog Images" /> */}
 
-              <Image width={396} height={450} src={serverurl+value.image} alt="Team " />
+              <Image width={396} height={450} src={serverurl+value.image} alt="Team "
+              
+              layout="responsive" 
+/>
               </div>
               <div className="content">
                 <h4 className="title">{value.name}</h4>

@@ -10,6 +10,7 @@ import Footer from "../components/Footer";
 import { Helmet } from "react-helmet-async";
 import Breadcrumb from "../components/Breadcrumb";
 import Link from "next/link";
+import Image from "next/image";
 const Service = () => {
   const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
   const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
@@ -83,13 +84,20 @@ const Service = () => {
                           <div className="thumbnail-inner">
                             <div>
                             <div className={`thumbnail ${serverurl}${value.image}`}></div>
-                           
-                            <img
+                             <Image
+                                                         width={500}
+                                                         height={665}
+                                                         className="thumbnail"
+                                                         src={`${serverurl}${value.image}`}
+                                                         alt={value.title ? value.title : "Portfolio"}
+                                                         layout="responsive"
+                                                       />
+                            {/* <img
   className="thumbnail"
   src={`${serverurl}${value?.image}`}
   alt={value.title?value.title:'Portfolio'}
  // Use priority only for critical images
-/>                       
+/>                        */}
                             </div>
                                  
                             <div

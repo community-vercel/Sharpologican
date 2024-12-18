@@ -30,16 +30,17 @@ const Testimonial = ({test}) => {
                   <Tab key={testimonial.id}>
                     <div className="testimonial-thumbnail">
                       <div className="thumb">
-                      <img                          src={serverurl+testimonial.image} alt="Testimonial Images" />
+                      {/* <img                          src={serverurl+testimonial.image} alt="Testimonial Images" /> */}
 
-                        {/* <Image
-                          width={230}
-                          height={339}
+                        <Image
+                          width={73}
+                          height={73}
                           src={serverurl+testimonial.image}
-                          alt={`${testimonial.author}'s Testimonial`}
-                          quality={75} // Optimized quality
+                          alt={`'Testimonial`}
+                          layout="responsive" 
+
                           
-                        /> */}
+                        />
 
                       </div>
                     </div>
