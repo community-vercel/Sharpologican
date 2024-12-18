@@ -22,6 +22,7 @@ const ServiceThree = ({column,service}) => {
                                 <div className="service service__style--2">
                                     <div className="icon">
                                         {/* <imgs rc={serverurl+val.image} /> */}
+                                        
                                         <Image src={serverurl+val.image} width={49} height={49}/>
                                     </div>
                                     <div className="content">
