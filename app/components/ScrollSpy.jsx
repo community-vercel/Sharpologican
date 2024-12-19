@@ -1,14 +1,22 @@
+'use client'
 import React, { useState, useEffect } from "react";
 
 const ScrollSpy = ({ sectionIds, activeClass = "is-current", closeMenu }) => {
   const [activeSection, setActiveSection] = useState(
     sectionIds[0].replace("#", "")
   );
+  const [headerHeight, setHeaderHeight] = useState(0); // Initialize headerHeight state
 
-  // Define the header height to be used as an offset for scroll position
-  const headerHeight = document.querySelector('.header-wrapper')?.offsetHeight || 20; // Default to 80px if undefined
-
+  // Only calculate header height on the client side
   useEffect(() => {
+    // Ensure the header height is fetched only on the client side
+    if (typeof window !== "undefined") {
+      const header = document.querySelector('.header-wrapper');
+      if (header) {
+        setHeaderHeight(header.offsetHeight); // Set the height once the component has mounted
+      }
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

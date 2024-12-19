@@ -1,4 +1,3 @@
-import ServiceDetails from "@/app/components/ServiceDetails";
 import CreativeLanding from "./new/page";
 
 
@@ -35,7 +34,7 @@ export default async function Page() {
 
  
 
-  return <CreativeLanding homeDetail ={initialservice}  />;
+  return <CreativeLanding homeDetail ={initialservice?initialservice:''}  />;
 }
 
 
