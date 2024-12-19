@@ -179,7 +179,6 @@ const CreativeLanding = ({ homeDetail }) => {
   return (
     <>       
     <title>{metadata.title}</title>
-    <meta name="title" content={metadata.title} />
 
       <meta  name="title" content={metadata.title} />
       <meta name="description" content={metadata.description} />

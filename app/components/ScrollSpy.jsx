@@ -5,6 +5,9 @@ const ScrollSpy = ({ sectionIds, activeClass = "is-current", closeMenu }) => {
     sectionIds[0].replace("#", "")
   );
 
+  // Define the header height to be used as an offset for scroll position
+  const headerHeight = document.querySelector('.header-wrapper')?.offsetHeight || 20; // Default to 80px if undefined
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -33,9 +36,16 @@ const ScrollSpy = ({ sectionIds, activeClass = "is-current", closeMenu }) => {
 
   const handleClick = (e, id) => {
     e.preventDefault();
-    document
-      .querySelector(id)
-      .scrollIntoView({ behavior: "smooth", block: "center" });
+    const targetElement = document.querySelector(id);
+
+    // Scroll with offset for fixed header
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop - headerHeight, // Adjust scroll position with header height
+        behavior: "smooth", // Smooth scroll
+      });
+    }
+
     setActiveSection(id.replace("#", "")); // Set the active section
     closeMenu(); // Close the menu after clicking
   };

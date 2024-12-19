@@ -1,5 +1,5 @@
 'use client'
-import React, { Component } from "react";
+import React, {useEffect } from "react";
 import ModalVideo from "react-modal-video";
 import { FiClock, FiUser, FiMessageCircle, FiHeart } from "react-icons/fi";
 import ScrollToTop from "react-scroll-up";
@@ -13,7 +13,6 @@ import { H1 } from "./Typrography";
 const NewsDetail=({news})=> {
   const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
 const bg_image=serverurl + news?.image
-console.log(bg_image)
     const formattedDate = new Date(news?.published_date).toLocaleDateString("en-US", {
       month: "long", // 'December'
       day: "numeric", // '13'
@@ -54,7 +53,10 @@ console.log(bg_image)
           images: ["/logo-light.png"],
         },
       };
-    
+      useEffect(() => {
+        window.scrollTo(0, 0); // Scroll to the top of the page
+      }, []); 
+      
       return (
         <>
           <title>{metadata.title}</title>

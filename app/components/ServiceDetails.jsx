@@ -4,12 +4,12 @@ import ScrollToTop from "react-scroll-up";
 import { FiChevronUp } from "react-icons/fi";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import logoLight from "../assets/images/logo/logo-light.png";
 
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import { H1 } from "@/app/components/Typrography";
 const ServiceDetails = ({ initialservice }) => {
-  console.log("initial", initialservice);
   const params = useParams();
   const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
   const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
@@ -48,9 +48,13 @@ const bg_image=serverurl + initialservice?.image3
       images: ["/logo-light.png"],
     },
   };
+  useEffect(() => {
+          window.scrollTo(0, 0); // Scroll to the top of the page
+        }, []);
 
   return (
     <>
+    
       <title>{metadata.title}</title>
 
       <meta name="title" content={metadata.title} />
@@ -66,13 +70,32 @@ const bg_image=serverurl + initialservice?.image3
       <meta name="twitter:title" content={metadata.twitter.title} />
       <meta name="twitter:description" content={metadata.twitter.description} />
       <meta name="twitter:image" content={metadata.twitter.images} />
-
+    <header
+        className={`header-area formobile-menu header--transparent `}
+      >
+        <div className="header-wrapper" id="header-wrapper">
+          <div className="header-left">
+            <div className="logo">
+              <a href="/"><img src={logoLight} /></a>
+            </div>
+          </div>
+          <div className="header-right">
+           
+            <div className="header-btn">
+              <a className="rn-btn" href="/quote">
+                <span>Get a quote</span>
+              </a>
+            </div>
+            </div>
+            </div>
+      
       {/* End Pagehelmet  */}
-      <Header
+      {/* <Header
         headertransparent="header--transparent"
         colorblack="color--black"
         logoname="logo.png"
-      />
+      /> */}
+        </header>
       {/* Start Breadcrump Area */}
       <div
   className="rn-page-title-area pt--120 pb--190"
@@ -81,6 +104,7 @@ const bg_image=serverurl + initialservice?.image3
   }}
   data-black-overlay="7"
 >
+  
     
         <div className="container">
           <div className="row">
@@ -96,6 +120,7 @@ const bg_image=serverurl + initialservice?.image3
           </div>
         </div>
       </div>
+      
       {/* End Breadcrump Area */}
       {/* Start Page Wrapper */}
       <div className="rn-service-details ptb--120 bg_color--1">

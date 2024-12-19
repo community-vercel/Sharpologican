@@ -6,6 +6,8 @@ import {
   FaFacebookF,
   FaLinkedinIn,
 } from "react-icons/fa";
+import React, {useEffect } from "react";
+
 import ScrollToTop from "react-scroll-up";
 import { FiChevronUp } from "react-icons/fi";
 import Header from "./Header";
@@ -57,7 +59,9 @@ const bg_image=serverurl+portfolio?.image;
       images: ["/logo-light.png"],
     },
   };
-
+useEffect(() => {
+        window.scrollTo(0, 0); // Scroll to the top of the page
+      }, []); 
   return (
     <>
       <title>{metadata.title}</title>
