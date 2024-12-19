@@ -1,42 +1,49 @@
-'use client';
-import React, {useState,useEffect } from "react";
+import NewsDetail from "@/app/components/NewsDetails";
+import ServiceDetails from "@/app/components/ServiceDetails";
 
-// import "../../../index.scss"
-import { useParams } from "next/navigation";
-import Image from "next/image";
-import PortfolioDetails from "@/app/components/PortfolioDetails";
-import NewsDetails from "@/app/components/NewsDetails";
-const  newDetail=()=>{
-    const params=useParams()
-    const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
-    const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
-  const [service, setServices] = useState();
-  useEffect(() => {
-    const getDetails = async () => {
-      const formData = new FormData();
-      formData.append("slug", params.slug);
 
-      try {
-        const response = await fetch(`${serverurls}get-newsdetails/`, {
-          method: "POST",
 
-          body: formData,
-        });
-        const data = await response.json();
-        if (response.ok) {
-          setServices(data);
+export async function fetchInitialdetails(slug) {
+  const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
+ 
+ 
+  try {
+    const formData = new FormData();
+    formData.append("slug", slug);
+const response = await fetch(`${serverurls}get-newsdetails/`, {
+      method: "POST",
 
-        }
-    } catch (error) {
-      console.error("Error adding service:", error);
+      body: formData,
+    });
+    const data = await response.json();
+
+// console.log("data",response)
+//     const result = await response.json();
+    if (!response.ok) {
+      console.error("Failed to fetch properties:", response.statusText);
+      return null;
     }
-  };
-  getDetails();
-}, []);
-  
-    return (
-     <NewsDetails news={service} />
-    );
-  }
 
-export default newDetail;
+    
+
+    return data;
+
+  } catch (error) {
+    console.error("An error occurred while fetching properties:", error);
+    return null;
+  }
+}
+
+export default async function Page({ params }) {
+  const { slug } = await params
+
+  const initialservice = await fetchInitialdetails(slug);
+
+ 
+
+  return <NewsDetail news ={initialservice}  />;
+}
+
+
+
+

@@ -8,6 +8,7 @@ import { Helmet } from 'react-helmet-async';
 import ServiceList from '../components/ServiceList'
 import Breadcrumb from "../components/Breadcrumb";
 import { useState, useEffect, Fragment } from "react";
+import logoLight from "../assets/images/logo/logo-light.png";
 
 
 
@@ -44,8 +45,27 @@ const Service =()=>{
       <link rel="mask-icon" color="#5bbad5" href="safari-pinned-tab.svg" />
       <meta name="msapplication-TileColor" content="#766df4" />
       <meta name="theme-color" content="#ffffff" />
-    </Helmet>                <Header headertransparent="header--transparent" colorblack="color--black" logoname="logo.png" />
-
+    </Helmet>                
+    {/* <Header headertransparent="header--transparent" colorblack="color--black" logoname="logo.png" /> */}
+    <header
+        className={`header-area formobile-menu header--transparent `}
+      >
+        <div className="header-wrapper" id="header-wrapper">
+          <div className="header-left">
+            <div className="logo">
+              <a href="/"><img src={logoLight} /></a>
+            </div>
+          </div>
+          <div className="header-right">
+           
+            <div className="header-btn">
+              <a className="rn-btn" href="/quote">
+                <span>Get a quote</span>
+              </a>
+            </div>
+            </div>
+            </div>
+            </header>
                 {/* Start Breadcrump Area */}
                 <Breadcrumb title={ 'Service'}   />
                 {/* End Breadcrump Area */}

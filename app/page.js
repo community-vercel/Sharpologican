@@ -1,27 +1,43 @@
-
-'use client';
+import ServiceDetails from "@/app/components/ServiceDetails";
 import CreativeLanding from "./new/page";
-import { useState, useEffect } from "react";
 
-export default function Home() {
-  const [homeDetail, setHomeDetail]=useState()
+
+
+export async function fetchInitialdetails(slug) {
   const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
+ 
+ 
+  try {
 
-   useEffect(() => {
-    if (homeDetail) return;
+const response = await fetch(`${serverurls}get-home-detail/`);
+    const data = await response.json();
 
-      const fetchServicess = async () => {
-        
-       
-        const response33 = await fetch(`${serverurls}get-home-detail/`);
-        const data33=await response33.json()
-        setHomeDetail(data33);
+// console.log("data",response)
+//     const result = await response.json();
+    if (!response.ok) {
+      console.error("Failed to fetch properties:", response.statusText);
+      return null;
+    }
 
-      }
-      fetchServicess()
-    }),[homeDetail];
-   
-  return (
-  <CreativeLanding homeDetail={homeDetail} />
-  );
+    
+
+    return data;
+
+  } catch (error) {
+    console.error("An error occurred while fetching properties:", error);
+    return null;
+  }
 }
+
+export default async function Page() {
+
+  const initialservice = await fetchInitialdetails();
+
+ 
+
+  return <CreativeLanding homeDetail ={initialservice}  />;
+}
+
+
+
+

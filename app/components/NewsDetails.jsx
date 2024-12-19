@@ -1,3 +1,4 @@
+'use client'
 import React, { Component } from "react";
 import ModalVideo from "react-modal-video";
 import { FiClock, FiUser, FiMessageCircle, FiHeart } from "react-icons/fi";
@@ -10,32 +11,68 @@ import Link from "next/link";
 import { Helmet } from 'react-helmet-async';
 import { H1 } from "./Typrography";
 const NewsDetail=({news})=> {
+  const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
+
     const formattedDate = new Date(news?.published_date).toLocaleDateString("en-US", {
       month: "long", // 'December'
       day: "numeric", // '13'
 
       year: "numeric" // '2024'
       });
-    return (
-      <>
-<Helmet>
-      <meta charSet="utf-8" />
-      <title>{news && news.metaname?news.metaname:news && news.news_title?news.news_title:'SharpLogicians | Creative Digital Agency'}</title>
-      <meta name="description" content={news && news.metades?news.metades:"SharpLogicians | Creative Digital Agency"} />
-      <meta
-        name="keywords"
-        content={news && news.keywords?news.keywords:"bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative"
-}      />
-      <meta name="author" content="Createx Studio" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-      <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-      <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-      <link rel="manifest" href="site.webmanifest" />
-      <link rel="mask-icon" color="#5bbad5" href="safari-pinned-tab.svg" />
-      <meta name="msapplication-TileColor" content="#766df4" />
-      <meta name="theme-color" content="#ffffff" />
-    </Helmet>   
+      const frontend = process.env.NEXT_PUBLIC_FRONT_URL;
+
+      const metadata = {
+        title: news?.metaname
+          ? String(news.metaname)
+          : "SharpLogicians | Creative Digital Agency",
+        description: news?.metadesc
+          ? String(news?.metadesc)
+          : "SharpLogicians | Creative Digital Agency",
+        keywords: news?.keywords
+          ? String(news.keywords)
+          : "bootstrap, business, consulting, coworking space, newss, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative",
+        openGraph: {
+          title:
+            news?.metaname ||
+            news?.metaname ||
+            "SharpLogicians | Creative Digital Agency",
+          description:
+            news?.metades || `SharpLogicians | Creative Digital Agency`,
+          url: `${frontend} || "default-slug"}`,
+          images: ["/logo-light.png"],
+        },
+        twitter: {
+          card: "summary_large_image",
+          title:
+            news?.metaname ||
+            news?.metaname ||
+            "SharpLogicians | Creative Digital Agency",
+          description:
+            news?.metades || `SharpLogicians | Creative Digital Agency`,
+          url: `${frontend} || "default-slug"}`,
+          images: ["/logo-light.png"],
+        },
+      };
+    
+      return (
+        <>
+          <title>{metadata.title}</title>
+    
+          <meta name="title" content={metadata.title} />
+          <meta name="description" content={metadata.description} />
+          <meta name="keywords" content={metadata.keywords} />
+          <meta property="og:title" content={metadata.openGraph.title} />
+          <meta
+            property="og:description"
+            content={metadata.openGraph.description}
+          />
+          <meta property="og:url" content={metadata.openGraph.url} />
+          <meta property="og:image" content={metadata.openGraph.images} />
+          <meta name="twitter:title" content={metadata.twitter.title} />
+          <meta name="twitter:description" content={metadata.twitter.description} />
+          <meta name="twitter:image" content={metadata.twitter.images} />
+      
+ 
          <Header
           headertransparent="header--transparent"
           colorblack="color--black"
@@ -44,9 +81,17 @@ const NewsDetail=({news})=> {
 
         {/* Start Breadcrump Area */}
         <div
-          className="rn-page-title-area pt--120 pb--190 bg_image bg_image--7"
+          className="rn-page-title-area pt--120 pb--190 bg_image"
           data-black-overlay="7"
         >
+            <Image
+                                    width={1920}
+                                    height={600}
+                                    src={serverurl + news?.image}
+                                    alt="news "
+                                    layout="responsive"
+                                    className="w-100"
+                                  />
           <div className="container">
             <div className="row">
               <div className="col-lg-12">
@@ -57,6 +102,10 @@ const NewsDetail=({news})=> {
                     <li>
                       <FiClock />
                       {formattedDate}
+                    </li>
+                    <li>
+                      <FiUser />
+                     {news?.author}
                     </li>
 {/*                    
                     <li>

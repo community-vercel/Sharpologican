@@ -68,6 +68,8 @@ const slickDot = {
 };
 
 const CreativeLanding = ({ homeDetail }) => {
+
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
   const [services, setServices] = useState([]);
@@ -175,8 +177,11 @@ const CreativeLanding = ({ homeDetail }) => {
   };
 
   return (
-    <>
-      <title>{metadata.title}</title>
+    <>       
+    <title>{metadata.title}</title>
+    <meta name="title" content={metadata.title} />
+
+      <meta  name="title" content={metadata.title} />
       <meta name="description" content={metadata.description} />
       <meta name="keywords" content={metadata.keywords} />
       <meta property="og:title" content={metadata.openGraph.title} />

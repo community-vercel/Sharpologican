@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+"use client";
 import ModalVideo from "react-modal-video";
 import {
   FaTwitter,
@@ -12,124 +12,180 @@ import Header from "./Header";
 import Footer from "./Footer";
 // import "../../index.scss"
 
-
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 import { H1, H2 } from "./Typrography";
 
-const PortfolioDetails=({portfolio})=>{ 
+const PortfolioDetails = ({ portfolio }) => {
+  const frontend = process.env.NEXT_PUBLIC_FRONT_URL;
+  const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
+
   const SocialShare = [
     { Social: <FaFacebookF />, link: portfolio?.facebook },
-    { Social: <FaLinkedinIn />, link:  portfolio?.linkedin },
-    { Social: <FaInstagram />, link:  portfolio?.instagram   },
-    { Social: <FaTwitter />, link:  portfolio?.x  },
+    { Social: <FaLinkedinIn />, link: portfolio?.linkedin },
+    { Social: <FaInstagram />, link: portfolio?.instagram },
+    { Social: <FaTwitter />, link: portfolio?.x },
   ];
-    return (
-      <>
-        <Helmet>
-              <meta charSet="utf-8" />
-              <title>{portfolio && portfolio.metaname?portfolio.metaname:portfolio && portfolio.title?portfolio.title:'SharpLogicians | Creative Digital Agency'}</title>
-              <meta name="description" content={portfolio && portfolio.metades?portfolio.metades:"SharpLogicians | Creative Digital Agency"} />
-              <meta
-                name="keywords"
-                content={portfolio && portfolio.keywords?portfolio.keywords:"bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative"
-        }      />
-              <meta name="author" content="Createx Studio" />
-              <meta name="viewport" content="width=device-width, initial-scale=1" />
-              <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-              <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-              <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-              <link rel="manifest" href="site.webmanifest" />
-              <link rel="mask-icon" color="#5bbad5" href="safari-pinned-tab.svg" />
-              <meta name="msapplication-TileColor" content="#766df4" />
-              <meta name="theme-color" content="#ffffff" />
-            </Helmet> 
-        <Header
-          headertransparent="header--transparent"
-          colorblack="color--black"
-          logoname="logo.png"
-        />
+  const metadata = {
+    title: portfolio?.metaname
+      ? String(portfolio.metaname)
+      : "SharpLogicians | Creative Digital Agency",
+    description: portfolio?.metadesc
+      ? String(portfolio?.metadesc)
+      : "SharpLogicians | Creative Digital Agency",
+    keywords: portfolio?.keywords
+      ? String(portfolio.keywords)
+      : "bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative",
+    openGraph: {
+      title:
+        portfolio?.metaname ||
+        portfolio?.metaname ||
+        "SharpLogicians | Creative Digital Agency",
+      description:
+        portfolio?.metades || `SharpLogicians | Creative Digital Agency`,
+      url: `${frontend} || "default-slug"}`,
+      images: ["/logo-light.png"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title:
+        portfolio?.metaname ||
+        portfolio?.metaname ||
+        "SharpLogicians | Creative Digital Agency",
+      description:
+        portfolio?.metades || `SharpLogicians | Creative Digital Agency`,
+      url: `${frontend} || "default-slug"}`,
+      images: ["/logo-light.png"],
+    },
+  };
 
-        <div
-          className="rn-page-title-area pt--120 pb--190 bg_image bg_image--4"
-          data-black-overlay="7"
-        >
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="rn-page-title text-center pt--100">
-                  <H1 className="title theme-gradient">
-{portfolio?.header}                  </H1>
-                  <H2>
-                  {portfolio?.title}                  
-                  .{" "}
-                  </H2>
-                </div>
+  return (
+    <>
+      <title>{metadata.title}</title>
+
+      <meta name="title" content={metadata.title} />
+      <meta name="description" content={metadata.description} />
+      <meta name="keywords" content={metadata.keywords} />
+      <meta property="og:title" content={metadata.openGraph.title} />
+      <meta
+        property="og:description"
+        content={metadata.openGraph.description}
+      />
+      <meta property="og:url" content={metadata.openGraph.url} />
+      <meta property="og:image" content={metadata.openGraph.images} />
+      <meta name="twitter:title" content={metadata.twitter.title} />
+      <meta name="twitter:description" content={metadata.twitter.description} />
+      <meta name="twitter:image" content={metadata.twitter.images} />
+
+      <Header
+        headertransparent="header--transparent"
+        colorblack="color--black"
+        logoname="logo.png"
+      />
+
+      <div
+        className="rn-page-title-area pt--120 pb--190 bg_image"
+        data-black-overlay="7"
+      >
+           <Image
+                                  width={1920}
+                                  height={600}
+                                  src={serverurl + portfolio?.image2}
+                                  alt="Portfolio "
+                                  layout="responsive"
+                                  className="w-100"
+                                />
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="rn-page-title text-center pt--100">
+                <H1 className="title theme-gradient">{portfolio?.header} </H1>
+                <p>
+                {portfolio?.title}.{" "}
+                  </p>
               </div>
             </div>
           </div>
         </div>
-        {/* End Breadcrump Area */}
+      </div>
+      {/* End Breadcrump Area */}
 
-        {/* Start Portfolio Details */}
-        <div className="rn-portfolio-details ptb--120 bg_color--1">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="portfolio-details">
-                  <div className="inner">
-                    
+      {/* Start Portfolio Details */}
+      <div className="rn-portfolio-details ptb--120 bg_color--1">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="portfolio-details">
+                <div className="inner">
                   <div className="portfolio-view-list d-flex flex-wrap">
-                      <div className="port-view">
-                        <span><strong>Branch </strong></span>
-                        <h4><strong>{portfolio?.branch}</strong></h4>
-                      </div>
-
-                      <div className="port-view">
-                        <span><strong>Project Types </strong></span>
-                        <h4><strong>{portfolio?.types}</strong></h4>
-                      </div>
-
-                      <div className="port-view">
-                        <span><strong>Program</strong></span>
-                        <h4><strong>{portfolio?.progam}</strong></h4>
-                      </div>
+                    <div className="port-view">
+                      <span>
+                        <strong>Branch </strong>
+                      </span>
+                      <h4>
+                        <strong>{portfolio?.branch}</strong>
+                      </h4>
                     </div>
 
-                    <div className="portfolio-share-link mt--20 pb--70 pb_sm--40">
-                      <ul className="social-share rn-lg-size d-flex justify-content-start liststyle mt--15">
-                        {SocialShare.map((val, i) => (
-                          <li key={i}>
-                            <a href={`${val.link}`}>
-                              <p style={{display:"inline-table"}}>
-                              {val.Social}</p></a>
-                          </li>
-                        ))}
-                      </ul>
+                    <div className="port-view">
+                      <span>
+                        <strong>Project Types </strong>
+                      </span>
+                      <h4>
+                        <strong>{portfolio?.types}</strong>
+                      </h4>
                     </div>
-                    <h2><strong>{portfolio?.heading}</strong></h2>
-                    <div
-      dangerouslySetInnerHTML={{__html: portfolio?.detail}}
-    />
-<div className="header-btn" style={{ display: 'flex',justifyContent: 'flex-end' }}>
-  <a className="rn-btn" href="/quote">
-    <span>Get a quote</span>
-  </a>
-</div>
-          
+
+                    <div className="port-view">
+                      <span>
+                        <strong>Program</strong>
+                      </span>
+                      <h4>
+                        <strong>{portfolio?.progam}</strong>
+                      </h4>
+                    </div>
                   </div>
-                
-             
-            
-              
+
+                  <div className="portfolio-share-link mt--20 pb--70 pb_sm--40">
+                    <ul className="social-share rn-lg-size d-flex justify-content-start liststyle mt--15">
+                      {SocialShare.map((val, i) => (
+                        <li key={i}>
+                          <a href={`${val.link}`}>
+                            <p style={{ display: "inline-table" }}>
+                              {val.Social}
+                            </p>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <h2>
+                    <strong>{portfolio?.heading}</strong>
+                  </h2>
+                  <div
+                    dangerouslySetInnerHTML={{ __html: portfolio?.detail }}
+                  />
+                  <div className="slide-btn"  style={{
+                  display: "flex",
+                  justifyContent: "center",
+                 
+                }}>
+                <a
+                  className="rn-button-style--2 btn-primary-color"
+                  href="/quote"
+                >
+                  <span > Get a quote</span>
+                </a>
+              </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        {/* End Portfolio Details */}
+      </div>
+      {/* End Portfolio Details */}
 
-        {/* Start Related Work */}
-        {/* <div className="portfolio-related-work pb--120 bg_color--1">
+      {/* Start Related Work */}
+      {/* <div className="portfolio-related-work pb--120 bg_color--1">
           <div className="container">
             <div className="row">
               <div className="col-lg-12">
@@ -183,19 +239,19 @@ const PortfolioDetails=({portfolio})=>{
             </div>
           </div>
         </div> */}
-        {/* End Related Work */}
+      {/* End Related Work */}
 
-        {/* Start Back To Top */}
-        <div className="backto-top">
-          <ScrollToTop showUnder={160}>
-            <FiChevronUp />
-          </ScrollToTop>
-        </div>
-        {/* End Back To Top */}
+      {/* Start Back To Top */}
+      <div className="backto-top">
+        <ScrollToTop showUnder={160}>
+          <FiChevronUp />
+        </ScrollToTop>
+      </div>
+      {/* End Back To Top */}
 
-        <Footer />
-      </>
-    );
-  }
+      <Footer />
+    </>
+  );
+};
 
 export default PortfolioDetails;
