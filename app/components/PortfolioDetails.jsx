@@ -14,6 +14,7 @@ import Footer from "./Footer";
 
 
 import { Helmet } from 'react-helmet-async';
+import { H1, H2 } from "./Typrography";
 
 const PortfolioDetails=({portfolio})=>{ 
   const SocialShare = [
@@ -56,12 +57,12 @@ const PortfolioDetails=({portfolio})=>{
             <div className="row">
               <div className="col-lg-12">
                 <div className="rn-page-title text-center pt--100">
-                  <h2 className="title theme-gradient">
-{portfolio?.header}                  </h2>
-                  <p>
+                  <H1 className="title theme-gradient">
+{portfolio?.header}                  </H1>
+                  <H2>
                   {portfolio?.title}                  
                   .{" "}
-                  </p>
+                  </H2>
                 </div>
               </div>
             </div>

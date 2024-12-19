@@ -8,6 +8,7 @@ import Footer from "./Footer";
 
 import Link from "next/link";
 import { Helmet } from 'react-helmet-async';
+import { H1 } from "./Typrography";
 const NewsDetail=({news})=> {
     const formattedDate = new Date(news?.published_date).toLocaleDateString("en-US", {
       month: "long", // 'December'
@@ -50,8 +51,8 @@ const NewsDetail=({news})=> {
             <div className="row">
               <div className="col-lg-12">
                 <div className="blog-single-page-title text-center pt--100">
-                  <h2 className="title theme-gradient">
-{news?.news_title}                  </h2>
+                  <H1 className="title theme-gradient">
+{news?.news_title}                  </H1>
                   <ul className="blog-meta d-flex justify-content-center align-items-center">
                     <li>
                       <FiClock />

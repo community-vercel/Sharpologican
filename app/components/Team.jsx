@@ -15,7 +15,7 @@ const Team = ({column,team}) => {
 
               <Image width={396} height={450} src={serverurl+value.image} alt="Team "
               
-              layout="responsive" 
+            layout="responsive"
 />
               </div>
               <div className="content">

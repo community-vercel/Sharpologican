@@ -11,7 +11,8 @@ const Testimonial = ({test}) => {
           <div className="col-lg-12">
           <Tabs>
               {test?.map((testimonial) => (
-                <TabPanel key={testimonial.id}>
+                <TabPanel key={testimonial.id} >
+                  
                   <div className="rn-testimonial-content text-center">
                     <div className="inner">
                       <p>{testimonial.title}</p>

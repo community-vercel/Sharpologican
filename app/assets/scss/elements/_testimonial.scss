@@ -169,7 +169,7 @@ ul {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        max-width: 510px;
+        max-width: 90%;
         margin: 0px auto;
         margin-bottom: -30px;
         outline: none;
@@ -179,7 +179,7 @@ ul {
         li {
             padding-left: 15px;
             padding-right: 15px;
-            flex-basis: 20%;
+            flex-basis: 9%;
             margin-bottom: 30px;
             outline: none;
             cursor: pointer;

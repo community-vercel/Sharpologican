@@ -19,6 +19,7 @@ import logoAllDark from "../assets/images/logo/logo-all-dark.png";
 import ScrollSpy from "../components/ScrollSpy";
 import ScrollToTop from "react-scroll-up";
 import Image from "next/image";
+import { H1, H2 } from "../components/Typrography";
 
 const SlideList = [
   {
@@ -259,14 +260,14 @@ const CreativeLanding = ({ homeDetail }) => {
                     <div className={`inner ${value.textPosition}`}>
                       {value.category ? <span>{value.category}</span> : ""}
                       {homeDetail?.heading ? (
-                        <h1 className="title theme-gradient">
+                        <H1 className="title theme-gradient">
                           {homeDetail?.heading}
-                        </h1>
+                        </H1>
                       ) : (
                         ""
                       )}
                       {homeDetail?.detail ? (
-                        <p className="description">{homeDetail?.detail}</p>
+                        <H2 className="description">{homeDetail?.detail}</H2>
                       ) : (
                         ""
                       )}
@@ -319,14 +320,16 @@ const CreativeLanding = ({ homeDetail }) => {
               <div className="col-lg-5">
                 <div className="thumbnail">
                   {/* {aboutUsData &&  <img className="w-100" src={serverurl+aboutUsData?.image} alt="About Images" />} */}
-                  <Image
-                    src={serverurl + aboutUsData?.image}
-                    alt="About Images"
-                    width={500}
-                    height={665}
-                    layout="responsive"
-                    className="w-100"
-                  />{" "}
+                  {aboutUsData && (
+                    <Image
+                      src={serverurl + aboutUsData?.image}
+                      alt="About Images"
+                      width={500}
+                      height={665}
+                      layout="responsive"
+                      className="w-100"
+                    />
+                  )}
                 </div>
               </div>
               <div className="col-lg-7">
@@ -381,14 +384,16 @@ const CreativeLanding = ({ homeDetail }) => {
                             <div
                               className={`thumbnail ${serverurl}${value.image}`}
                             ></div>
-                            <Image
-                              width={500}
-                              height={665}
-                              className="thumbnail"
-                              src={`${serverurl}${value?.image}`}
-                              alt={value.title ? value.title : "Portfolio"}
-                              layout="responsive"
-                            />
+                            {value?.image && (
+                              <Image
+                                width={500}
+                                height={665}
+                                className="thumbnail"
+                                src={`${serverurl}${value?.image}`}
+                                alt={value.title ? value.title : "Portfolio"}
+                                layout="responsive"
+                              />
+                            )}
                           </div>
 
                           <div
@@ -466,6 +471,7 @@ const CreativeLanding = ({ homeDetail }) => {
         className="rn-testimonial-area bg_color--5 ptb--120"
         id="testimonial"
       >
+        
         <div className="container">
           <Testimonial test={testimonials} />
         </div>
@@ -491,21 +497,23 @@ const CreativeLanding = ({ homeDetail }) => {
                     <div className="thumbnail">
                       <Link href={`/news/${value.slug}`}>
                         {/* <img src={serverurl+value?.image} alt="Blog Images" /> */}
-
-                        <Image
-                          width={390}
-                          height={532}
-                          src={serverurl + value?.image}
-                          alt="News Images"
-                          layout="responsive" 
-
-                        />
+                        {value?.image && (
+                          <Image
+                            width={390}
+                            height={532}
+                            src={serverurl + value?.image}
+                            alt="News Images"
+                            layout="responsive"
+                          />
+                        )}
                       </Link>
                     </div>
                     <div className="content">
                       <p className="blogtype">{value?.title}</p>
                       <h4 className="title">
-                        <a href={`/news/${value.slug}`}>{value?.content}</a>
+                        <Link href={`/news/${value.slug}`}>
+                          {value?.content}
+                        </Link>
                       </h4>
                       <div className="blog-btn">
                         <Link

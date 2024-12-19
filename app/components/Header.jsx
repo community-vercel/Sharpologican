@@ -35,11 +35,11 @@ class Header extends Component {
     const { logo, color = "default-color" } = this.props;
     let logoUrl;
     if (logo === "light") {
-      logoUrl = <img src='/logo-light.png' alt="Digital Agency" />;
+      logoUrl = <img src={logoLight} alt="Digital Agency" />;
     } else if (logo === "dark") {
-      logoUrl = <img src='/logo-light.png' alt="Digital Agency" />;
+      logoUrl = <img src={logoDark} alt="Digital Agency" />;
     } else {
-      logoUrl = <img src='/logo-light.png' alt="Digital Agency" />;
+      logoUrl = <img src={logoLight} alt="Digital Agency" />;
     }
 
 

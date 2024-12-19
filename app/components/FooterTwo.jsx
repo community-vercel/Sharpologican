@@ -31,7 +31,7 @@ const FooterTwo = () => {
             <div className="inner">
               <div className="logo text-start text-sm-left mb_sm--20">
                 <a href="/">
-                <img src='../logo-light.png' alt="Logo images" />
+                <img src='/logo-light.png' alt="Logo images" />
 {/* <Image src={logoLight} width={0} height={0} alt='Logo images ' /> */}
                 </a>
               </div>
