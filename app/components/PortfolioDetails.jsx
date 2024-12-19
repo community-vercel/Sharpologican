@@ -12,13 +12,13 @@ import Header from "./Header";
 import Footer from "./Footer";
 // import "../../index.scss"
 
-import { Helmet } from "react-helmet-async";
 import { H1, H2 } from "./Typrography";
+import Image from "next/image";
 
 const PortfolioDetails = ({ portfolio }) => {
   const frontend = process.env.NEXT_PUBLIC_FRONT_URL;
   const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
-
+const bg_image=serverurl+portfolio?.image;
   const SocialShare = [
     { Social: <FaFacebookF />, link: portfolio?.facebook },
     { Social: <FaLinkedinIn />, link: portfolio?.linkedin },
@@ -82,18 +82,23 @@ const PortfolioDetails = ({ portfolio }) => {
         logoname="logo.png"
       />
 
-      <div
-        className="rn-page-title-area pt--120 pb--190 bg_image"
-        data-black-overlay="7"
-      >
-           <Image
+<div
+  className="rn-page-title-area pt--120 pb--190"
+  style={{
+    backgroundImage: `url(${bg_image})`,
+  }}
+  data-black-overlay="7"
+>
+  {/* Content here */}
+
+           {/* <Image
+
                                   width={1920}
                                   height={600}
-                                  src={serverurl + portfolio?.image2}
-                                  alt="Portfolio "
+                                  src={serverurl + portfolio?.image}
+                                  alt="portfolio "
                                   layout="responsive"
-                                  className="w-100"
-                                />
+                                /> */}
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
@@ -173,8 +178,8 @@ const PortfolioDetails = ({ portfolio }) => {
                   className="rn-button-style--2 btn-primary-color"
                   href="/quote"
                 >
-                  <span > Get a quote</span>
-                </a>
+                  <span style={{color:'#000000',fontWeight:600}}> Get a quote</span>
+                  </a>
               </div>
                 </div>
               </div>

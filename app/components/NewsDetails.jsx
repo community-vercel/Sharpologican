@@ -12,7 +12,8 @@ import { Helmet } from 'react-helmet-async';
 import { H1 } from "./Typrography";
 const NewsDetail=({news})=> {
   const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
-
+const bg_image=serverurl + news?.image
+console.log(bg_image)
     const formattedDate = new Date(news?.published_date).toLocaleDateString("en-US", {
       month: "long", // 'December'
       day: "numeric", // '13'
@@ -81,17 +82,20 @@ const NewsDetail=({news})=> {
 
         {/* Start Breadcrump Area */}
         <div
-          className="rn-page-title-area pt--120 pb--190 bg_image"
-          data-black-overlay="7"
-        >
-            <Image
+  className="rn-page-title-area pt--120 pb--190"
+  style={{
+    backgroundImage: `url(${bg_image})`,
+  }}
+  data-black-overlay="7"
+>
+            {/* <Image
                                     width={1920}
                                     height={600}
                                     src={serverurl + news?.image}
                                     alt="news "
                                     layout="responsive"
                                     className="w-100"
-                                  />
+                                  /> */}
           <div className="container">
             <div className="row">
               <div className="col-lg-12">
@@ -105,7 +109,7 @@ const NewsDetail=({news})=> {
                     </li>
                     <li>
                       <FiUser />
-                     {news?.author}
+                     {news && news.author?news.author:'Sharplogicians'}
                     </li>
 {/*                    
                     <li>

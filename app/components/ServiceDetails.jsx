@@ -15,7 +15,7 @@ const ServiceDetails = ({ initialservice }) => {
   const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
   const [service, setServices] = useState(initialservice);
   const frontend = process.env.NEXT_PUBLIC_FRONT_URL;
-
+const bg_image=serverurl + initialservice?.image3
   const metadata = {
     title: service?.metaname
       ? String(service.metaname)
@@ -75,17 +75,13 @@ const ServiceDetails = ({ initialservice }) => {
       />
       {/* Start Breadcrump Area */}
       <div
-        className="rn-page-title-area pt--120 pb--190 bg_image"
-        data-black-overlay="5"
-      >
-       <Image
-                          width={1920}
-                          height={550}
-                          src={serverurl + service?.image3}
-                          alt="Service "
-                          layout="responsive"
-                          className="w-100"
-                        />
+  className="rn-page-title-area pt--120 pb--190"
+  style={{
+    backgroundImage: `url(${bg_image})`,
+  }}
+  data-black-overlay="7"
+>
+    
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
@@ -198,7 +194,7 @@ const ServiceDetails = ({ initialservice }) => {
                   className="rn-button-style--2 btn-primary-color"
                   href="/quote"
                 >
-                  <span > Get a quote</span>
+                  <span style={{color:'#000000',fontWeight:600}}> Get a quote</span>
                 </a>
               </div>
            
