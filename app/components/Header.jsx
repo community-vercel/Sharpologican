@@ -3,7 +3,8 @@ import React, { Component } from "react";
 import { FiX, FiMenu } from "react-icons/fi";
 import Link from "next/link";
 import logoDefault from "../assets/images/logo/logo.png";
-import logoLight from "../assets/images/logo/logo-light.png";
+import logoLight from "logo-light.png";
+
 import logoDark from "../assets/images/logo/logo-dark.png";
 import logoSymbolDark from "../assets/images/logo/logo-symbol-dark.png";
 import logoSymbolLight from "../assets/images/logo/logo-symbol-light.png";
@@ -36,11 +37,13 @@ class Header extends Component {
     const { logo, color = "default-color" } = this.props;
     let logoUrl;
     if (logo === "light") {
-      logoUrl = <img src={logoLight} alt="Digital Agency" />;
+      logoUrl = <img src={logoLight} alt="Sharplogicians" />;
+      // <img className="logo-1" src="/logo-light.png" alt="Logo" />
+
     } else if (logo === "dark") {
-      logoUrl = <img src={logoDark} alt="Digital Agency" />;
+      logoUrl = <img src={logoDark} alt="Sharplogicians" />;
     } else {
-      logoUrl = <img src={logoLight} alt="Digital Agency" />;
+      logoUrl = <img src={logoLight} alt="Sharplogicians" />;
     }
 
 
