@@ -9,6 +9,7 @@ import ServiceList from '../components/ServiceList'
 import Breadcrumb from "../components/Breadcrumb";
 import { useState, useEffect, Fragment } from "react";
 import logoLight from "../assets/images/logo/logo-light.png";
+import Image from "next/image";
 
 
 
