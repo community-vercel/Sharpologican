@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect, Fragment } from "react";
-import { Helmet } from "react-helmet-async";
 import { FiChevronUp, FiX, FiMenu } from "react-icons/fi";
 import Slider from "react-slick";
 import ServiceList from "../components/ServiceList";
@@ -9,7 +8,6 @@ import BrandTwo from "../components/BrandTwo"; // Assuming the path to
 import Contact from "../components/ContactTwo";
 import Testimonial from "../components/Testimonial";
 import CounterOne from "../components/CounterOne";
-import BlogContent from "../components/BlogContent"; // Assuming the path to the BlogContent
 import Link from "next/link";
 import FooterTwo from "../components/FooterTwo";
 import "slick-carousel/slick/slick.css";
@@ -24,7 +22,7 @@ import { H1, H2 } from "../components/Typrography";
 const SlideList = [
   {
     textPosition: "text-center",
-   
+
     title: "Welcome to Sharplogicians!",
     description:
       "Improve performance through design, development, & digital marketing.",
@@ -84,42 +82,132 @@ const CreativeLanding = ({ homeDetail }) => {
   const [title, setnewtitle] = useState();
   const [counts, setcounts] = useState([]);
 
+  // useEffect(() => {
+  //   const fetchServices = async () => {
+  //     const response = await fetch(`${serverurls}services/`);
+  //     const data = await response.json();
+
+  //     setServices(data.data);
+  //     const response4 = await fetch(`${serverurls}about-us/`);
+  //     const data2 = await response4.json();
+  //     setAboutUsData(data2.data);
+  //     const response5 = await fetch(`${serverurls}portfolio/`);
+  //     const data3 = await response5.json();
+  //     setPortfolioData(data3.data);
+  //     const response6 = await fetch(`${serverurls}team/`);
+  //     const data4 = await response6.json();
+  //     setTeamData(data4.data);
+  //     const response7 = await fetch(`${serverurls}testimonials/`);
+  //     const data5 = await response7.json();
+  //     setTestimonials(data5.data);
+  //     const response9 = await fetch(`${serverurls}news/`);
+  //     const data6 = await response9.json();
+  //     setnewsData(data6.data);
+
+  //     const response2 = await fetch(`${serverurls}contact/`);
+  //     const data7 = await response2.json();
+  //     setnewtitle(data7.data.title);
+  //     setContactImage(serverurl + data7.data.contact_image);
+  //     const response3 = await fetch(`${serverurls}clients/`);
+  //     const data8 = await response3.json();
+  //     setClientImages(data8.data);
+  //     const response8 = await fetch(`${serverurls}get-count/`);
+  //     const data9 = await response8.json();
+  //     setcounts(data9.data);
+  //   };
+
+  //   fetchServices();
+  // }, [homeDetail]);
   useEffect(() => {
-    const fetchServices = async () => {
-      const response = await fetch(`${serverurls}services/`);
-      const data = await response.json();
+    const fetchData = async () => {
+      try {
+        // Start with essential data fetches
+        const [servicesResponse, aboutUsResponse] = await Promise.all([
+          fetch(`${serverurls}services/`, {
+            cache: "force-cache", // Forces the browser to use the cache if available
+          }),
+          fetch(`${serverurls}about-us/`, {
+            cache: "force-cache", // Forces the browser to use the cache if available
+          }),
+        ]);
 
-      setServices(data.data);
-      const response4 = await fetch(`${serverurls}about-us/`);
-      const data2 = await response4.json();
-      setAboutUsData(data2.data);
-      const response5 = await fetch(`${serverurls}portfolio/`);
-      const data3 = await response5.json();
-      setPortfolioData(data3.data);
-      const response6 = await fetch(`${serverurls}team/`);
-      const data4 = await response6.json();
-      setTeamData(data4.data);
-      const response7 = await fetch(`${serverurls}testimonials/`);
-      const data5 = await response7.json();
-      setTestimonials(data5.data);
-      const response9 = await fetch(`${serverurls}news/`);
-      const data6 = await response9.json();
-      setnewsData(data6.data);
+        const [servicesData, aboutUsData] = await Promise.all([
+          servicesResponse.json(),
+          aboutUsResponse.json(),
+        ]);
 
-      const response2 = await fetch(`${serverurls}contact/`);
-      const data7 = await response2.json();
-      setnewtitle(data7.data.title);
-      setContactImage(serverurl + data7.data.contact_image);
-      const response3 = await fetch(`${serverurls}clients/`);
-      const data8 = await response3.json();
-      setClientImages(data8.data);
-      const response8 = await fetch(`${serverurls}get-count/`);
-      const data9 = await response8.json();
-      setcounts(data9.data);
+        // Set the critical state (services and aboutUs)
+        setServices(servicesData.data);
+        setAboutUsData(aboutUsData.data);
+
+        // Non-critical data can be fetched after rendering the page
+        const [
+          portfolioResponse,
+          teamResponse,
+          testimonialsResponse,
+          newsResponse,
+          contactResponse,
+          clientsResponse,
+          countsResponse,
+        ] = await Promise.all([
+          fetch(`${serverurls}portfolio/`, {
+            cache: "force-cache", // Forces the browser to use the cache if available
+          }),
+          fetch(`${serverurls}team/`, {
+            cache: "force-cache", // Forces the browser to use the cache if available
+          }),
+          fetch(`${serverurls}testimonials/`, {
+            cache: "force-cache", // Forces the browser to use the cache if available
+          }),
+          fetch(`${serverurls}news/`, {
+            cache: "force-cache", // Forces the browser to use the cache if available
+          }),
+          fetch(`${serverurls}contact/`, {
+            cache: "force-cache", // Forces the browser to use the cache if available
+          }),
+          fetch(`${serverurls}clients/`, {
+            cache: "force-cache", // Forces the browser to use the cache if available
+          }),
+          fetch(`${serverurls}get-count/`, {
+            cache: "force-cache", // Forces the browser to use the cache if available
+          }),
+        ]);
+
+        const [
+          portfolioData,
+          teamData,
+          testimonialsData,
+          newsData,
+          contactData,
+          clientImages,
+          counts,
+        ] = await Promise.all([
+          portfolioResponse.json(),
+          teamResponse.json(),
+          testimonialsResponse.json(),
+          newsResponse.json(),
+          contactResponse.json(),
+          clientsResponse.json(),
+          countsResponse.json(),
+        ]);
+
+        // Set non-critical state after initial page load
+        setPortfolioData(portfolioData.data);
+        setTeamData(teamData.data);
+        setTestimonials(testimonialsData.data);
+        setnewsData(newsData.data);
+        setnewtitle(contactData.data.title);
+        setContactImage(serverurl + contactData.data.contact_image);
+        setClientImages(clientImages.data);
+        setcounts(counts.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        // Handle errors appropriately (e.g., display an error message)
+      }
     };
 
-    fetchServices();
-  }, [homeDetail]);
+    fetchData();
+  }, []); // Empty d
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Manage menu state
   const [isSticky, setIsSticky] = useState(false); // Manage sticky header
 
@@ -175,10 +263,10 @@ const CreativeLanding = ({ homeDetail }) => {
   };
 
   return (
-    <>       
-    <title>{metadata.title}</title>
+    <>
+      <title>{metadata.title}</title>
 
-      <meta  name="title" content={metadata.title} />
+      <meta name="title" content={metadata.title} />
       <meta name="description" content={metadata.description} />
       <meta name="keywords" content={metadata.keywords} />
       <meta property="og:title" content={metadata.openGraph.title} />
@@ -267,9 +355,11 @@ const CreativeLanding = ({ homeDetail }) => {
                       ) : (
                         ""
                       )}
-                    {homeDetail?.detail && <H2 className="description">{homeDetail?.detail}</H2>}
+                      {homeDetail?.detail && (
+                        <H2 className="description">{homeDetail?.detail}</H2>
+                      )}
 
-                      {value.buttonText &&
+                      {value.buttonText && (
                         <div className="slide-btn">
                           <Link
                             className="rn-button-style--2 btn-primary-color"
@@ -278,7 +368,7 @@ const CreativeLanding = ({ homeDetail }) => {
                             {value.buttonText}
                           </Link>
                         </div>
-}
+                      )}
                     </div>
                   </div>
                 </div>
@@ -323,6 +413,7 @@ const CreativeLanding = ({ homeDetail }) => {
                       width={500}
                       height={665}
                       layout="responsive"
+                      loading="lazy"
                       className="w-100"
                     />
                   )}
@@ -406,6 +497,23 @@ const CreativeLanding = ({ homeDetail }) => {
                                 {value.heading}
                               </Link>
                             </h4>
+                            <Link
+                              className="portfolio-button rn-btn"
+                              href={`/portfolio/${value.slug}`}
+                            >
+                              {value.buttonText}
+                            </Link>
+                          </div>
+                        </div>
+
+                        {/* <div className="content">
+                          <div className="inner">
+                            <p>{value.title}</p>
+                            <h4>
+                              <Link href={`/portfolio/${value.slug}`}>
+                                {value.heading}
+                              </Link>
+                            </h4>
                             <div className="portfolio-button">
                               <Link
                                 className="rn-btn"
@@ -415,8 +523,7 @@ const CreativeLanding = ({ homeDetail }) => {
                               </Link>
                             </div>
                           </div>
-                        </div>
-                    
+                        </div> */}
                       </div>
                     ))}
                   </Slider>
@@ -461,10 +568,9 @@ const CreativeLanding = ({ homeDetail }) => {
       {/* Start Testimonial Area */}
 
       <div
-        className="rn-testimonial-area bg_color--5 ptb--120"
+        className="rn-testimonial-area bg_color--5 ptbss--120"
         id="testimonial"
       >
-        
         <div className="container">
           <Testimonial test={testimonials} />
         </div>

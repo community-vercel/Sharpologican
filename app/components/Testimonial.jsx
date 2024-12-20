@@ -9,11 +9,11 @@ const TestimonialSlider = ({ test }) => {
   const slickSettings = {
     dots: false,
     infinite: true,
-    speed: 700,
+    speed: 400,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 5000,
     arrows: true,
   };
 

@@ -1,19 +1,9 @@
 "use client";
-import ModalVideo from "react-modal-video";
-import {
-  FaTwitter,
-  FaInstagram,
-  FaFacebookF,
-  FaLinkedinIn,
-} from "react-icons/fa";
 import React, {useEffect,useState } from "react";
-
 import ScrollToTop from "react-scroll-up";
 import { FiChevronUp } from "react-icons/fi";
 import Header from "./Header";
 import Footer from "./Footer";
-// import "../../index.scss"
-
 import { H1, H2 } from "./Typrography";
 import Image from "next/image";
 
@@ -21,12 +11,7 @@ const PortfolioDetails = ({ portfolio }) => {
   const frontend = process.env.NEXT_PUBLIC_FRONT_URL;
   const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
 const bg_image=serverurl+portfolio?.image;
-  const SocialShare = [
-    { Social: <FaFacebookF />, link: portfolio?.facebook },
-    { Social: <FaLinkedinIn />, link: portfolio?.linkedin },
-    { Social: <FaInstagram />, link: portfolio?.instagram },
-    { Social: <FaTwitter />, link: portfolio?.x },
-  ];
+
 const [sanitizedHTML,setsanitizedhtml]=useState()
   useEffect(() => {
   const adjustImagePaths = (html, baseUrl) => {
@@ -98,6 +83,8 @@ const [sanitizedHTML,setsanitizedhtml]=useState()
 useEffect(() => {
         window.scrollTo(0, 0); // Scroll to the top of the page
       }, []); 
+      const [imageLoaded, setImageLoaded] = useState(false);
+
   return (
     <>
       <title>{metadata.title}</title>
@@ -121,14 +108,23 @@ useEffect(() => {
         colorblack="color--black"
         logoname="logo.png"
       />
-
-<div
-  className="rn-page-title-area pt--120 pb--190"
-  style={{
-    backgroundImage: `url(${bg_image})`,
-  }}
-  data-black-overlay="7"
->
+      
+ <div
+    className="rn-page-title-area pt--120 pb--190"
+    style={{
+      backgroundImage: `url(${bg_image})`,
+    }}
+    data-black-overlay="7"
+  >
+    {!imageLoaded && (
+      <div className="image-placeholder">Loading...</div> // Show a loading state or placeholder
+    )}
+    <Image
+      src=''
+     
+      onLoadingComplete={() => setImageLoaded(true)} // Mark as loaded
+      onError={() => setImageLoaded(true)} // Fallback for errors
+    />
 
         <div className="container">
           <div className="row">

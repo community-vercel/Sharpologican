@@ -8,7 +8,9 @@ export async function fetchInitialdetails(slug) {
  
   try {
 
-const response = await fetch(`${serverurls}get-home-detail/`);
+const response = await fetch(`${serverurls}get-home-detail/`, {
+  cache: 'force-cache', // Forces the browser to use the cache if available
+})
     const data = await response.json();
 
 // console.log("data",response)
