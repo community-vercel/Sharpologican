@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import { FiX, FiMenu } from "react-icons/fi";
 import Link from "next/link";
+import Image from "next/image";
 // import logoDefault from "../assets/images/logo/logo.png";
 // import logoLight from "../assets/images/logo-light.png";
 
