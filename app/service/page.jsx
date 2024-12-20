@@ -10,6 +10,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import { useState, useEffect, Fragment } from "react";
 import logoLight from "../assets/images/logo/logo-light.png";
 import Image from "next/image";
+import Link from "next/link";
 
 
 
@@ -54,7 +55,7 @@ const Service =()=>{
         <div className="header-wrapper" id="header-wrapper">
           <div className="header-left">
             <div className="logo">
-              <a href="/">   <Image className="logo-2" width={280} height={72} src="/logo-light.png" alt="Sharplogicians" layout="responsive"  /></a>
+              <Link href="/">   <Image className="logo-2" width={280} height={72} src="/logo-light.png" alt="Sharplogicians"  /></Link>
             </div>
           </div>
           <div className="header-right">

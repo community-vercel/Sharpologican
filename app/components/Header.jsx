@@ -4,11 +4,12 @@ import { FiX, FiMenu } from "react-icons/fi";
 import Link from "next/link";
 import Image from "next/image";
 // import logoDefault from "../assets/images/logo/logo.png";
-// import logoLight from "../assets/images/logo-light.png";
+// import logoLight from "/logo-light.png";
 
 // import logoDark from "../assets/images/logo/logo-dark.png";
 // import logoSymbolDark from "../assets/images/logo/logo-symbol-dark.png";
 // import logoSymbolLight from "../assets/images/logo/logo-symbol-light.png";
+
 
 class Header extends Component {
   constructor(props) {
@@ -36,13 +37,13 @@ class Header extends Component {
     const { logo, color = "default-color" } = this.props;
     let logoUrl;
     if (logo === "light") {
-      logoUrl =                 <Image className="logo-1" width={280} height={72} src="/logo-light.png" alt="Sharplogicians" layout="responsive"  />;
+      logoUrl = <Image className="logo-2" width={280} height={72} src="/logo-light.png" alt="Sharplogicians"  />;
       // <img className="logo-1" src="/logo-light.png" alt="Logo" />
 
     } else if (logo === "dark") {
-      logoUrl =                 <Image className="logo-2" width={280} height={72} src="/logo-light.png" alt="Sharplogicians" layout="responsive"  />;
+      logoUrl = <Image className="logo-2" width={280} height={72} src="/logo-light.png" alt="Sharplogicians"  />;
     } else {
-      logoUrl =                 <Image className="logo-1"width={280} height={72} src="/logo-light.png" alt="Sharplogicians" layout="responsive"  />;
+      logoUrl = <Image className="logo-2" width={280} height={72} src="/logo-light.png" alt="Sharplogicians"  />;
     }
 
 

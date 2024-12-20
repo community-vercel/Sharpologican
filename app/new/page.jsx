@@ -291,8 +291,8 @@ const CreativeLanding = ({ homeDetail }) => {
           <div className="header-left">
             <div className="logo">
               <Link href="/">
-                <Image className="logo-1"width={280} height={72} src="/logo-light.png" alt="Logo" layout="responsive"  />
-                <Image className="logo-2" width={280} height={72} src="/logo-light.png" alt="Logo" layout="responsive"  />
+                <Image className="logo-1"width={280} height={72} src="/logo-light.png" alt="Logo"   />
+                <Image className="logo-2" width={280} height={72} src="/logo-light.png" alt="Logo"   />
                 {/* <img className="logo-2" src="/logo-light.png" alt="Logo" /> */}
               </Link>
             </div>

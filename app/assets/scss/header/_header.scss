@@ -92,7 +92,7 @@
             a {
                 img {
                     @media #{$sm-layout} {
-                        width: 120px;
+                        width: 280px;
                     }
                 }
             }
@@ -254,7 +254,7 @@
             .logo {
                 a {
                     img {
-                        height: 50px;
+                        height: 72px;
                         &.logo-1 {
                             display: none;
                         }
@@ -288,7 +288,7 @@
         .logo {
             a {
                 img {
-                    height: 58px;
+                    height: 72px;
                     width: auto !important;
                     @media #{$large-mobile} {
                         height: auto;
