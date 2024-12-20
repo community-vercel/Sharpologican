@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { FiX, FiMenu } from "react-icons/fi";
 import Link from "next/link";
 import logoDefault from "../assets/images/logo/logo.png";
-import logoLight from "logo-light.png";
+import logoLight from "/logo-light.png";
 
 import logoDark from "../assets/images/logo/logo-dark.png";
 import logoSymbolDark from "../assets/images/logo/logo-symbol-dark.png";
