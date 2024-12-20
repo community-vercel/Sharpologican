@@ -19,7 +19,7 @@ import Image from "next/image";
 
 const PortfolioDetails = ({ portfolio }) => {
   const frontend = process.env.NEXT_PUBLIC_FRONT_URL;
-  const serverurl = process.env.NEXT_PUBLIC_DJANGO_URLS;
+  const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
 const bg_image=serverurl+portfolio?.image;
   const SocialShare = [
     { Social: <FaFacebookF />, link: portfolio?.facebook },
