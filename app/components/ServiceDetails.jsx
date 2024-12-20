@@ -16,35 +16,43 @@ const ServiceDetails = ({ initialservice }) => {
   const [service, setServices] = useState(initialservice);
   const frontend = process.env.NEXT_PUBLIC_FRONT_URL;
 const bg_image=serverurl + initialservice?.image3
-
-
-const adjustImagePaths = (html, baseUrl) => {
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(html, "text/html");
-  const images = doc.querySelectorAll("img");
-
-  images.forEach((img) => {
-    const src = img.getAttribute("src");
-
-    // Skip base64 images
-    if (src && src.startsWith("data:")) {
-      img.style.width = "auto";  // Let the image retain its natural width
-      img.style.height = "auto"; // Let the image retain its natural height
-      img.style.objectFit = "contain"; 
+  const [hovered, setHovered] = useState(false);
+const [sanitizedHTML,setsanitizedhtml]=useState()
+const [sanitizedHTMLS,setsanitizedhtmls]=useState()
+  useEffect(() => {
+  const adjustImagePaths = (html, baseUrl) => {
+    if (typeof window !== 'undefined') {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, "text/html");
+      const images = doc.querySelectorAll("img");
+    
+      images.forEach((img) => {
+        const src = img.getAttribute("src");
+    
+        // Skip base64 images
+        if (src && src.startsWith("data:")) {
+          img.style.width = "auto";  // Let the image retain its natural width
+          img.style.height = "auto"; // Let the image retain its natural height
+          img.style.objectFit = "contain"; 
+        }
+    
+        // Adjust non-base64 image paths
+        if (src && !src.startsWith("http") && !src.startsWith("data:")) {
+          img.setAttribute("src", `${serverurl}${src}`);
+        }
+      });
+    
+      return doc.body.innerHTML;
+      
     }
+   
+  };
+  setsanitizedhtml(adjustImagePaths(service?.detail ))
+  setsanitizedhtmls( adjustImagePaths(service?.detail2 ))
 
-    // Adjust non-base64 image paths
-    if (src && !src.startsWith("http") && !src.startsWith("data:")) {
-      img.setAttribute("src", `${serverurl}${src}`);
-    }
-  });
-
-  return doc.body.innerHTML;
-};
-
-const sanitizedHTML = adjustImagePaths(service?.detail );
-const sanitizedHTMLS = adjustImagePaths(service?.detail2 );
-
+  }),[]
+ 
+  
   const metadata = {
     title: service?.metaname
       ? String(service.metaname)
@@ -127,7 +135,7 @@ const sanitizedHTMLS = adjustImagePaths(service?.detail2 );
         </header>
       {/* Start Breadcrump Area */}
       <div
-  className="rn-page-title-area pt--120 pb--190"
+  className="rn-page-title-area ptt--120 pb--190"
   style={{
     backgroundImage: `url(${bg_image})`,
   }}
@@ -138,13 +146,20 @@ const sanitizedHTMLS = adjustImagePaths(service?.detail2 );
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <div className="rn-page-title text-center pt--100">
-                <H1 className="title theme-gradient">
-                  {service?.service_title}
-                </H1>
-                <p>                  {service?.moretitle}
-                </p>
-              </div>
+            <div className="rn-page-title text-center ptt--100">
+  <h1 className="title theme-gradient">
+    {service?.service_title}
+  </h1>
+  <p>{service?.moretitle}</p>
+</div>
+
+<div className="header-btns">
+  <a className="rn-btn" href="/quote">
+    <span>Get a quote</span>
+  </a>
+</div>
+
+
             </div>
           </div>
         </div>
@@ -192,7 +207,7 @@ const sanitizedHTMLS = adjustImagePaths(service?.detail2 );
                     <div className="col-lg-6 col-12 order-2 order-lg-1">
                       <div className="details mt_md--30 mt_sm--30">
                         <div
-                          dangerouslySetInnerHTML={{ __html: sanitizedHTMLSSS}}
+                          dangerouslySetInnerHTML={{ __html: sanitizedHTMLS}}
                         />
                       </div>
                     </div>
@@ -247,9 +262,19 @@ const sanitizedHTMLS = adjustImagePaths(service?.detail2 );
                 <a
                   className="rn-button-style--2 btn-primary-color"
                   href="/quote"
+                  style={{
+                    color: hovered ? '#ffffff' : '#000000', 
+                    fontWeight: 600, 
+                    // transition: 'color 0.3s ease-in-out'
+                  }}
+                  onMouseEnter={() => setHovered(true)}  // When the mouse enters, change color
+                  onMouseLeave={() => setHovered(false)}
                 >
-                  <span style={{color:'#000000',fontWeight:600}}> Get a quote</span>
-                </a>
+    <span
+     
+    >
+      Get a quote
+    </span>                  </a>
               </div>
            
             </div>

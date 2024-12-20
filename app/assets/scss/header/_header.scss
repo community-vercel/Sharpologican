@@ -317,6 +317,7 @@
 
 
 
+
 /*-----------------------------
     MObile Menu Style Css 
 -------------------------------*/
@@ -597,12 +598,31 @@
 
 .header-style-two{
     .header-right {
-        .header-btn {
+        .header-btns {
             @media #{$lg-layout} {
                 margin-left: 7px;
             }
         }
     }
+}
+@media (min-width: 769px) {
+    .header-btns {
+      display: none;
+    }
+  }
+  
+
+  /* Show the quote button only on small screens (max-width 768px) */
+  @media (max-width: 768px) {
+    .header-btns {
+        display: flex;
+        justify-content: center; /* Center the button horizontally */
+        align-items: center; /* Ensure the button is centered vertically if needed */
+        margin-top:7px;
+        width: 100%;
+      }
+  
+   
 }
 /*------------------------
     Hamberger Menu  

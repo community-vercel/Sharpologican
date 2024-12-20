@@ -119,7 +119,7 @@ const CreativeLanding = ({ homeDetail }) => {
     };
 
     fetchServices();
-  }, []);
+  }, [homeDetail]);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Manage menu state
   const [isSticky, setIsSticky] = useState(false); // Manage sticky header
 
@@ -250,7 +250,7 @@ const CreativeLanding = ({ homeDetail }) => {
 
       {/* Start Slider Area */}
       <div className="slider-activation slider-creative-agency" id="home">
-        <div className="bg_image bg_image--26" data-black-overlay="6">
+        <div className="bg_images bg_image--26" data-black-overlay="6">
           {SlideList.map((value, index) => (
             <div
               className="slide slide-style-2 slider-paralax d-flex align-items-center justify-content-center"

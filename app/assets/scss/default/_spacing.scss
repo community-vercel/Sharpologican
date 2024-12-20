@@ -134,8 +134,39 @@
     @media #{$md-layout} {
         padding-top: 80px !important;
     }
+    
 }
+.ptt--120,
+.ptt--140,
 
+.ptt--110 {
+    padding-top: 0px !important;
+
+    @media #{$sm-layout} {
+        padding-top: 60px !important;
+    }
+    @media #{$md-layout} {
+        padding-top: 80px !important;
+    }
+    @media #{$lg-layout} {
+        padding-top: 0px !important;
+    }
+   
+}
+.ptt--100 {
+    padding-top: 28px !important;
+
+    @media #{$sm-layout} {
+        padding-top: 60px !important;
+    }
+    @media #{$md-layout} {
+        padding-top: 80px !important;
+    }
+    @media #{$lg-layout} {
+        padding-top: 0px !important;
+    }
+   
+}
 .pb--120,
 .pb--110,
 .pb--110 {

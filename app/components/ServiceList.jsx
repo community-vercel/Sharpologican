@@ -15,15 +15,16 @@ const ServiceThree = ({column,service}) => {
         
         return(
             <>
-                <div className="row">
-                    {ServiceContent?.map( (val , i) => (
+                    <div className="row">
+                    {ServiceContent?.slice(0, 6).map( (val , i) => (
                         <div className={`${column}`} key={i}>
                             <Link href={`/service/${val.slug}`}>
                                 <div className="service service__style--2">
                                     <div className="icon">
                                         {/* <imgs rc={serverurl+val.image} /> */}
                                         {val?.image &&
-                                        <Image src={serverurl+val.image} width={49} height={49} alt='Service '/>}
+                                        <Image src={serverurl+val.image} width={49} height={49} alt={val?.slug}/>
+}
                                     </div>
                                     <div className="content">
                                         <h3 className="title">{val.title}</h3>

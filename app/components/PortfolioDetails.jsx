@@ -6,7 +6,7 @@ import {
   FaFacebookF,
   FaLinkedinIn,
 } from "react-icons/fa";
-import React, {useEffect } from "react";
+import React, {useEffect,useState } from "react";
 
 import ScrollToTop from "react-scroll-up";
 import { FiChevronUp } from "react-icons/fi";
@@ -27,31 +27,40 @@ const bg_image=serverurl+portfolio?.image;
     { Social: <FaInstagram />, link: portfolio?.instagram },
     { Social: <FaTwitter />, link: portfolio?.x },
   ];
+const [sanitizedHTML,setsanitizedhtml]=useState()
+  useEffect(() => {
   const adjustImagePaths = (html, baseUrl) => {
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, "text/html");
-    const images = doc.querySelectorAll("img");
-  
-    images.forEach((img) => {
-      const src = img.getAttribute("src");
-  
-      // Skip base64 images
-      if (src && src.startsWith("data:")) {
-        img.style.width = "auto";  // Let the image retain its natural width
-        img.style.height = "auto"; // Let the image retain its natural height
-        img.style.objectFit = "contain"; 
-      }
-  
-      // Adjust non-base64 image paths
-      if (src && !src.startsWith("http") && !src.startsWith("data:")) {
-        img.setAttribute("src", `${serverurl}${src}`);
-      }
-    });
-  
-    return doc.body.innerHTML;
+    if (typeof window !== 'undefined') {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, "text/html");
+      const images = doc.querySelectorAll("img");
+    
+      images.forEach((img) => {
+        const src = img.getAttribute("src");
+    
+        // Skip base64 images
+        if (src && src.startsWith("data:")) {
+          img.style.width = "auto";  // Let the image retain its natural width
+          img.style.height = "auto"; // Let the image retain its natural height
+          img.style.objectFit = "contain"; 
+        }
+    
+        // Adjust non-base64 image paths
+        if (src && !src.startsWith("http") && !src.startsWith("data:")) {
+          img.setAttribute("src", `${serverurl}${src}`);
+        }
+      });
+    
+      return doc.body.innerHTML;
+      
+    }
+   
   };
+  setsanitizedhtml(adjustImagePaths(portfolio?.detail ))
 
-  const sanitizedHTML = adjustImagePaths(portfolio?.detail );
+  }),[]
+ 
+  const [hovered, setHovered] = useState(false);
 
   
   const metadata = {
@@ -137,7 +146,7 @@ useEffect(() => {
       {/* End Breadcrump Area */}
 
       {/* Start Portfolio Details */}
-      <div className="rn-portfolio-details ptb--120 bg_color--1">
+      <div className="rn-portfolio-details ptb--40 bg_color--1">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
@@ -146,7 +155,7 @@ useEffect(() => {
                   <div className="portfolio-view-list d-flex flex-wrap">
                     <div className="port-view">
                       <span>
-                        <strong>Branch </strong>
+                        <strong>Business </strong>
                       </span>
                       <h4>
                         <strong>{portfolio?.branch}</strong>
@@ -172,7 +181,7 @@ useEffect(() => {
                     </div>
                   </div>
 
-                  <div className="portfolio-share-link mt--20 pb--70 pb_sm--40">
+                  {/* <div className="portfolio-share-link mt--20 pb--70 pb_sm--40">
                     <ul className="social-share rn-lg-size d-flex justify-content-start liststyle mt--15">
                       {SocialShare.map((val, i) => (
                         <li key={i}>
@@ -184,8 +193,8 @@ useEffect(() => {
                         </li>
                       ))}
                     </ul>
-                  </div>
-                  <h2>
+                  </div> */}
+                  <h2 style={{marginTop:'55px'}}>
                     <strong>{portfolio?.heading}</strong>
                   </h2>
                   <div
@@ -199,10 +208,20 @@ useEffect(() => {
                 }}>
                 <a
                   className="rn-button-style--2 btn-primary-color"
+                  style={{
+                    color: hovered ? '#ffffff' : '#000000', 
+                    fontWeight: 600, 
+                    // transition: 'color 0.3s ease-in-out'
+                  }}
+                  onMouseEnter={() => setHovered(true)}  // When the mouse enters, change color
+                  onMouseLeave={() => setHovered(false)}
                   href="/quote"
                 >
-                  <span style={{color:'#000000',fontWeight:600}}> Get a quote</span>
-                  </a>
+    <span
+     
+    >
+      Get a quote
+    </span>                  </a>
               </div>
                 </div>
               </div>
