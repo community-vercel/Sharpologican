@@ -2,17 +2,13 @@
 import React, { useState, useEffect } from "react";
 import ScrollToTop from "react-scroll-up";
 import { FiChevronUp } from "react-icons/fi";
-import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
-import logoLight from "../assets/images/logo/logo-light.png";
-
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import { H1 } from "@/app/components/Typrography";
+import Link from "next/link";
 const ServiceDetails = ({ initialservice }) => {
-  const params = useParams();
   const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
-  const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
   const [service, setServices] = useState(initialservice);
   const frontend = process.env.NEXT_PUBLIC_FRONT_URL;
 const bg_image=serverurl + initialservice?.image3
@@ -112,8 +108,8 @@ const [sanitizedHTMLS,setsanitizedhtmls]=useState()
       >
         <div className="header-wrapper" id="header-wrapper">
           <div className="header-left">
-            <div className="logo">
-              <a href="/"><img src={logoLight} /></a>
+          <div className="logo">
+              <Link href="/">   <Image className="logo-2" width={270} height={72} src="/logo-light.png" alt="Sharplogicians"  /></Link>
             </div>
           </div>
           <div className="header-right">

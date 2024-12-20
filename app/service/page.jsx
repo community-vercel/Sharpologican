@@ -55,7 +55,7 @@ const Service =()=>{
         <div className="header-wrapper" id="header-wrapper">
           <div className="header-left">
             <div className="logo">
-              <Link href="/">   <Image className="logo-2" width={280} height={72} src="/logo-light.png" alt="Sharplogicians"  /></Link>
+              <Link href="/">   <Image className="logo-2" width={270} height={72} src="/logo-light.png" alt="Sharplogicians"  /></Link>
             </div>
           </div>
           <div className="header-right">

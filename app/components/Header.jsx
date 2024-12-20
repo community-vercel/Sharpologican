@@ -37,13 +37,13 @@ class Header extends Component {
     const { logo, color = "default-color" } = this.props;
     let logoUrl;
     if (logo === "light") {
-      logoUrl = <Image className="logo-2" width={280} height={72} src="/logo-light.png" alt="Sharplogicians"  />;
+      logoUrl = <Image className="logo-2" width={270} height={72} src="/logo-light.png" alt="Sharplogicians"  />;
       // <img className="logo-1" src="/logo-light.png" alt="Logo" />
 
     } else if (logo === "dark") {
-      logoUrl = <Image className="logo-2" width={280} height={72} src="/logo-light.png" alt="Sharplogicians"  />;
+      logoUrl = <Image className="logo-2" width={270} height={72} src="/logo-light.png" alt="Sharplogicians"  />;
     } else {
-      logoUrl = <Image className="logo-2" width={280} height={72} src="/logo-light.png" alt="Sharplogicians"  />;
+      logoUrl = <Image className="logo-2" width={270} height={72} src="/logo-light.png" alt="Sharplogicians"  />;
     }
 
 
