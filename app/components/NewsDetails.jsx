@@ -13,6 +13,32 @@ import { H1 } from "./Typrography";
 const NewsDetail=({news})=> {
   const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
 const bg_image=serverurl + news?.image
+
+const adjustImagePaths = (html, baseUrl) => {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, "text/html");
+  const images = doc.querySelectorAll("img");
+
+  images.forEach((img) => {
+    const src = img.getAttribute("src");
+
+    // Skip base64 images
+    if (src && src.startsWith("data:")) {
+      img.style.width = "auto";  // Let the image retain its natural width
+      img.style.height = "auto"; // Let the image retain its natural height
+      img.style.objectFit = "contain"; 
+    }
+
+    // Adjust non-base64 image paths
+    if (src && !src.startsWith("http") && !src.startsWith("data:")) {
+      img.setAttribute("src", `${serverurl}${src}`);
+    }
+  });
+
+  return doc.body.innerHTML;
+};
+
+const sanitizedHTML = adjustImagePaths(news?.detail );
     const formattedDate = new Date(news?.published_date).toLocaleDateString("en-US", {
       month: "long", // 'December'
       day: "numeric", // '13'
@@ -135,7 +161,7 @@ const bg_image=serverurl + news?.image
                   <div className="inner">
                
                     <div
-      dangerouslySetInnerHTML={{__html: news?.detail}}
+      dangerouslySetInnerHTML={{__html:sanitizedHTML}}
     />
                   </div>
                 </div>

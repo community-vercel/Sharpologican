@@ -15,7 +15,7 @@ const Testimonial = ({test}) => {
                   
                   <div className="rn-testimonial-content text-center">
                     <div className="inner">
-                      <p>{testimonial.title}</p>
+                      <p>{`“ ${testimonial.title} ”`}</p>
                     </div>
                     <div className="author-info">
                       <h6>

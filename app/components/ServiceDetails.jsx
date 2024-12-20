@@ -16,6 +16,35 @@ const ServiceDetails = ({ initialservice }) => {
   const [service, setServices] = useState(initialservice);
   const frontend = process.env.NEXT_PUBLIC_FRONT_URL;
 const bg_image=serverurl + initialservice?.image3
+
+
+const adjustImagePaths = (html, baseUrl) => {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, "text/html");
+  const images = doc.querySelectorAll("img");
+
+  images.forEach((img) => {
+    const src = img.getAttribute("src");
+
+    // Skip base64 images
+    if (src && src.startsWith("data:")) {
+      img.style.width = "auto";  // Let the image retain its natural width
+      img.style.height = "auto"; // Let the image retain its natural height
+      img.style.objectFit = "contain"; 
+    }
+
+    // Adjust non-base64 image paths
+    if (src && !src.startsWith("http") && !src.startsWith("data:")) {
+      img.setAttribute("src", `${serverurl}${src}`);
+    }
+  });
+
+  return doc.body.innerHTML;
+};
+
+const sanitizedHTML = adjustImagePaths(service?.detail );
+const sanitizedHTMLS = adjustImagePaths(service?.detail2 );
+
   const metadata = {
     title: service?.metaname
       ? String(service.metaname)
@@ -151,8 +180,8 @@ const bg_image=serverurl + initialservice?.image3
                     <div className="col-lg-6 col-12">
                       <div className="details mt_md--30 mt_sm--30">
                         <div
-                          dangerouslySetInnerHTML={{ __html: service?.detail }}
-                        />
+      dangerouslySetInnerHTML={{__html:sanitizedHTML}}
+      />
                       </div>
                     </div>
                   </div>
@@ -163,7 +192,7 @@ const bg_image=serverurl + initialservice?.image3
                     <div className="col-lg-6 col-12 order-2 order-lg-1">
                       <div className="details mt_md--30 mt_sm--30">
                         <div
-                          dangerouslySetInnerHTML={{ __html: service?.detail2 }}
+                          dangerouslySetInnerHTML={{ __html: sanitizedHTMLSSS}}
                         />
                       </div>
                     </div>
@@ -173,7 +202,7 @@ const bg_image=serverurl + initialservice?.image3
                           width={600}
                           height={650}
                           src={serverurl + service?.image2}
-                          alt="Team "
+                          alt={service?.service_title}
                           layout="responsive"
                           className="w-100"
                         />

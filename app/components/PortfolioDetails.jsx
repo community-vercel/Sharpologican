@@ -19,7 +19,7 @@ import Image from "next/image";
 
 const PortfolioDetails = ({ portfolio }) => {
   const frontend = process.env.NEXT_PUBLIC_FRONT_URL;
-  const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
+  const serverurl = process.env.NEXT_PUBLIC_DJANGO_URLS;
 const bg_image=serverurl+portfolio?.image;
   const SocialShare = [
     { Social: <FaFacebookF />, link: portfolio?.facebook },
@@ -27,6 +27,33 @@ const bg_image=serverurl+portfolio?.image;
     { Social: <FaInstagram />, link: portfolio?.instagram },
     { Social: <FaTwitter />, link: portfolio?.x },
   ];
+  const adjustImagePaths = (html, baseUrl) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, "text/html");
+    const images = doc.querySelectorAll("img");
+  
+    images.forEach((img) => {
+      const src = img.getAttribute("src");
+  
+      // Skip base64 images
+      if (src && src.startsWith("data:")) {
+        img.style.width = "auto";  // Let the image retain its natural width
+        img.style.height = "auto"; // Let the image retain its natural height
+        img.style.objectFit = "contain"; 
+      }
+  
+      // Adjust non-base64 image paths
+      if (src && !src.startsWith("http") && !src.startsWith("data:")) {
+        img.setAttribute("src", `${serverurl}${src}`);
+      }
+    });
+  
+    return doc.body.innerHTML;
+  };
+
+  const sanitizedHTML = adjustImagePaths(portfolio?.detail );
+
+  
   const metadata = {
     title: portfolio?.metaname
       ? String(portfolio.metaname)
@@ -93,16 +120,7 @@ useEffect(() => {
   }}
   data-black-overlay="7"
 >
-  {/* Content here */}
 
-           {/* <Image
-
-                                  width={1920}
-                                  height={600}
-                                  src={serverurl + portfolio?.image}
-                                  alt="portfolio "
-                                  layout="responsive"
-                                /> */}
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
@@ -171,7 +189,8 @@ useEffect(() => {
                     <strong>{portfolio?.heading}</strong>
                   </h2>
                   <div
-                    dangerouslySetInnerHTML={{ __html: portfolio?.detail }}
+                    dangerouslySetInnerHTML={{ __html: sanitizedHTML }}
+
                   />
                   <div className="slide-btn"  style={{
                   display: "flex",
