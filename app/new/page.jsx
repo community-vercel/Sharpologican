@@ -293,12 +293,10 @@ const CreativeLanding = ({ homeDetail }) => {
               <Link href="/">
                 <Image className="logo-1"width={280} height={72} src="/logo-light.png" alt="Logo" layout="responsive"  />
                 <Image className="logo-2" width={280} height={72} src="/logo-light.png" alt="Logo" layout="responsive"  />
-
                 {/* <img className="logo-2" src="/logo-light.png" alt="Logo" /> */}
               </Link>
             </div>
           </div>
-
           {/* Main Menu */}
           <div className="header-right">
             <nav className="mainmenunav d-lg-block">
