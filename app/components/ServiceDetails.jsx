@@ -167,14 +167,22 @@ const [sanitizedHTMLS,setsanitizedhtmls]=useState()
       
       {/* End Breadcrump Area */}
       {/* Start Page Wrapper */}
-      <div className="rn-service-details ptb--120 bg_color--1">
+      <div className="rn-service-details ptbs--120 bg_color--1">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
               <div className="service-details-inner">
                 <div className="inner">
                   {/* Start Single Area */}
-                  <div className="row sercice-details-content pb--80 align-items-center">
+                  <div className="row sercice-details-content pb--50 align-items-center">
+                 
+                    <div className="col-lg-6 col-12">
+                      <div className="details mt_md--30 mt_sm--30">
+                        <div
+      dangerouslySetInnerHTML={{__html:sanitizedHTML}}
+      />
+                      </div>
+                    </div>
                     <div className="col-lg-6 col-12">
                       <div className="thumb">
                         <Image
@@ -192,27 +200,13 @@ const [sanitizedHTMLS,setsanitizedhtmls]=useState()
                         /> */}
                       </div>
                     </div>
-                    <div className="col-lg-6 col-12">
-                      <div className="details mt_md--30 mt_sm--30">
-                        <div
-      dangerouslySetInnerHTML={{__html:sanitizedHTML}}
-      />
-                      </div>
-                    </div>
                   </div>
                   {/* End Single Area */}
 
                   {/* Start Single Area */}
                   <div className="row sercice-details-content align-items-center">
-                    <div className="col-lg-6 col-12 order-2 order-lg-1">
-                      <div className="details mt_md--30 mt_sm--30">
-                        <div
-                          dangerouslySetInnerHTML={{ __html: sanitizedHTMLS}}
-                        />
-                      </div>
-                    </div>
-                    <div className="col-lg-6 col-12 order-1 order-lg-2">
-                      <div className="thumb position-relative">
+                  <div className="col-lg-6 col-12">
+                  <div className="thumb position-relative">
                         <Image
                           width={600}
                           height={650}
@@ -248,6 +242,14 @@ const [sanitizedHTMLS,setsanitizedhtmls]=useState()
                           </button> */}
                       </div>
                     </div>
+                    <div className="col-lg-6 col-12 order-2 order-lg-1">
+                      <div className="details mt_md--30 mt_sm--30">
+                        <div
+                          dangerouslySetInnerHTML={{ __html: sanitizedHTMLS}}
+                        />
+                      </div>
+                    </div>
+                  
                   </div>
 
                   {/* End Single Area */}

@@ -20,12 +20,11 @@ import ScrollSpy from "../components/ScrollSpy";
 import ScrollToTop from "react-scroll-up";
 import Image from "next/image";
 import { H1, H2 } from "../components/Typrography";
-import Head from "next/head";
 
 const SlideList = [
   {
     textPosition: "text-center",
-    category: "",
+   
     title: "Welcome to Sharplogicians!",
     description:
       "Improve performance through design, development, & digital marketing.",
@@ -192,9 +191,7 @@ const CreativeLanding = ({ homeDetail }) => {
       <meta name="twitter:title" content={metadata.twitter.title} />
       <meta name="twitter:description" content={metadata.twitter.description} />
       <meta name="twitter:image" content={metadata.twitter.images} />
-      <Head>
-        <link rel="preload" href="bg_image--26" as="image" />
-      </Head>
+
       {/* Header */}
       <header
         className={`header-area formobile-menu header--fixed default-color ${
@@ -253,7 +250,7 @@ const CreativeLanding = ({ homeDetail }) => {
 
       {/* Start Slider Area */}
       <div className="slider-activation slider-creative-agency" id="home">
-        <div className="bg_images bg_image--26" data-black-overlay="6">
+        <div className="bg_images bg_images--26" data-black-overlay="6">
           {SlideList.map((value, index) => (
             <div
               className="slide slide-style-2 slider-paralax d-flex align-items-center justify-content-center"
@@ -263,7 +260,6 @@ const CreativeLanding = ({ homeDetail }) => {
                 <div className="row">
                   <div className="col-lg-12">
                     <div className={`inner ${value.textPosition}`}>
-                      {value.category ? <span>{value.category}</span> : ""}
                       {homeDetail?.heading ? (
                         <H1 className="title theme-gradient">
                           {homeDetail?.heading}
@@ -271,12 +267,9 @@ const CreativeLanding = ({ homeDetail }) => {
                       ) : (
                         ""
                       )}
-                      {homeDetail?.detail ? (
-                        <H2 className="description">{homeDetail?.detail}</H2>
-                      ) : (
-                        ""
-                      )}
-                      {value.buttonText ? (
+                    {homeDetail?.detail && <H2 className="description">{homeDetail?.detail}</H2>}
+
+                      {value.buttonText &&
                         <div className="slide-btn">
                           <Link
                             className="rn-button-style--2 btn-primary-color"
@@ -285,9 +278,7 @@ const CreativeLanding = ({ homeDetail }) => {
                             {value.buttonText}
                           </Link>
                         </div>
-                      ) : (
-                        ""
-                      )}
+}
                     </div>
                   </div>
                 </div>

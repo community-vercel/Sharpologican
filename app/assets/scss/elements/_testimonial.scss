@@ -64,9 +64,25 @@
   
   .slick-dots li button:before {
     font-size: 9px;
-    color: #aaa;
+    color: #461919;
   }
   
   .slick-dots li.slick-active button:before {
-    color: #333;
+    color: #df2929;
   }
+  .slick-next:before {
+    font-family: 'slick' !important;
+    font-size: 24px !important;
+    opacity: 0.9 !important;
+    color: rgb(73, 143, 150) !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+  }
+  .slick-prev:before {
+    font-family: 'slick' !important;
+    font-size: 24px !important;
+    opacity: 0.9 !important;
+    color: rgb(73, 143, 150) !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}

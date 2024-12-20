@@ -139,15 +139,26 @@ font-family: 'Poppins', sans-serif;
     @extend %bgImagePosition;
 
 }
-.bg_images {
-    @extend %bgImagePosition;
+// .bg_images {
+//     @extend %bgImagePosition;
+//     width: 100%; /* Full width of the parent container */
+//     height:950px; /* Let the height adjust automatically based on the aspect ratio */
+//     aspect-ratio: 16 / 9; /* Ensures the aspect ratio of the image, change the ratio if needed */
+//     background-size: cover; /* Ensures the background image covers the entire container */
+//     background-position: center; /* Centers the background image */
+//     background-color: #f0f0f0; /* Fallback color in case the image hasn't loaded yet */
+//   }
+  .bg_images {
     width: 100%; /* Full width of the parent container */
-    height:950px; /* Let the height adjust automatically based on the aspect ratio */
-    aspect-ratio: 16 / 9; /* Ensures the aspect ratio of the image, change the ratio if needed */
-    background-size: cover; /* Ensures the background image covers the entire container */
-    background-position: center; /* Centers the background image */
-    background-color: #f0f0f0; /* Fallback color in case the image hasn't loaded yet */
+    height: 950px; /* Fixed height for aspect ratio */
+    aspect-ratio: 16 / 9; /* Ensures aspect ratio is maintained */
+    background-size: cover; /* Ensures the image covers the full container */
+    background-position: center; /* Centers the image */
+    background-color: #f0f0f0; /* Fallback background color */
+    transition: background-image 1s ease-in-out; /* Smooth transition for image loading */
   }
+  
+
   
   /* Optional: Adjust aspect ratio for smaller screens */
   @media (max-width: 768px) {
@@ -168,7 +179,11 @@ font-family: 'Poppins', sans-serif;
           background-image: url(../../images/bg/bg-image-#{$i}.jpg) !important;
       }
   }
-
+  @for $i from 26 through 26 {
+    .bg_images--#{$i} {
+        background-image: url(../../images/bg/bg-image-#{$i}.webp) !important;
+    }
+}
 
 
 

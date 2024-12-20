@@ -7,14 +7,14 @@ const TestimonialSlider = ({ test }) => {
   const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
 
   const slickSettings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 700,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
-    arrows: false,
+    arrows: true,
   };
 
   return (

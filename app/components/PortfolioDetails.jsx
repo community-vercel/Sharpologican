@@ -133,7 +133,7 @@ useEffect(() => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <div className="rn-page-title text-center pt--100">
+              <div className="rn-page-title text-center pttt--120">
                 <H1 className="title theme-gradient">{portfolio?.header} </H1>
                 <p>
                 {portfolio?.title}.{" "}

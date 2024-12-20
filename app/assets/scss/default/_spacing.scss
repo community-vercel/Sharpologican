@@ -125,6 +125,16 @@
     }
 }
 
+.ptbs--120,
+.ptbs--80 {
+    padding: 30px;
+    @media #{$sm-layout} {
+        padding: 60px 0 !important;
+    }
+    @media #{$md-layout} {
+        padding: 80px 0 !important;
+    }
+}
 .pt--120,
 .pt--140,
 .pt--110 {
@@ -141,6 +151,23 @@
 
 .ptt--110 {
     padding-top: 0px !important;
+
+    @media #{$sm-layout} {
+        padding-top: 60px !important;
+    }
+    @media #{$md-layout} {
+        padding-top: 80px !important;
+    }
+    @media #{$lg-layout} {
+        padding-top: 0px !important;
+    }
+   
+}
+.pttt--120,
+.ptt--140,
+
+.pttt--110 {
+    padding-top: 56px !important;
 
     @media #{$sm-layout} {
         padding-top: 60px !important;
