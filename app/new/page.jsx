@@ -20,6 +20,7 @@ import ScrollSpy from "../components/ScrollSpy";
 import ScrollToTop from "react-scroll-up";
 import Image from "next/image";
 import { H1, H2 } from "../components/Typrography";
+import Head from "next/head";
 
 const SlideList = [
   {
@@ -191,7 +192,9 @@ const CreativeLanding = ({ homeDetail }) => {
       <meta name="twitter:title" content={metadata.twitter.title} />
       <meta name="twitter:description" content={metadata.twitter.description} />
       <meta name="twitter:image" content={metadata.twitter.images} />
-
+      <Head>
+        <link rel="preload" href="bg_image--26" as="image" />
+      </Head>
       {/* Header */}
       <header
         className={`header-area formobile-menu header--fixed default-color ${
@@ -202,10 +205,10 @@ const CreativeLanding = ({ homeDetail }) => {
           {/* Logo */}
           <div className="header-left">
             <div className="logo">
-              <a href="/">
+              <Link href="/">
                 <img className="logo-1" src="/logo-light.png" alt="Logo" />
                 <img className="logo-2" src="/logo-light.png" alt="Logo" />
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -232,9 +235,9 @@ const CreativeLanding = ({ homeDetail }) => {
 
             {/* Quote Button */}
             <div className="header-btn">
-              <a className="rn-btn" href="/quote">
+              <Link className="rn-btn" href="/quote">
                 <span>Get Quote</span>
-              </a>
+              </Link>
             </div>
 
             {/* Hamburger Menu */}
@@ -275,12 +278,12 @@ const CreativeLanding = ({ homeDetail }) => {
                       )}
                       {value.buttonText ? (
                         <div className="slide-btn">
-                          <a
+                          <Link
                             className="rn-button-style--2 btn-primary-color"
                             href={`${value.buttonLink}`}
                           >
                             {value.buttonText}
-                          </a>
+                          </Link>
                         </div>
                       ) : (
                         ""
@@ -422,10 +425,7 @@ const CreativeLanding = ({ homeDetail }) => {
                             </div>
                           </div>
                         </div>
-                        {/* <Link
-                            className="link-overlay"
-                            to="/portfolio-details"
-                          ></Link> */}
+                    
                       </div>
                     ))}
                   </Slider>
