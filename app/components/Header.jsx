@@ -17,7 +17,6 @@ class Header extends Component {
     this.CLoseMenuTrigger = this.CLoseMenuTrigger.bind(this);
   
   }
-
   componentDidMount() {
     // Now it's safe to use window or document
     window.addEventListener("load", function () {
@@ -37,13 +36,13 @@ class Header extends Component {
     const { logo, color = "default-color" } = this.props;
     let logoUrl;
     if (logo === "light") {
-      logoUrl = <img src={logoLight} alt="Sharplogicians" />;
+      logoUrl =                 <Image className="logo-1" width={280} height={72} src={logoLight} alt="Sharplogicians" layout="responsive"  />;
       // <img className="logo-1" src="/logo-light.png" alt="Logo" />
 
     } else if (logo === "dark") {
-      logoUrl = <img src={logoDark} alt="Sharplogicians" />;
+      logoUrl =                 <Image className="logo-2" width={280} height={72} src={logoLight} alt="Sharplogicians" layout="responsive"  />;
     } else {
-      logoUrl = <img src={logoLight} alt="Sharplogicians" />;
+      logoUrl =                 <Image className="logo-1"width={280} height={72} src={logoLight} alt="Sharplogicians" layout="responsive"  />;
     }
 
 
