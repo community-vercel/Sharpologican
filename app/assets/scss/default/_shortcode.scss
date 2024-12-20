@@ -142,7 +142,7 @@ font-family: 'Poppins', sans-serif;
 .bg_images {
     @extend %bgImagePosition;
     width: 100%; /* Full width of the parent container */
-    height: auto; /* Let the height adjust automatically based on the aspect ratio */
+    height:950px; /* Let the height adjust automatically based on the aspect ratio */
     aspect-ratio: 16 / 9; /* Ensures the aspect ratio of the image, change the ratio if needed */
     background-size: cover; /* Ensures the background image covers the entire container */
     background-position: center; /* Centers the background image */
