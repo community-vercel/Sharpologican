@@ -78,7 +78,7 @@ const Footer = ({ heading3 }) => {
             </div>
             <div className="col-lg-6">
               <div
-                className="footer-right "
+                className="footer-right bg_image bg_image--8"
                 data-black-overlay="6"
               >
                 <div className="row">
