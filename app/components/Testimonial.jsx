@@ -2,7 +2,7 @@ import Slider from "react-slick";
 import Image from "next/image";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import { useState } from "react";
 const TestimonialSlider = ({ test }) => {
   const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
 
@@ -15,6 +15,12 @@ const TestimonialSlider = ({ test }) => {
     autoplay: true,
     autoplaySpeed: 5000,
     arrows: true,
+  };
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  // Handle Show More / Show Less
+  const toggleText = () => {
+    setIsExpanded(!isExpanded);
   };
 
   return (
@@ -32,9 +38,20 @@ const TestimonialSlider = ({ test }) => {
           </span>
         ))}
     </div>
-              <div className="testimonial-quote">
-                <p>{`“ ${testimonial.title} ”`}</p>
-              </div>
+    <div className="testimonial-quote">
+      <p className={isExpanded ? 'expanded' : 'collapsed'}>
+        {`“ ${testimonial.title} ”`}
+      </p>
+      {/* Button to toggle text on mobile/tablet only */}
+      {testimonial.title.length > 100 && (
+        <button
+          className="show-more-btn"
+          onClick={toggleText}
+        >
+          {isExpanded ? 'Show Less' : 'Show More'}
+        </button>
+      )}
+    </div>
               <div className="author-info">
                 <h6>{testimonial.name}</h6>
               </div>

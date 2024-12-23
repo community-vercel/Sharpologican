@@ -19,6 +19,7 @@ import ScrollToTop from "react-scroll-up";
 import Image from "next/image";
 import { H1, H2 } from "../components/Typrography";
 import { Suspense } from 'react';
+import ServiceThreeHome from "../components/ServiceListHome";
 
 const SlideList = [
   {
@@ -346,28 +347,8 @@ const CreativeLanding = ({ homeDetail }) => {
 
       {/* Start Slider Area */}
       <div className="slider-activation slider-creative-agency" id="home">
-      <div
-      className={`bg_images bg_images--26 ${imageLoaded ? 'loaded' : ''}`} // Add class when loaded if needed
-      // style={{
-      //   backgroundImage: imageLoaded ? `url(${bg_image})` : 'none', // Apply background image once it's loaded
-      // }}
-      data-black-overlay="6"
-    >
-      {!imageLoaded && (
-        <div className="image-placeholder"></div> // Show loading state or placeholder
-      )}
-      
-      {/* Invisible image to trigger the background image load */}
-      <img
-        src='bg_images bg_images--26'
-        alt="Background"
-        display='none'
-        style={{ display: 'none' }} // Hide the image element
-        onLoad={handleImageLoad} // Trigger loading event
-        onError={handleImageLoad} // Trigger loading event on error (optional fallback)
-      />
-    
-           {SlideList.map((value, index) => (
+        <div className="bg_images bg_images--26" data-black-overlay="6">
+          {SlideList.map((value, index) => (
             <div
               className="slide slide-style-2 slider-paralax d-flex align-items-center justify-content-center"
               key={index}
@@ -415,7 +396,7 @@ const CreativeLanding = ({ homeDetail }) => {
         <div className="container">
           <div className="row creative-service">
             <div className="col-lg-12">
-              <ServiceList
+              <ServiceThreeHome
                 item="6"
                 service={services}
                 column="col-lg-4 col-md-6 col-sm-6 col-12 text-left"

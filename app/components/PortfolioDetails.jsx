@@ -89,6 +89,15 @@ useEffect(() => {
       const handleImageLoad = () => {
         setImageLoaded(true);
       };
+
+      useEffect(() => {
+        const img = new window.Image(); // Create a native Image object (window.Image)
+        img.src = bg_image;
+    
+        // Once the image is loaded, update the state to apply the background
+        img.onload = () => setImageLoaded(true);
+        img.onerror = () => setImageLoaded(true); // If an error occurs, still update the state to avoid infinite loading
+      }, [bg_image]);
   return (
     <>
       <title>{metadata.title}</title>
@@ -113,24 +122,17 @@ useEffect(() => {
         logoname="logo.png"
       />
       
-      <div
+     <div
       className="rn-page-title-area pt--120 pb--190"
       style={{
-        backgroundImage: imageLoaded ? `url(${bg_image})` : 'none', // Apply background image once it's loaded
+        backgroundImage: imageLoaded ? `url(${bg_image})` : 'none', // Apply the background image only when loaded
       }}
       data-black-overlay="7"
     >
       {!imageLoaded && (
         <div className="image-placeholder"></div> // Show a loading state or placeholder
       )}
-      {/* Invisible image element used only to trigger load event */}
-      <img
-        src={bg_image}
-        alt="Background"
-        style={{ display: 'none' }} // Hide the image element
-        onLoad={handleImageLoad} // Trigger loading event when image loads
-        onError={handleImageLoad} // Also handle error to mark image as loaded
-      />
+    
     
 
         <div className="container">
