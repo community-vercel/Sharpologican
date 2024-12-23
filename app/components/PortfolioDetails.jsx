@@ -85,6 +85,10 @@ useEffect(() => {
       }, []); 
       const [imageLoaded, setImageLoaded] = useState(false);
 
+      // Function to handle image loading
+      const handleImageLoad = () => {
+        setImageLoaded(true);
+      };
   return (
     <>
       <title>{metadata.title}</title>
@@ -109,22 +113,25 @@ useEffect(() => {
         logoname="logo.png"
       />
       
- <div
-    className="rn-page-title-area pt--120 pb--190"
-    style={{
-      backgroundImage: `url(${bg_image})`,
-    }}
-    data-black-overlay="7"
-  >
-    {!imageLoaded && (
-      <div className="image-placeholder">Loading...</div> // Show a loading state or placeholder
-    )}
-    <Image
-      src=''
-     
-      onLoadingComplete={() => setImageLoaded(true)} // Mark as loaded
-      onError={() => setImageLoaded(true)} // Fallback for errors
-    />
+      <div
+      className="rn-page-title-area pt--120 pb--190"
+      style={{
+        backgroundImage: imageLoaded ? `url(${bg_image})` : 'none', // Apply background image once it's loaded
+      }}
+      data-black-overlay="7"
+    >
+      {!imageLoaded && (
+        <div className="image-placeholder"></div> // Show a loading state or placeholder
+      )}
+      {/* Invisible image element used only to trigger load event */}
+      <img
+        src={bg_image}
+        alt="Background"
+        style={{ display: 'none' }} // Hide the image element
+        onLoad={handleImageLoad} // Trigger loading event when image loads
+        onError={handleImageLoad} // Also handle error to mark image as loaded
+      />
+    
 
         <div className="container">
           <div className="row">
