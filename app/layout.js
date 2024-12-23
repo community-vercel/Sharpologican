@@ -44,6 +44,12 @@ const pathname = usePathname(); // Get the current path
   return (
     <html lang="en">
        <head>
+       <link
+          rel="preload"
+          href="/logo-light.png"  // Path relative to the 'public' folder
+          as="image"
+          type="image/png"
+        />
         {/* Google Analytics */}
         <Script
           strategy="afterInteractive"

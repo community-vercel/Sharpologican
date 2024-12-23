@@ -88,6 +88,7 @@ class Header extends Component {
                 <li>
                   <Link href="/contact" >Contact</Link>
                 </li>
+                
               </ul>
             </nav>
             <div className="header-btn">
@@ -96,7 +97,7 @@ class Header extends Component {
               </a>
             </div>
             {/* Start Humberger Menu */}
-            <div className="humberger-menu d-block d-lg-none pl--20">
+            <div className="humberger-menu d-block d-lg-none pl--6">
               <span
                 onClick={this.menuTrigger}
                 className="menutrigger text-white"
