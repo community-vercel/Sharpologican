@@ -30,7 +30,7 @@ const pathname = usePathname(); // Get the current path
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const handleRouteChange = (url) => {
-        window.gtag('config', 'G-XXXXXXXXXX', {
+        window.gtag('config', 'G-SL88DQ1E24', {
           page_path: url,
         });
       };
