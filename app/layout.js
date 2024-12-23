@@ -5,7 +5,6 @@ import "./index.scss";
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import React,{useState,useEffect} from "react";
 import Script from 'next/script';
-import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 const geistSans = Geist({
 
