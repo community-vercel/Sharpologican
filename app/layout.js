@@ -57,7 +57,7 @@ const pathname = usePathname(); // Get the current path
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-XXXXXXXXXX', {
+            gtag('config', 'G-SL88DQ1E24', {
               page_path: window.location.pathname,
             });
           `}
