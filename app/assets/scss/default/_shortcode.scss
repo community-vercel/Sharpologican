@@ -184,9 +184,7 @@ font-family: 'Poppins', sans-serif;
     .bg_images--#{$i} {
         background-image: url(/bg-image-#{$i}.webp) !important;
     }
-    .bg_images--#{$i}.loaded {
-        // Any additional styles for when the image is loaded
-      }
+    
 }
 
 
