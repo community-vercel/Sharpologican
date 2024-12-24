@@ -268,16 +268,6 @@ const CreativeLanding = ({ homeDetail }) => {
   const handleImageLoad = () => {
     setImageLoaded(true);
   };
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-            const img = new window.Image(); // Create a native Image object (window.Image)
-    
-    img.src = '/bg-image-26.webp';
-    img.onload = () => {
-      setLoaded(true);
-    };
-  }, []);
 
   return (
     <>
@@ -357,8 +347,8 @@ const CreativeLanding = ({ homeDetail }) => {
 
       {/* Start Slider Area */}
       <div className="slider-activation slider-creative-agency" id="home">
-      <div className={`bg_images bg_images--26 ${loaded ? 'loaded' : ''}`} data-black-overlay="6">
-      {SlideList.map((value, index) => (
+        <div className="bg_images bg_images--26" data-black-overlay="6">
+          {SlideList.map((value, index) => (
             <div
               className="slide slide-style-2 slider-paralax d-flex align-items-center justify-content-center"
               key={index}
