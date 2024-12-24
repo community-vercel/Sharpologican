@@ -42,24 +42,7 @@ const nextConfig = {
       ],
       
     },  
-    async headers() {
-      return [
-        {
-          source: "/:path*", // Apply to all paths
-          headers: [
-            
-            {
-              key: "Content-Security-Policy",
-              value: `default-src 'self';
-                      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-                      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com;
-                      img-src 'self' https://www.google-analytics.com;`,
-            },
-          ],
-        },
-      ];
-    },
-  
+    
     experimental: {
       workerThreads: false,
       cpus: 1,
