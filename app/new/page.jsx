@@ -85,6 +85,7 @@ const CreativeLanding = ({ homeDetail }) => {
   const [counts, setcounts] = useState([]);
 
   useEffect(() => {
+    
     const fetchServices = async () => {
       const response = await fetch(`${serverurls}services/`);
       const data = await response.json();
@@ -263,6 +264,11 @@ const CreativeLanding = ({ homeDetail }) => {
     },
   };
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
 
   // Function to handle image load
   const handleImageLoad = () => {
@@ -347,8 +353,8 @@ const CreativeLanding = ({ homeDetail }) => {
 
       {/* Start Slider Area */}
       <div className="slider-activation slider-creative-agency" id="home">
-        <div className="bg_images bg_images--26" data-black-overlay="6">
-          {SlideList.map((value, index) => (
+      <div className={`bg_images bg_images--26 ${loaded ? 'loaded' : ''}`} data-black-overlay="6">
+      {SlideList.map((value, index) => (
             <div
               className="slide slide-style-2 slider-paralax d-flex align-items-center justify-content-center"
               key={index}
