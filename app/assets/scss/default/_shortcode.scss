@@ -180,10 +180,13 @@ font-family: 'Poppins', sans-serif;
       }
   }
   @for $i from 26 through 26 {
-    
+
     .bg_images--#{$i} {
         background-image: url(/bg-image-#{$i}.webp) !important;
     }
+    .bg_images--#{$i}.loaded {
+        // Any additional styles for when the image is loaded
+      }
 }
 
 

@@ -351,6 +351,9 @@ const CreativeLanding = ({ homeDetail }) => {
       </header>
       {/* End Header Area */}
 
+
+
+
       {/* Start Slider Area */}
       <div className="slider-activation slider-creative-agency" id="home">
       <div className={`bg_images bg_images--26 ${loaded ? 'loaded' : ''}`} data-black-overlay="6">
