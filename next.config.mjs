@@ -47,6 +47,7 @@ const nextConfig = {
         {
           source: "/:path*", // Apply to all paths
           headers: [
+            
             {
               key: "Content-Security-Policy",
               value: `default-src 'self';
