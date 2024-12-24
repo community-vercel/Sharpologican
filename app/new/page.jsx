@@ -355,8 +355,15 @@ const CreativeLanding = ({ homeDetail }) => {
 
 
       {/* Start Slider Area */}
-      <div className="slider-activation slider-creative-agency" id="home">
+      {/* <div className="slider-activation slider-creative-agency" id="home"> */}
       <div className={`bg_images bg_images--26 ${loaded ? 'loaded' : ''}`} data-black-overlay="6">
+      <div
+      className={`bg_images--26`}
+      style={{
+        backgroundImage: `url('/bg_images--26.webp')`,
+      }}
+      data-black-overlay="6"
+    >
       {SlideList.map((value, index) => (
             <div
               className="slide slide-style-2 slider-paralax d-flex align-items-center justify-content-center"
