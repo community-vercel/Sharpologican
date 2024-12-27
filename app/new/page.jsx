@@ -417,7 +417,6 @@ const CreativeLanding = ({ homeDetail }) => {
           </div>
         </div>
       </div>
-
       <div className="rn-counterup-area pt--140 p pb--110 bg_color--5">
         <div className="container">
           <div className="row">
