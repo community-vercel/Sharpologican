@@ -94,7 +94,6 @@ const CreativeLanding = ({ homeDetail }) => {
     const handleScroll = () => {
       setIsSticky(window.scrollY > 100);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
