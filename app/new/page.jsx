@@ -423,11 +423,11 @@ const CreativeLanding = ({ homeDetail }) => {
           <div className="row">
             <div className="col-lg-12">
               <div className="section-title text-center">
-                <h3 className="fontWeight500">{counts[0]?.title}</h3>
+                <h3 className="fontWeight500">{counts && counts[0]?.title}</h3>
               </div>
             </div>
           </div>
-          <CounterOne count={counts} />
+          <CounterOne count={counts && counts} />
         </div>
       </div>
 

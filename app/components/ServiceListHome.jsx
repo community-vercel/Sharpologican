@@ -10,13 +10,13 @@ import { FiCast , FiLayers , FiUsers , FiMonitor } from "react-icons/fi";
 const ServiceThreeHome = ({column,service}) => {
     const serverurl=process.env.NEXT_PUBLIC_DJANGO_URL;
 
-        const ServiceContent = service.slice(0 , service?.length);
+        const ServiceContent = service?.slice(0 , service?.length);
 
         
         return(
             <>
                     <div className="row">
-                    {ServiceContent?.slice(0, 6).map( (val , i) => (
+                    { ServiceContent?.slice(0, 6).map( (val , i) => (
                         <div className={`${column}`} key={i}>
                             <Link href={`/service/${val.slug}`}>
                                 <div className="service service__style--2">
