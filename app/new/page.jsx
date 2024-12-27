@@ -100,8 +100,6 @@ const CreativeLanding = ({ homeDetail }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  // Toggle menu visibility
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
   // Close menu
