@@ -68,57 +68,58 @@ const slickDot = {
 };
 
 const CreativeLanding = ({ homeDetail }) => {
+  console.log("Homedetails",homeDetail)
   const [menuOpen, setMenuOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
-  const [services, setServices] = useState([]);
+  const [services, setServices] = useState(homeDetail?.services);
   const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
   const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
   const frontend = process.env.NEXT_PUBLIC_FRONT_URL;
-  const [aboutUsData, setAboutUsData] = useState(null);
-  const [portfolioData, setPortfolioData] = useState();
-  const [teamData, setTeamData] = useState();
-  const [testimonials, setTestimonials] = useState();
-  const [newsData, setnewsData] = useState();
-  const [contactImage, setContactImage] = useState(null);
-  const [clientImages, setClientImages] = useState([]);
-  const [title, setnewtitle] = useState();
-  const [counts, setcounts] = useState([]);
-
+  const [aboutUsData, setAboutUsData] = useState(homeDetail?.aboutUs);
+  const [portfolioData, setPortfolioData] = useState(homeDetail?.portfolio  );
+  const [teamData, setTeamData] = useState(homeDetail?.team);
+  const [testimonials, setTestimonials] = useState(homeDetail?.testimonials  );
+  const [newsData, setnewsData] = useState(homeDetail?.news);
+  const [contactImage, setContactImage] = useState(serverurl+homeDetail?.contact.contact_image);
+  const [clientImages, setClientImages] = useState(homeDetail?.clients);
+  const [title, setnewtitle] = useState(homeDetail?.contact.title);
+  const [counts, setcounts] = useState(homeDetail?.counts);
+  
   useEffect(() => {
-    const fetchServices = async () => {
-      const response = await fetch(`${serverurls}services/`);
-      const data = await response.json();
+    // const fetchServices = async () => {
+    //   const response = await fetch(`${serverurls}services/`);
+    //   const data = await response.json();
 
-      setServices(data.data);
-      const response4 = await fetch(`${serverurls}about-us/`);
-      const data2 = await response4.json();
-      setAboutUsData(data2.data);
-      const response5 = await fetch(`${serverurls}portfolio/`);
-      const data3 = await response5.json();
-      setPortfolioData(data3.data);
-      const response6 = await fetch(`${serverurls}team/`);
-      const data4 = await response6.json();
-      setTeamData(data4.data);
-      const response7 = await fetch(`${serverurls}testimonials/`);
-      const data5 = await response7.json();
-      setTestimonials(data5.data);
-      const response9 = await fetch(`${serverurls}news/`);
-      const data6 = await response9.json();
-      setnewsData(data6.data);
+    //   setServices(data.data);
+    //   const response4 = await fetch(`${serverurls}about-us/`);
+    //   const data2 = await response4.json();
+    //   setAboutUsData(data2.data);
+    //   const response5 = await fetch(`${serverurls}portfolio/`);
+    //   const data3 = await response5.json();
+    //   setPortfolioData(data3.data);
+    //   const response6 = await fetch(`${serverurls}team/`);
+    //   const data4 = await response6.json();
+    //   setTeamData(data4.data);
+    //   const response7 = await fetch(`${serverurls}testimonials/`);
+    //   const data5 = await response7.json();
+    //   setTestimonials(data5.data);
+    //   const response9 = await fetch(`${serverurls}news/`);
+    //   const data6 = await response9.json();
+    //   setnewsData(data6.data);
 
-      const response2 = await fetch(`${serverurls}contact/`);
-      const data7 = await response2.json();
-      setnewtitle(data7.data.title);
-      setContactImage(serverurl + data7.data.contact_image);
-      const response3 = await fetch(`${serverurls}clients/`);
-      const data8 = await response3.json();
-      setClientImages(data8.data);
-      const response8 = await fetch(`${serverurls}get-count/`);
-      const data9 = await response8.json();
-      setcounts(data9.data);
-    };
+    //   const response2 = await fetch(`${serverurls}contact/`);
+    //   const data7 = await response2.json();
+    //   setnewtitle(data7.data.title);
+    //   setContactImage(serverurl + data7.data.contact_image);
+    //   const response3 = await fetch(`${serverurls}clients/`);
+    //   const data8 = await response3.json();
+    //   setClientImages(data8.data);
+    //   const response8 = await fetch(`${serverurls}get-count/`);
+    //   const data9 = await response8.json();
+    //   setcounts(data9.data);
+    // };
 
-    fetchServices();
+    // fetchServices();
   }, [homeDetail]);
 //   useEffect(() => {
 //     const fetchData = async () => {
@@ -229,22 +230,22 @@ const CreativeLanding = ({ homeDetail }) => {
   // Close menu
   const closeMenu = () => setIsMenuOpen(false);
   const metadata = {
-    title: homeDetail?.metaname
-      ? String(homeDetail.metaname)
+    title: homeDetail?.homeDetail.metaname
+      ? String(homeDetail.homeDetail.metaname)
       : "SharpLogicians | Creative Digital Agency",
-    description: homeDetail?.metadescription
-      ? String(homeDetail?.metadescription)
+    description: homeDetail?.homeDetail.metadescription
+      ? String(homeDetail?.homeDetail.metadescription)
       : "SharpLogicians | Creative Digital Agency",
-    keywords: homeDetail?.keywords
-      ? String(homeDetail.keywords)
+    keywords: homeDetail?.homeDetail.keywords
+      ? String(homeDetail?.homeDetail.keywords)
       : "bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative",
     openGraph: {
       title:
-        homeDetail?.metaname ||
-        homeDetail?.metaname ||
+        homeDetail?.homeDetail.metaname ||
+        homeDetail?.homeDetail.metaname ||
         "SharpLogicians | Creative Digital Agency",
       description:
-        homeDetail?.metadescription ||
+        homeDetail?.homeDetail.metadescription ||
         `SharpLogicians | Creative Digital Agency`,
       url: `${frontend} || "default-slug"}`,
       images: ["/logo-light.png"],
@@ -252,11 +253,11 @@ const CreativeLanding = ({ homeDetail }) => {
     twitter: {
       card: "summary_large_image",
       title:
-        homeDetail?.metaname ||
-        homeDetail?.metaname ||
+        homeDetail?.homeDetail.metaname ||
+        homeDetail?.homeDetail.metaname ||
         "SharpLogicians | Creative Digital Agency",
       description:
-        homeDetail?.metadescription ||
+        homeDetail?.homeDetail.metadescription ||
         `SharpLogicians | Creative Digital Agency`,
       url: `${frontend} || "default-slug"}`,
       images: ["/logo-light.png"],
@@ -347,7 +348,7 @@ const CreativeLanding = ({ homeDetail }) => {
 
       {/* Start Slider Area */}
       <div className="slider-activation slider-creative-agency" id="home">
-        <div className="bg_images bg_images--26" data-black-overlay="6">
+        <div className={homeDetail?.classname} data-black-overlay="6">
           {SlideList.map((value, index) => (
             <div
               className="slide slide-style-2 slider-paralax d-flex align-items-center justify-content-center"
@@ -357,15 +358,15 @@ const CreativeLanding = ({ homeDetail }) => {
                 <div className="row">
                   <div className="col-lg-12">
                     <div className={`inner ${value.textPosition}`}>
-                      {homeDetail?.heading ? (
+                      {homeDetail?.homeDetail.heading ? (
                         <H1 className="title theme-gradient">
-                          {homeDetail?.heading}
+                          {homeDetail?.homeDetail.heading}
                         </H1>
                       ) : (
                         ""
                       )}
-                      {homeDetail?.detail && (
-                        <H2 className="description">{homeDetail?.detail}</H2>
+                      {homeDetail?.homeDetail.detail && (
+                        <H2 className="description">{homeDetail?.homeDetail.detail}</H2>
                       )}
 
                       {value.buttonText && (

@@ -21,7 +21,7 @@ const nextConfig = {
             
             {
               protocol: 'https', // Specify protocol (e.g., 'http' or 'https')
-              hostname: 'sharplogicians.com/new', // Specify domain name
+              hostname: 'sharplogicians.comundefined', // Specify domain name
               port: '', // Leave empty for default port
               pathname: '/**', // Allow all paths under this domain
             },
