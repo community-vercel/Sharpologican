@@ -32,7 +32,13 @@ const nextConfig = {
               port: '', // Leave empty for default port
               pathname: '/**', // Allow all paths under this domain
             },
-            
+    
+            {
+              protocol: 'http', // Specify protocol (e.g., 'http' or 'https')
+              hostname: '127.0.0.1', // Specify domain name
+              port: '8000', // Leave empty for default port
+              pathname: '/**', // Allow all paths under this domain
+            },
             {
               protocol: 'https', // Specify protocol (e.g., 'http' or 'https')
               hostname: 'sharplogicians.com"', // Specify domain name

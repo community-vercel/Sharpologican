@@ -94,6 +94,9 @@ const Footer = ({ heading3 }) => {
                           <a href="/#about">About</a>
                         </li>
                         <li>
+                          <a href="/career">Carerer</a>
+                        </li>
+                        <li>
                           <a href="/contact">Let's Talk</a>
                         </li>
                       </ul>
