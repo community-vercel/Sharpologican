@@ -71,6 +71,7 @@ const FooterTwo = () => {
                   <Link href="/#about">About   |</Link>
                 </li>
                 <li>
+                  
                   <Link href="/contact">Let's Talk</Link>
                 </li>
               </ul>
