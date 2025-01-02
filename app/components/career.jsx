@@ -1,83 +1,21 @@
 'use client';
 import React, { useState } from 'react';
 import styles from './Careers.module.css';
-import Head from 'next/head';
+import Link from 'next/link';
 
 const CareerPage = ({data}) => {
+    console.log(data,'data');
+
     const carrers = data?.career[0];
-  // State for handling modal visibility and form inputs
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    cv: null,
-  });
-const [id,setid]=useState(0);
-  // Handle form input changes
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-  const handleChanges= (jobId) => {
-    console.log("id",jobId)
-    setid(jobId);
-    
-toggleModal();
-  };
+
+
+
   const frontend = process.env.NEXT_PUBLIC_FRONT_URL;
 
 
   // Handle file upload
-  const handleFileChange = (e) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      cv: e.target.files[0],
-    }));
-  };
-  const serverurls=process.env.NEXT_PUBLIC_DJANGO_URLS;
 
 
-  // Toggle modal visibility
-  const toggleModal = () => {
-    setIsModalOpen((prevState) => !prevState);
-  };
-
-  // Handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-   
-    const formDataToSend = new FormData();
-    formDataToSend.append('id',id);
-
-    formDataToSend.append('name', formData.name);
-    formDataToSend.append('email', formData.email);
-    formDataToSend.append('cv', formData.cv);
-
-    try {
-      const response = await fetch(`${serverurls}submit-application/`, {
-        method: 'POST',
-        body: formDataToSend
-      });
-
-      const result = await response.json();
-
-      if (response.ok) {
-        alert("Thank you for your time, application submitted successfully. We will get in touch with you soon.");
-        setFormData({
-            name: '',
-            email: '',
-            cv: null,
-        });
-        toggleModal(); 
-      } else {
-      }
-    } catch (error) {
-    } finally {
-    }
-  };
 
    const metadata = {
      title:  carrers?.meta_title
@@ -118,7 +56,7 @@ toggleModal();
  
    return (
      <>
-
+ 
        <title>{metadata.title}</title>
  
        <meta name="title" content={metadata.title} />
@@ -204,14 +142,16 @@ toggleModal();
     <h2 className={styles.sectionTitle}>Open Positions</h2>
     <div className={styles.jobListings}>
     {data.jobs.map((job, index) => (
+        <Link href={`/career/${job.slug}`} key={job.id}>
    <div key={job.id}  className={styles.jobCard}>
    <h3 className={styles.jobTitle}>{job.title}</h3>
    <p className={styles.jobLocation}>{job.location}</p>
    <p className={styles.jobCategory}>{job.category} </p>
-   <button className={styles.submitBtn} onClick={() => handleChanges(job.id)}>
-   Apply Now
+   <button className={styles.submitBtn} >
+  View
    </button>
  </div>
+ </Link>
     ))}
    
      
@@ -260,53 +200,7 @@ toggleModal();
  
 </main>
 
-        {/* Modal */}
-        {isModalOpen && (
-  <div className={`${styles.modal} ${isModalOpen ? styles.open : ''}`}>
-    <div className={styles.modalContent}>
-      <span className={styles.close} onClick={toggleModal}>&times;</span>
-      <h2>Apply Now</h2>
-              <form onSubmit={handleSubmit} encType="multipart/form-data">
-                <div className={styles.formGroup}>
-                  <label htmlFor="name">Full Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className={styles.formGroup}>
-                  <label htmlFor="email">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className={styles.formGroup}>
-                  <label htmlFor="cv">Upload Your CV</label>
-                  <input
-                    type="file"
-                    id="cv"
-                    name="cv"
-                    accept=".pdf, .doc, .docx"
-                    onChange={handleFileChange}
-                    required
-                  />
-                </div>
-                <button type="submit" className={styles.submitBtn}>
-                  Submit Application
-                </button>
-              </form>
-            </div>
-          </div>
-        )}
+    
       </div>
     </>
   );

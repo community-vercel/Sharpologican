@@ -107,7 +107,107 @@ Footer Styles
         }
     }
 }
-
+.footer-linkss {
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  
+  
+  .footer-navs {
+    list-style-type: none;
+    padding: 0;
+    gap: 20px; /* Space between items */
+    margin: 0;
+    display: inline-flex;  /* Use inline-flex to make the links stay on the same line */
+    flex-wrap: wrap; 
+    justify-content: flex-start; /* Align items to the left */
+    // gap: 10px; /* Reduced the gap between the links */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  }
+  
+  .footer-navs li {
+    flex: 1 1 auto; /* Allow list items to grow and shrink */
+  }
+  
+  .footer-navs a {
+    text-decoration: none;
+    color: #c6c9d8; /* Set link text color to white */
+    font-size: 16px;
+    font-weight: 500;
+    
+    transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition for color and background */
+    // padding: 8px 15px; /* Add padding to make the background effect visible */
+    // border-radius: 5px; /* Rounded corners for the background highlight */
+    display: inline-block; /* Make the links behave like buttons */
+    // margin-bottom: 10px; /* Space between items for small screens */
+  }
+  
+  .footer-navs a:hover {
+    color: #c6c9d8; /* Keep the text color white on hover */
+    background-color: $theme-color; /* Set a background color to highlight the link */
+    // text-decoration: underline; /* Add underline on hover */
+  }
+  
+  /* Footer Info Section */
+  .footer-info {
+    text-align: center;
+    font-size: 14px;
+    color: #888;
+  }
+  
+  .footer-info .text {
+    margin-top: 10px;
+  }
+  
+  /* Make footer content responsive */
+  @media (max-width: 1024px) {
+    .footer-navs {
+      justify-content: center; /* Center the links on medium screens */
+    }
+    .footer-navs a {
+      font-size: 14px; /* Slightly smaller text on medium screens */
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .footer-linkss {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .footer-navs {
+      justify-content: center; /* Center the links on small screens */
+      gap: 0px; /* Reduce the gap between links on small screens */
+    }
+    .footer-navs a {
+      font-size: 14px; /* Smaller font size for mobile */
+      padding: 6px 12px; /* Adjust padding for small screens */
+    }
+    .footer-info {
+      font-size: 12px; /* Smaller text for mobile */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    footer-navs {
+        list-style-type: none;
+        padding: 0;
+        gap: 20px; /* Space between items */
+        margin: 0;
+        display: inline-flex;  /* Use inline-flex to make the links stay on the same line */
+        flex-wrap: wrap; 
+        justify-content: flex-start; /* Align items to the left */
+        // gap: 10px; /* Reduced the gap between the links */
+        flex-wrap: wrap; /* Allow wrapping on smaller screens */
+      }
+    .footer-navs a {
+margin-top: 20px;
+      font-size: 12px; /* Even smaller font size for very small screens */
+    //   padding: 5px 10px; /* Reduce padding for very small screens */
+    }
+    .footer-info {
+      font-size: 11px; /* Smaller text size for very small screens */
+    }
+  }
 .footer-right {
     background-image: url(/assets/images/bg/bg-image-8.jpg);
     padding: 150px 70px;
@@ -128,6 +228,9 @@ Footer Styles
     @media #{$sm-layout} {
         padding: 60px 30px;
     }
+    
+
+
     .footer-link {
         h4 {
             color: #ffffff;
