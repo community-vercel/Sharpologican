@@ -31,6 +31,7 @@ const TestimonialSlider = ({ test }) => {
             <div className="rn-testimonial-content text-center">
             <div className="testimonial-stars">
       {Array(5)
+      
         .fill(0)
         .map((_, index) => (
           <span key={index} className="star">
