@@ -147,7 +147,7 @@ const CreativeLanding = ({ homeDetail }) => {
   return (
     <>
       <Suspense fallback={<p>Loading posts...</p>}>
-        <Head>
+    
           {testimonials?.map((job) => (
             <script
               key={job.id}
@@ -201,7 +201,7 @@ const CreativeLanding = ({ homeDetail }) => {
             content={metadata.twitter.description}
           />
           <meta name="twitter:image" content={metadata.twitter.images} />
-        </Head>
+       
         {/* Header */}
         <header
           className={`header-area formobile-menu header--fixed default-color ${

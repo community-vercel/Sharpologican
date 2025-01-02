@@ -118,8 +118,7 @@ toggleModal();
  
    return (
      <>
- 
- <Head>
+
        <title>{metadata.title}</title>
  
        <meta name="title" content={metadata.title} />
@@ -183,7 +182,7 @@ toggleModal();
       }}
     />
   ))}
-</Head>
+
 
       <div className={styles.careersPage}>
       <main className={styles.main}>
