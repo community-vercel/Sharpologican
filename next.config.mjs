@@ -7,7 +7,7 @@ const nextConfig = {
         headers: [
           {
             key: "Content-Security-Policy",
-            value: "script-src 'self' https://www.googletagmanager.com;",
+            value: "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com;",
           },
         ],
       },
