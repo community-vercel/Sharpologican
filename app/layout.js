@@ -1,5 +1,4 @@
 'use client';
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "./index.scss";
 import { Helmet, HelmetProvider } from 'react-helmet-async';
@@ -8,16 +7,7 @@ import Script from 'next/script';
 import { usePathname } from "next/navigation";
 import { GoogleAnalytics } from '@next/third-parties/google'
 
-const geistSans = Geist({
 
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 
 
@@ -54,7 +44,9 @@ export default function RootLayout({ children }) {
           <GoogleAnalytics gaId="G-SL88DQ1E24" />
 
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body >
+
+      {/* <body className={`${geistSans.variable} ${geistMono.variable}`}> */}
         
       <HelmetProvider>
           {children}

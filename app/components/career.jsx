@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import styles from './Careers.module.css';
 import Link from 'next/link';
 
@@ -18,10 +18,10 @@ const CareerPage = ({data}) => {
 
 
    const metadata = {
-     title:  data?.career[0]?.meta_title
-       ? String(data?.career[0].meta_title)
+     title:  data.career[0]?.meta_title
+       ? String(data.career[0].meta_title)
        : "SharpLogicians | Creative Digital Agency",
-     description:  data?.career[0]?.meta_description
+     description:  data.career[0]?.meta_description
        ? String( data?.career[0].meta_description)
        : "SharpLogicians | Creative Digital Agency",
      keywords:  data?.career[0]?.keywords
@@ -56,6 +56,7 @@ const CareerPage = ({data}) => {
  
    return (
      <>
+       <Suspense fallback={<p>Loading posts...</p>}>
  
        <title>{metadata.title}</title>
  
@@ -200,6 +201,7 @@ const CareerPage = ({data}) => {
 
     
       </div>
+      </Suspense>
     </>
   );
 };

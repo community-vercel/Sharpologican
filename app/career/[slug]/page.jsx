@@ -5,6 +5,7 @@ import Footer from "@/app/components/Footer";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import styles from '../Careers.module.css';
+import NotFound from "@/app/components/Notfound";
 
 const CareerPage = () => {
   const [data, setData] = useState();
@@ -123,7 +124,11 @@ const CareerPage = () => {
     },
   };
   
-  
+  if(!data){
+    return(
+<NotFound />
+    )
+  }
 
   return (
     <>

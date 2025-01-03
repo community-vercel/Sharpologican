@@ -1,12 +1,10 @@
 'use client';
 import React, { Component } from 'react';
-import Header from './components/Header';
+import Header from '../components/Header';
 import ScrollToTop from 'react-scroll-up';
 import { FiChevronUp } from "react-icons/fi";
-import Footer from './components/Footer';
-class error404 extends Component {
-    
-    render() {
+import Footer from '../components/Footer';
+const NotFound = () => {
         return (
             <>
                 <Header headerPosition="header--transparent" color="color-white" logo="logo-light" />
@@ -41,5 +39,5 @@ class error404 extends Component {
             </>
         )
     }
-}
-export default error404;
+
+export default NotFound;

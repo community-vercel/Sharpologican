@@ -7,6 +7,7 @@ import { useParams } from "next/navigation";
 import Image from "next/image";
 import { H1 } from "@/app/components/Typrography";
 import Link from "next/link";
+import NotFound from "./Notfound";
 const ServiceDetails = ({ initialservice }) => {
   const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
   const [service, setServices] = useState(initialservice);
@@ -84,6 +85,12 @@ const [sanitizedHTMLS,setsanitizedhtmls]=useState()
   useEffect(() => {
           window.scrollTo(0, 0); // Scroll to the top of the page
         }, []);
+
+        if(!initialservice){
+          return(
+   <NotFound />
+          )
+        }
 
   return (
     <>

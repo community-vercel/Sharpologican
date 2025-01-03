@@ -6,6 +6,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { H1, H2 } from "./Typrography";
 import Image from "next/image";
+import NotFound from "./Notfound";
 
 const PortfolioDetails = ({ portfolio }) => {
   const frontend = process.env.NEXT_PUBLIC_FRONT_URL;
@@ -98,7 +99,12 @@ useEffect(() => {
         img.onload = () => setImageLoaded(true);
         img.onerror = () => setImageLoaded(true); // If an error occurs, still update the state to avoid infinite loading
       }, [bg_image]);
-  return (
+      if(!portfolio){
+        return(
+ <NotFound />
+        )
+      }
+      return (
     <>
       <title>{metadata.title}</title>
 

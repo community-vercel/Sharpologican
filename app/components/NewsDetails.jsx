@@ -6,11 +6,13 @@ import ScrollToTop from "react-scroll-up";
 import { FiChevronUp } from "react-icons/fi";
 import Header from "./Header";
 import Footer from "./Footer";
-
+import error404 from "../not-found";
 import Link from "next/link";
 import { Helmet } from 'react-helmet-async';
 import { H1 } from "./Typrography";
+import NotFound from "./Notfound";
 const NewsDetail=({news})=> {
+
   const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
 const bg_image=serverurl + news?.image
 const [sanitizedHTML,setsanitizedhtml]=useState()
@@ -89,7 +91,11 @@ const [sanitizedHTML,setsanitizedhtml]=useState()
       useEffect(() => {
         window.scrollTo(0, 0); // Scroll to the top of the page
       }, []); 
-      
+      if(!news){
+        return(
+ <NotFound />
+        )
+      }
       return (
         <>
           <title>{metadata.title}</title>

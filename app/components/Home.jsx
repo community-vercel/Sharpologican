@@ -2,7 +2,6 @@
 import { useState, useEffect, Fragment } from "react";
 import { FiChevronUp, FiX, FiMenu } from "react-icons/fi";
 import Slider from "react-slick";
-import ServiceList from "../components/ServiceList";
 import Team from "../components/Team";
 import BrandTwo from "../components/BrandTwo"; // Assuming the path to
 import Contact from "../components/ContactTwo";
@@ -12,8 +11,6 @@ import Link from "next/link";
 import FooterTwo from "../components/FooterTwo";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import logoLight from "../assets/images/logo/logo-light.png";
-import logoAllDark from "../assets/images/logo/logo-all-dark.png";
 import ScrollSpy from "../components/ScrollSpy";
 import ScrollToTop from "react-scroll-up";
 import Image from "next/image";
