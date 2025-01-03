@@ -39,7 +39,6 @@ const pathname = usePathname(); // Get the current path
 
     }
   }, [pathname]); // Dependency on pathname to trigger the effect
-  const nonce = typeof document !== 'undefined' ? document.querySelector('head').getAttribute('nonce') : '';
 
   return (
     <html lang="en">
@@ -52,19 +51,22 @@ const pathname = usePathname(); // Get the current path
         />
         {/* Google Analytics */}
         <Script
-  id="google-analytics"
-  strategy="afterInteractive"
-  nonce={nonce}
->
-  {`
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-SL88DQ1E24', {
-      page_path: window.location.pathname,
-    });
-  `}
-</Script>
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-SL88DQ1E24"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+        >
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-SL88DQ1E24', {
+              page_path: window.location.pathname,
+            });
+          `}
+        </Script>
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         
