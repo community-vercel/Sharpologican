@@ -11,7 +11,6 @@ const CareerPage = ({data}) => {
     // console.log(jobs,'data');
 
 
-
   const frontend = process.env.NEXT_PUBLIC_FRONT_URL;
 
 

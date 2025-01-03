@@ -9,7 +9,7 @@ const nextConfig = {
             key: "Content-Security-Policy",
             value: `
               default-src 'self';
-              script-src 'self'  'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com;
+              script-src 'self' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com;
               connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com;
               img-src 'self' https://www.google-analytics.com https://www.googletagmanager.com;
               style-src 'self' ;
