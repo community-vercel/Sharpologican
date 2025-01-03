@@ -1,10 +1,7 @@
 /** @type {import('next').NextConfig} */
-import crypto from 'crypto';
 
 const nextConfig = {
   async headers() {
-    const nonce = crypto.randomBytes(16).toString("base64");
-
     return [
       {
         source: "/(.*)",
@@ -12,20 +9,17 @@ const nextConfig = {
           {
             key: "Content-Security-Policy",
             value: `
-              default-src 'self';
-              script-src 'self' 'nonce-${nonce}' https://www.googletagmanager.com https://www.google-analytics.com;
+              script-src 'self' https://www.googletagmanager.com ;
               connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com;
               img-src 'self' https://www.google-analytics.com https://www.googletagmanager.com;
-              style-src 'self';
               frame-src https://www.googletagmanager.com;
-            `.replace(/\s{2,}/g, " "),
+            `.replace(/\s{2,}/g, " "), // Remove excess whitespace
           },
         ],
       },
     ];
   },
-
-  
+ 
   // basePath: '/new', 
     images: {
       // domains: [ "community-hazel.vercel.app","sharplogicians.com","sharplogicians.com/new","sharplogicians.comundefined","localhost:3000/new","localhost:3002","127.0.0.1", "127.0.0.1:8000","picsum.photos"],
