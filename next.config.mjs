@@ -1,18 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  async headers() {
-    return [
-      {
-        source: "/(.*)",
-        headers: [
-          {
-            key: "Content-Security-Policy",
-            value: "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com;",
-          },
-        ],
-      },
-    ];
-  },
+   headers: [
+    {
+      key: "Content-Security-Policy",
+      value: `
+        default-src 'self';
+        script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline';
+        connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com;
+        img-src 'self' https://www.googletagmanager.com https://www.google-analytics.com data:;
+        style-src 'self' 'unsafe-inline';
+        frame-src https://www.googletagmanager.com;
+      `.replace(/\n/g, ""),
+    },
+  ],
  
   // basePath: '/new', 
     images: {

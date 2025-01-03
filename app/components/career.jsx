@@ -1,14 +1,12 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Careers.module.css';
 import Link from 'next/link';
 
 const CareerPage = ({data}) => {
 
-    const carrers = data?.career[0];
-    const jobs = data?.jobs;
+    useEffect(() => {}, [data]);
 
-    // console.log(jobs,'data');
 
 
   const frontend = process.env.NEXT_PUBLIC_FRONT_URL;
@@ -20,22 +18,22 @@ const CareerPage = ({data}) => {
 
 
    const metadata = {
-     title:  carrers?.meta_title
-       ? String(carrers.meta_title)
+     title:  data?.career[0]?.meta_title
+       ? String(data?.career[0].meta_title)
        : "SharpLogicians | Creative Digital Agency",
-     description:  carrers?.meta_description
-       ? String( carrers.meta_description)
+     description:  data?.career[0]?.meta_description
+       ? String( data?.career[0].meta_description)
        : "SharpLogicians | Creative Digital Agency",
-     keywords:  carrers?.keywords
-       ? String( carrers.keywords)
+     keywords:  data?.career[0]?.keywords
+       ? String( data?.career[0].keywords)
        : "bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative",
      openGraph: {
        title:
-          carrers?.meta_title ||
-          carrers?.meta_title ||
+          data?.career[0]?.meta_title ||
+          data?.career[0]?.meta_title ||
          "SharpLogicians | Creative Digital Agency",
        description:
-          carrers?.meta_description ||
+          data?.career[0]?.meta_description ||
          `SharpLogicians | Creative Digital Agency`,
        url: `${frontend}/career || "default-slug"}`,
        images: ["/logo-light.png"],
@@ -43,11 +41,11 @@ const CareerPage = ({data}) => {
      twitter: {
        card: "summary_large_image",
        title:
-          carrers?.meta_title ||
-          carrers?.meta_title ||
+          data?.career[0]?.meta_title ||
+          data?.career[0]?.meta_title ||
          "SharpLogicians | Creative Digital Agency",
        description:
-          carrers?.meta_description ||
+          data?.career[0]?.meta_description ||
          `SharpLogicians | Creative Digital Agency`,
        url: `${frontend}/career || "default-slug"}`,
        images: ["/logo-light.png"],
