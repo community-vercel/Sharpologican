@@ -6,6 +6,8 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import React,{useState,useEffect} from "react";
 import Script from 'next/script';
 import { usePathname } from "next/navigation";
+import { GoogleAnalytics } from '@next/third-parties/google'
+
 const geistSans = Geist({
 
   variable: "--font-geist-sans",
@@ -23,22 +25,22 @@ const geistMono = Geist_Mono({
 export default function RootLayout({ children }) {
 
  
-    // Ensure we access the router only on the client-side
-const pathname = usePathname(); // Get the current path
+//     // Ensure we access the router only on the client-side
+// const pathname = usePathname(); // Get the current path
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const handleRouteChange = (url) => {
-        window.gtag('config', 'G-SL88DQ1E24', {
-          page_path: url,
-        });
-      };
+//   useEffect(() => {
+//     if (typeof window !== 'undefined') {
+//       const handleRouteChange = (url) => {
+//         window.gtag('config', 'G-SL88DQ1E24', {
+//           page_path: url,
+//         });
+//       };
 
-      // Call the handleRouteChange function whenever the path changes
-      handleRouteChange(pathname);
+//       // Call the handleRouteChange function whenever the path changes
+//       handleRouteChange(pathname);
 
-    }
-  }, [pathname]); // Dependency on pathname to trigger the effect
+//     }
+//   }, [pathname]); // Dependency on pathname to trigger the effect
 
   return (
     <html lang="en">
@@ -49,24 +51,8 @@ const pathname = usePathname(); // Get the current path
           as="image"
           type="image/png"
         />
-        {/* Google Analytics */}
-        <Script
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-SL88DQ1E24"
-        />
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
-        >
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-SL88DQ1E24', {
-              page_path: window.location.pathname,
-            });
-          `}
-        </Script>
+          <GoogleAnalytics gaId="G-SL88DQ1E24" />
+
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         
