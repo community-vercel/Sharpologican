@@ -74,55 +74,53 @@ const CareerPage = ({data}) => {
        <meta name="twitter:title" content={metadata.twitter.title} />
        <meta name="twitter:description" content={metadata.twitter.description} />
        <meta name="twitter:image" content={metadata.twitter.images} />
- 
-       {jobs?.map((job) => (
-  <script
-    key={job.id}
-    type="application/ld+json"
-    dangerouslySetInnerHTML={{
-      __html: JSON.stringify({
-        "@context": "https://schema.org/",
-        "@type": "JobPosting",
-        title: job.title,
-        description: job.description,
-        datePosted: new Date(job.datePosted || Date.now()).toISOString(),
-        employmentType: job.employmentType || "FULL_TIME",
-        hiringOrganization: {
-          "@type": "Organization",
-          name: "Sharplogicians",
-          sameAs: "https://sharplogicians.com",
-        },
-        jobLocation: {
-          "@type": "Place",
-          address: {
-            "@type": "PostalAddress",
-            streetAddress: "153 Ofc# 32",
-            addressLocality: "Islamabad",
-            addressRegion: "Islamabad",
-            postalCode: "44000",
-            addressCountry: job.location || "Pakistan",
+       {data?.jobs.map((job) => (
+    <script
+      key={job.id}
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org/",
+          "@type": "JobPosting",
+          title: job.title,
+          description: job.description,
+          datePosted: new Date().toISOString(),
+          employmentType: "FULL_TIME",
+          hiringOrganization: {
+            "@type": "Organization",
+            name: "Sharplogicians",
+            sameAs: "https://sharplogicians.com",
           },
-        },
-        // ...(job.salary && {
-        //   baseSalary: {
-        //     "@type": "MonetaryAmount",
-        //     currency: "USD",
-        //     value: {
-        //       "@type": "QuantitativeValue",
-        //       value: job.salary,
-        //       unitText: "YEAR",
-        //     },
-        //   },
-        // }),
-        applicationContact: {
-          "@type": "ContactPoint",
-          email: "info@sharplogician.com",
-        },
-      }),
-    }}
-  />
-))}
-
+          jobLocation: {
+            "@type": "Place",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "153 Ofc# 32",
+              addressLocality: "Islamabad",
+              addressRegion: "Islamabad",
+              postalCode: "44000",
+              addressCountry: job.location || "Pakistan",
+            },
+          },
+          baseSalary: job.salary
+            ? {
+                "@type": "MonetaryAmount",
+                currency: "USD",
+                value: {
+                  "@type": "QuantitativeValue",
+                  value: job.salary,
+                  unitText: "YEAR",
+                },
+              }
+            : undefined,
+          applicationContact: {
+            "@type": "ContactPoint",
+            email: "info@sharplogician.com",
+          },
+        }),
+      }}
+    />
+  ))}
 
       <div className={styles.careersPage}>
       <main className={styles.main}>
