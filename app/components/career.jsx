@@ -6,9 +6,9 @@ import Link from 'next/link';
 const CareerPage = ({data}) => {
 
     const carrers = data?.career[0];
-    const jobs = data?.job;
+    const jobs = data?.jobs;
 
-    console.log(jobs,'data');
+    // console.log(jobs,'data');
 
 
 
