@@ -16,7 +16,7 @@ const nextConfig = {
               script-src 'self' 'nonce-${nonce}' https://www.googletagmanager.com https://www.google-analytics.com;
               connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com;
               img-src 'self' https://www.google-analytics.com https://www.googletagmanager.com;
-              style-src 'self' 'unsafe-inline';
+              style-src 'self';
               frame-src https://www.googletagmanager.com;
             `.replace(/\s{2,}/g, " "),
           },
