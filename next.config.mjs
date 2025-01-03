@@ -1,5 +1,4 @@
 /** @type {import('next').NextConfig} */
-
 const nextConfig = {
   async headers() {
     return [
@@ -8,12 +7,7 @@ const nextConfig = {
         headers: [
           {
             key: "Content-Security-Policy",
-            value: `
-              script-src 'self' https://www.googletagmanager.com ;
-              connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com;
-              img-src 'self' https://www.google-analytics.com https://www.googletagmanager.com;
-              frame-src https://www.googletagmanager.com;
-            `.replace(/\s{2,}/g, " "), // Remove excess whitespace
+            value: "script-src 'self' https://www.googletagmanager.com;",
           },
         ],
       },

@@ -6,8 +6,6 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import React,{useState,useEffect} from "react";
 import Script from 'next/script';
 import { usePathname } from "next/navigation";
-import crypto from 'crypto';
-
 const geistSans = Geist({
 
   variable: "--font-geist-sans",
@@ -41,7 +39,7 @@ const pathname = usePathname(); // Get the current path
 
     }
   }, [pathname]); // Dependency on pathname to trigger the effect
-  const nonce = crypto.randomBytes(16).toString('base64');
+  const nonce = typeof document !== 'undefined' ? document.querySelector('head').getAttribute('nonce') : '';
 
   return (
     <html lang="en">
