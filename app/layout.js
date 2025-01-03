@@ -6,6 +6,8 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import React,{useState,useEffect} from "react";
 import Script from 'next/script';
 import { usePathname } from "next/navigation";
+import crypto from 'crypto';
+
 const geistSans = Geist({
 
   variable: "--font-geist-sans",
@@ -39,6 +41,7 @@ const pathname = usePathname(); // Get the current path
 
     }
   }, [pathname]); // Dependency on pathname to trigger the effect
+  const nonce = crypto.randomBytes(16).toString('base64');
 
   return (
     <html lang="en">
@@ -51,22 +54,19 @@ const pathname = usePathname(); // Get the current path
         />
         {/* Google Analytics */}
         <Script
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-SL88DQ1E24"
-        />
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
-        >
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-SL88DQ1E24', {
-              page_path: window.location.pathname,
-            });
-          `}
-        </Script>
+  id="google-analytics"
+  strategy="afterInteractive"
+  nonce={nonce}
+>
+  {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SL88DQ1E24', {
+      page_path: window.location.pathname,
+    });
+  `}
+</Script>
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         
