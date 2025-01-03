@@ -11,7 +11,11 @@ import Career from "../components/career";
 
 
 const Careerform = () => {
-  const [data, setData] = useState();
+  const [data, setData] = useState({
+    jobs: [],
+    benefits: [],
+    career: []
+  });
   const [loading, setLoading] = useState(true);
   const serverurls=process.env.NEXT_PUBLIC_DJANGO_URLS;
 
@@ -34,7 +38,6 @@ const Careerform = () => {
 
   return (
     <>
-    
        
       <Header
           headertransparent="header--transparent"

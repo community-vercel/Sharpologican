@@ -76,7 +76,7 @@ const CareerPage = ({data}) => {
        <meta name="twitter:description" content={metadata.twitter.description} />
        <meta name="twitter:image" content={metadata.twitter.images} />
  
-       {jobs.map((job) => (
+       {jobs?.map((job) => (
   <script
     key={job.id}
     type="application/ld+json"
