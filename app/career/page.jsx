@@ -11,11 +11,7 @@ import Career from "../components/career";
 
 
 const Careerform = () => {
-  const [data, setData] = useState({
-    jobs: [],
-    benefits: [],
-    career: []
-  });
+  const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
   const serverurls=process.env.NEXT_PUBLIC_DJANGO_URLS;
 

@@ -159,7 +159,7 @@ const CreativeLanding = ({ homeDetail }) => {
                   aggregateRating: {
                     "@type": "AggregateRating",
                     ratingValue: "4.86",
-                    reviewCount: job?.length || "877",
+                    reviewCount: testimonials?.length || "877",
                   },
 
                   review: [

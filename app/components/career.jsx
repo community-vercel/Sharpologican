@@ -15,6 +15,7 @@ const CareerPage = ({data}) => {
 
   // Handle file upload
 
+  const serverurls=process.env.NEXT_PUBLIC_DJANGO_URLS;
 
 
    const metadata = {
@@ -51,7 +52,45 @@ const CareerPage = ({data}) => {
        images: ["/logo-light.png"],
      },
    };
-   
+   const generateJobPostingJson = (job) => ({
+    "@context": "https://schema.org/",
+    "@type": "JobPosting",
+    title: job.title,
+    description: job.description,
+    datePosted: new Date(job.datePosted || Date.now()).toISOString(),
+    employmentType: job.employmentType || "FULL_TIME",
+    hiringOrganization: {
+      "@type": "Organization",
+      name: "Sharplogicians",
+      sameAs: "https://sharplogicians.com",
+    },
+    jobLocation: {
+      "@type": "Place",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "153 Ofc# 32",
+        addressLocality: "Islamabad",
+        addressRegion: "Islamabad",
+        postalCode: "44000",
+        addressCountry: job.location || "Pakistan",
+      },
+    },
+    ...(job.salary && {
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          value: job.salary,
+          unitText: "YEAR",
+        },
+      },
+    }),
+    applicationContact: {
+      "@type": "ContactPoint",
+      email: "info@sharplogician.com",
+    },
+  });
    
  
    return (
@@ -72,60 +111,20 @@ const CareerPage = ({data}) => {
        <meta name="twitter:title" content={metadata.twitter.title} />
        <meta name="twitter:description" content={metadata.twitter.description} />
        <meta name="twitter:image" content={metadata.twitter.images} />
- 
   {data?.jobs.map((job) => (
-    <script
-      key={job.id}
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
-          "@context": "https://schema.org/",
-          "@type": "JobPosting",
-          title: job.title,
-          description: job.description,
-          datePosted: new Date().toISOString(),
-          employmentType: "FULL_TIME",
-          hiringOrganization: {
-            "@type": "Organization",
-            name: "Sharplogicians",
-            sameAs: "https://sharplogicians.com",
-          },
-          jobLocation: {
-            "@type": "Place",
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: "153 Ofc# 32",
-              addressLocality: "Islamabad",
-              addressRegion: "Islamabad",
-              postalCode: "44000",
-              addressCountry: job.location || "Pakistan",
-            },
-          },
-          baseSalary: job.salary
-            ? {
-                "@type": "MonetaryAmount",
-                currency: "USD",
-                value: {
-                  "@type": "QuantitativeValue",
-                  value: job.salary,
-                  unitText: "YEAR",
-                },
-              }
-            : undefined,
-          applicationContact: {
-            "@type": "ContactPoint",
-            email: "info@sharplogician.com",
-          },
-        }),
-      }}
-    />
-  ))}
-
+          <script
+            key={job.id}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(generateJobPostingJson(job)),
+            }}
+          />
+        ))}
 
       <div className={styles.careersPage}>
       <main className={styles.main}>
   {/* About Section */}
-  {data.career?.map((carrer, index) => (
+  {data?.career?.map((carrer, index) => (
      <section key={index} className={styles.aboutSection}>
 
 
@@ -141,7 +140,7 @@ const CareerPage = ({data}) => {
   <section className={styles.positionsSection}>
     <h2 className={styles.sectionTitle}>Open Positions</h2>
     <div className={styles.jobListings}>
-    {data.jobs.map((job, index) => (
+    {data?.jobs.map((job, index) => (
         <Link href={`/career/${job.slug}`} key={job.id}>
    <div key={job.id}  className={styles.jobCard}>
    <h3 className={styles.jobTitle}>{job.title}</h3>
@@ -185,7 +184,7 @@ const CareerPage = ({data}) => {
   <section className={styles.benefitsSection}>
     <h2 className={styles.sectionTitle}>Our Benefits</h2>
     <div className={styles.benefitsGrid}>
-    {data.benefits.map((benefit, index) => (
+    {data?.benefits.map((benefit, index) => (
    <div key={index} className={styles.benefit}>
    <h3>{benefit.title}</h3>
    <p>{benefit.description}</p>

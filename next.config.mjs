@@ -1,5 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value: "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com;",
+          },
+        ],
+      },
+    ];
+  },
  
   // basePath: '/new', 
     images: {
