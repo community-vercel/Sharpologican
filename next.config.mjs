@@ -8,13 +8,11 @@ const nextConfig = {
           {
             key: "Content-Security-Policy",
             value: `
-              default-src 'self';
-              script-src 'self' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com;
+              script-src 'self' https://www.googletagmanager.com 'unsafe-inline';
               connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com;
               img-src 'self' https://www.google-analytics.com https://www.googletagmanager.com;
-              style-src 'self' ;
               frame-src https://www.googletagmanager.com;
-            `.replace(/\s{2,}/g, " "),
+            `.replace(/\s{2,}/g, " "), // Remove excess whitespace
           },
         ],
       },
