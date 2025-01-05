@@ -54,7 +54,7 @@ const TestimonialSlider = ({ test }) => {
       )}
     </div>
               <div className="author-info">
-                <h6>{testimonial.name}</h6>
+                <h4 >{testimonial.name}</h4>
               </div>
               <div className="testimonial-thumbnail">
                 <Image

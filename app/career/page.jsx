@@ -1,78 +1,50 @@
-'use client';
-import React, { useRef, useState, useEffect } from "react";
-import { toast, ToastContainer } from 'react-toastify';  // Import toastify
-import 'react-toastify/dist/ReactToastify.css';  // Import CSS for toastify
-import "../components/QuoteForm.css";
-import Header from "../components/Header";
-import ScrollToTop from "react-scroll-up";
-import Footer from "../components/Footer";
-import { Helmet } from 'react-helmet-async';
+
+import React from "react";
+
 import Career from "../components/career";
 
 
-const Careerform = () => {
-  const [data, setData] = useState({
-    jobs: [],
-    benefits: [],
-    career: []
-  });
-  const [loading, setLoading] = useState(true);
-  const serverurls=process.env.NEXT_PUBLIC_DJANGO_URLS;
+export async function fetchInitialdetails() {
+  const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
 
-  useEffect(() => {
-    const fetchData = async () => {
+  try {
+    const [
+      careerresponse
+    ] = await Promise.all([
+      fetch(`${serverurls}get-data/`),
 
-      const response = await fetch(`${serverurls}get-data/`);
-      const result = await response.json();
+    ]);
+
+    const [
+    career,
+    
+    ] = await Promise.all([
+      careerresponse.json(),
       
-      setData(result);
-      setLoading(false);
+    ]);
+
+    return {
+      career: career.career[0],
+      data: career
+      
     };
+  } catch (error) {
+    console.error("An error occurred while fetching properties:", error);
+    return null;
+  }
+}
 
-    fetchData();
-  }, []);
+export default async function Page() {
+  const initialData = await fetchInitialdetails();
+
+  if (!initialData) {
+    return <div>Error loading data</div>;
+  }
+
+  return <Career data={initialData }  />
+  
+}
 
 
 
 
-
-  return (
-    <>
-       
-      <Header
-          headertransparent="header--transparent"
-          colorblack="color--black"
-          logoname="logo.png"
-        />
-
-        {/* Start Breadcrump Area */}
-        <div
-          className="rn-page-title-area pt--120 pb--190 bg_image bg_image--5"
-          data-black-overlay="5"
-        >
-            </div>
-<Career data={data } />
-<div className="backto-top mt-20">
-          <ScrollToTop showUnder={160}>
-          </ScrollToTop>
-        </div>
-        {/* End Back To Top */}
-
-        <Footer />
-         <ToastContainer 
-              position="top-right"
-              autoClose={3000} // Auto-close after 5 seconds
-              hideProgressBar={false}
-              newestOnTop
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-           
-            />
-    </>
-  );
-};
-
-export default Careerform;

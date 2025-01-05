@@ -13,9 +13,9 @@ const CounterOne =({count})=>{
               className="counterup_style--1 col-lg-4 col-md-4 col-sm-6 col-12"
               key={index}
             >
-              <h5 className="counter">
+              <h4 className="counter">
                 <CounterComponent max={value.num} />
-              </h5>
+              </h4>
               <p className="description">{value.description}</p>
             </div>
           ))}

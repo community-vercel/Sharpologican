@@ -6,7 +6,7 @@
 .counterup_style--1 {
     text-align: center;
     margin-top: 40px;
-    h5{
+    h4{
         &.counter{
             font-size: 72px;
             line-height: 80px;
@@ -58,7 +58,7 @@
 .rn-paralax-counterup{
     .counterup_style--1{
         text-align: center;
-        h5{
+        h4{
             &.counter{
                 color: $theme-color;
             }
@@ -73,7 +73,7 @@
 // Counter Style Two
 .counterup_style--2 {
     text-align: center;
-    h5{
+    h4{
         &.counter{
             font-size: 50px;
             line-height: 60px;
@@ -95,7 +95,7 @@
 // Counter White Cersion
 .theme-text-white{
     .counterup_style--1 {
-        h5{
+        h4{
             &.counter{
                 color: #ffffff;
             }

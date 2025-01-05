@@ -2,11 +2,13 @@
 import React, { Suspense, useEffect, useState } from 'react';
 import styles from './Careers.module.css';
 import Link from 'next/link';
-
+import Header from "../components/Header";
+import ScrollToTop from "react-scroll-up";
+import Footer from "../components/Footer";
 const CareerPage = ({data}) => {
 
     useEffect(() => {}, [data]);
-
+console.log(data);
 
 
   const frontend = process.env.NEXT_PUBLIC_FRONT_URL;
@@ -15,65 +17,51 @@ const CareerPage = ({data}) => {
   // Handle file upload
 
   const serverurls=process.env.NEXT_PUBLIC_DJANGO_URLS;
+  const metaTitle = data.career?.meta_title ;
+  const metaDescription = data.career?.meta_description;
+  const metaKeywords = data.career?.keywords ;
+  const metaImages = ['/logo-light.png'];
 
 
-   const metadata = {
-     title:  data.career[0]?.meta_title
-       ? String(data.career[0].meta_title)
-       : "SharpLogicians | Creative Digital Agency",
-     description:  data.career[0]?.meta_description
-       ? String( data?.career[0].meta_description)
-       : "SharpLogicians | Creative Digital Agency",
-     keywords:  data?.career[0]?.keywords
-       ? String( data?.career[0].keywords)
-       : "bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative",
-     openGraph: {
-       title:
-          data?.career[0]?.meta_title ||
-          data?.career[0]?.meta_title ||
-         "SharpLogicians | Creative Digital Agency",
-       description:
-          data?.career[0]?.meta_description ||
-         `SharpLogicians | Creative Digital Agency`,
-       url: `${frontend}/career || "default-slug"}`,
-       images: ["/logo-light.png"],
-     },
-     twitter: {
-       card: "summary_large_image",
-       title:
-          data?.career[0]?.meta_title ||
-          data?.career[0]?.meta_title ||
-         "SharpLogicians | Creative Digital Agency",
-       description:
-          data?.career[0]?.meta_description ||
-         `SharpLogicians | Creative Digital Agency`,
-       url: `${frontend}/career || "default-slug"}`,
-       images: ["/logo-light.png"],
-     },
-   };
-   
-   
+  const metadata = {
+
+    title: metaTitle,
+    description: metaDescription,
+    keywords: metaKeywords,
+    openGraph: {
+      title: metaTitle,
+      description: metaDescription,
+      url: `${frontend}/career`,
+      images: metaImages,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: metaTitle,
+      description: metaDescription,
+      url: `${frontend}/career`,
+      images: metaImages,
+    },
+  
+  };
+  
  
-   return (
-     <>
-       <Suspense fallback={<p>Loading posts...</p>}>
+   return  (
  
-       <title>{metadata.title}</title>
- 
-       <meta name="title" content={metadata.title} />
-       <meta name="description" content={metadata.description} />
-       <meta name="keywords" content={metadata.keywords} />
-       <meta property="og:title" content={metadata.openGraph.title} />
-       <meta
-         property="og:description"
-         content={metadata.openGraph.description}
-       />
-       <meta property="og:url" content={metadata.openGraph.url} />
-       <meta property="og:image" content={metadata.openGraph.images} />
-       <meta name="twitter:title" content={metadata.twitter.title} />
-       <meta name="twitter:description" content={metadata.twitter.description} />
-       <meta name="twitter:image" content={metadata.twitter.images} />
-       {data?.jobs.map((job) => (
+      <Suspense fallback={<p>Loading posts...</p>}>
+        {/* Add metadata */}
+        <title>{metadata.title}</title>
+        <meta name="title" content={metadata.title} />
+        <meta name="description" content={metadata.description} />
+        <meta name="keywords" content={metadata.keywords} />
+        <meta property="og:title" content={metadata.openGraph.title} />
+        <meta property="og:description" content={metadata.openGraph.description} />
+        <meta property="og:url" content={metadata.openGraph.url} />
+        <meta property="og:image" content={metadata.openGraph.images[0]} />
+        <meta name="twitter:title" content={metadata.twitter.title} />
+        <meta name="twitter:description" content={metadata.twitter.description} />
+        <meta name="twitter:image" content={metadata.twitter.images[0]} />
+      
+       {data.data?.jobs.map((job) => (
     <script
       key={job.id}
       type="application/ld+json"
@@ -83,7 +71,7 @@ const CareerPage = ({data}) => {
           "@type": "JobPosting",
           title: job.title,
           description: job.description,
-          datePosted: new Date().toISOString(),
+          datePosted: new Date().now,
           employmentType: "FULL_TIME",
           hiringOrganization: {
             "@type": "Organization",
@@ -120,11 +108,22 @@ const CareerPage = ({data}) => {
       }}
     />
   ))}
+    <Header
+          headertransparent="header--transparent"
+          colorblack="color--black"
+          logoname="logo.png"
+        />
+
+        {/* Start Breadcrump Area */}
+        <div
+          className="rn-page-title-area pt--120 pb--190 bg_image bg_image--5"
+          data-black-overlay="5"
+        ></div>
 
       <div className={styles.careersPage}>
       <main className={styles.main}>
   {/* About Section */}
-  {data?.career?.map((carrer, index) => (
+  {data.data?.career?.map((carrer, index) => (
      <section key={index} className={styles.aboutSection}>
 
 
@@ -140,7 +139,7 @@ const CareerPage = ({data}) => {
   <section className={styles.positionsSection}>
     <h2 className={styles.sectionTitle}>Open Positions</h2>
     <div className={styles.jobListings}>
-    {data?.jobs.map((job, index) => (
+    {data.data?.jobs.map((job, index) => (
         <Link href={`/career/${job.slug}`} key={job.id}>
    <div key={job.id}  className={styles.jobCard}>
    <h3 className={styles.jobTitle}>{job.title}</h3>
@@ -184,7 +183,7 @@ const CareerPage = ({data}) => {
   <section className={styles.benefitsSection}>
     <h2 className={styles.sectionTitle}>Our Benefits</h2>
     <div className={styles.benefitsGrid}>
-    {data?.benefits.map((benefit, index) => (
+    {data.data?.benefits.map((benefit, index) => (
    <div key={index} className={styles.benefit}>
    <h3>{benefit.title}</h3>
    <p>{benefit.description}</p>
@@ -201,8 +200,13 @@ const CareerPage = ({data}) => {
 
     
       </div>
+      <div className="backto-top mt-20">
+                <ScrollToTop showUnder={160}>
+                </ScrollToTop>
+              </div>
+        <Footer />
       </Suspense>
-    </>
+
   );
 };
 

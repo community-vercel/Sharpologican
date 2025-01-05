@@ -1,113 +1,36 @@
-'use client';
-import React, { Component } from "react";
-import { FiCast , FiLayers , FiUsers , FiMonitor ,FiChevronUp } from "react-icons/fi";
-import ScrollToTop from 'react-scroll-up';
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import { Helmet } from 'react-helmet-async';
-import ServiceList from '../components/ServiceList'
-import Breadcrumb from "../components/Breadcrumb";
-import { useState, useEffect, Fragment } from "react";
-import logoLight from "../assets/images/logo/logo-light.png";
-import Image from "next/image";
-import Link from "next/link";
 
+import React from "react";
 
+import ServiceHome from "../components/ServiceHome";
 
-const Service =()=>{
-    const [services, setServices] = useState([]);
-    const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
+export async function fetchInitialdetails() {
+  try {
     const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
-    
-  useEffect(() => {
-    const fetchServices = async () => {
-      const response = await fetch(`${serverurls}services/`);
-      const data = await response.json();
-      setServices(data.data);
-
+    const response = await fetch(`${serverurls}service-metadata/`);
+    if (!response.ok) {
+      // console.error("Failed to fetch metadata:", response.status);
+      return null; // Or throw an error
     }
-    fetchServices()
-},[])
-        return(
-            <>
-<Helmet>
-      <meta charSet="utf-8" />
-      <title>SharpLogicians | Creative Digital Agency | Service</title>
-      <meta name="description" content="SharpLogicians | Creative Digital Agency | Service" />
-      <meta
-        name="keywords"
-        content="bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative"
-      />
-      <meta name="author" content="Createx Studio" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-      <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-      <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-      <link rel="manifest" href="site.webmanifest" />
-      <link rel="mask-icon" color="#5bbad5" href="safari-pinned-tab.svg" />
-      <meta name="msapplication-TileColor" content="#766df4" />
-      <meta name="theme-color" content="#ffffff" />
-    </Helmet>                
-    {/* <Header headertransparent="header--transparent" colorblack="color--black" logoname="logo.png" /> */}
-    <header
-        className={`header-area formobile-menu header--transparent `}
-      >
-        <div className="header-wrapper" id="header-wrapper">
-          <div className="header-left">
-            <div className="logo">
-              <Link href="/">   <Image className="logo-2" width={270} height={72} src="/logo-light.png" alt="Sharplogicians"  /></Link>
-            </div>
-          </div>
-          <div className="header-right">
-           
-            <div className="header-btn">
-              <a className="rn-btn" href="/quote">
-                <span>Get a quote</span>
-              </a>
-            </div>
-            </div>
-            </div>
-            </header>
-                {/* Start Breadcrump Area */}
-                <Breadcrumb title={ 'Service'}   />
-                {/* End Breadcrump Area */}
-
-                {/* Start Service Area */}
-                <div className="service-area ptb--120 bg_color--5">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-lg-12">
-                                <div className="section-title text-center mb--30">
-                                    <h2>Our Services</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="row service-one-wrapper">
-                        <div className="col-lg-12">
-              <ServiceList
-                item="6"
-                service={services}
-                column="col-lg-4 col-md-6 col-sm-6 col-12 text-left"
-              />
-            </div>
-                        </div>
-                    </div>
-                </div>
-                {/* End Service Area */}
-
-                {/* Start Back To Top */}
-                <div className="backto-top">
-                    <ScrollToTop showUnder={160}>
-                        <FiChevronUp />
-                    </ScrollToTop>
-                </div>
-                {/* End Back To Top */}
-                
-                <Footer />
-
-
-            </>
-        )
-    
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error("Error fetching metadata:", error);
+    return null; // Or throw an error
+  }
 }
-export default Service;
+
+export default async function Page() {
+  const initialData = await fetchInitialdetails();
+console.log(initialData);
+  // if (!initialData) {
+  //   return <div>Error loading data</div>;
+  // }
+
+  return <ServiceHome data={initialData }  />
+  
+}
+
+
+
+

@@ -7,7 +7,6 @@ import {
 import ScrollToTop from "react-scroll-up";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { Helmet } from "react-helmet-async";
 import Breadcrumb from "../components/Breadcrumb";
 import Link from "next/link";
 import Image from "next/image";
@@ -24,27 +23,50 @@ const Service = () => {
     };
     fetchServices();
   }, []);
-
-  return (
-    <>
-     <Helmet>
-           <meta charSet="utf-8" />
-           <title>SharpLogicians | Portfolio</title>
-           <meta name="description" content="SharpLogicians | Creative Digital Agency | Portfolio" />
-           <meta
-             name="keywords"
-             content="bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative"
-           />
-           <meta name="author" content="Createx Studio" />
-           <meta name="viewport" content="width=device-width, initial-scale=1" />
-           <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-           <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-           <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-           <link rel="manifest" href="site.webmanifest" />
-           <link rel="mask-icon" color="#5bbad5" href="safari-pinned-tab.svg" />
-           <meta name="msapplication-TileColor" content="#766df4" />
-           <meta name="theme-color" content="#ffffff" />
-         </Helmet> 
+  const metaTitle = 'SharpLogicians |  Portfolio' ;
+  const metaDescription = 'SharpLogicians | Creative Digital Agency | Portfolio';
+  const metaImages = ['/logo-light.png'];
+  
+  const frontend = process.env.NEXT_PUBLIC_FRONT_URL;
+  
+  const metadata = {
+  
+    title: metaTitle || 'SharpLogicians |  Service',
+    description: metaDescription || 'SharpLogicians | Service | Creative Digital Agency | Service',
+    keywords: "bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative",
+    openGraph: {
+      title: metaTitle,
+      description: metaDescription,
+      url: `${frontend}/service`,
+      images: metaImages,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: metaTitle,
+      description: metaDescription,
+      url: `${frontend}/service`,
+      images: metaImages,
+    },
+  
+  };
+  
+  
+  
+          return(
+              <>
+    <title>{metadata.title}</title>
+          <meta name="title" content={metadata.title} />
+          <meta name="description" content={metadata.description} />
+          <meta name="keywords" content={metadata.keywords} />
+          <meta property="og:title" content={metadata.openGraph.title} />
+          <meta property="og:description" content={metadata.openGraph.description} />
+          <meta property="og:url" content={metadata.openGraph.url} />
+          <meta property="og:image" content={metadata.openGraph.images[0]} />
+          <meta name="twitter:title" content={metadata.twitter.title} />
+          <meta name="twitter:description" content={metadata.twitter.description} />
+          <meta name="twitter:image" content={metadata.twitter.images[0]} />
+  
+ 
       <Header
         headertransparent="header--transparent"
         colorblack="color--black"

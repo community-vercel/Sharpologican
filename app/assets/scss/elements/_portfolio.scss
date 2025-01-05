@@ -606,6 +606,7 @@
             &.slick-active{
                 opacity: 1;
                 button{
+                    
                     &::after{
                         -webkit-transform: scale(2);
                         transform: scale(2);
