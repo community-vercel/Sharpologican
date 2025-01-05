@@ -1,3 +1,4 @@
+
 import CreativeLanding from "./components/Home";
 
 export async function fetchInitialdetails() {

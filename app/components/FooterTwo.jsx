@@ -49,7 +49,7 @@ const FooterTwo = () => {
               <ul className="social-share rn-lg-size d-flex justify-content-center liststyle">
                 {SocialShare.map((val, i) => (
                   <li key={i}>
-                    <a href={`${val.link}`}>{val.Social}</a>
+                    <Link aria-label={`Link to ${val.Social}`} href={`${val.link}` }>{val.Social}</Link>
                   </li>
                 ))}
               </ul>

@@ -36,6 +36,7 @@ const slickDot = {
   slidesToShow: 3,
   slidesToScroll: 1,
   dots: true,
+  
   arrows: false,
   responsive: [
     {
@@ -144,61 +145,60 @@ const CreativeLanding = ({ homeDetail }) => {
   return (
     <>
       <Suspense fallback={<p>Loading posts...</p>}>
-    
-          {testimonials?.map((job) => (
-            <script
-              key={job.id}
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{
-                __html: JSON.stringify({
-                  "@context": "https://schema.org",
-                  "@type": "Service",
-                  aggregateRating: {
-                    "@type": "AggregateRating",
-                    ratingValue: "4.86",
-                    reviewCount: testimonials?.length || "877",
-                  },
+        {testimonials?.map((job) => (
+          <script
+            key={job.id}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Service",
+                aggregateRating: {
+                  "@type": "AggregateRating",
+                  ratingValue: "4.86",
+                  reviewCount: testimonials?.length || "877",
+                },
 
-                  review: [
-                    {
-                      "@type": "Review",
-                      author: job?.name || "Ellie",
-                      reviewBody:
-                        job?.title ||
-                        "The lamp burned out and now I have to replace it.",
-                      name: job?.name || "Not a happy camper",
-                      reviewRating: {
-                        "@type": "Rating",
-                        bestRating: "5",
-                        ratingValue: "5",
-                        worstRating: "4.5",
-                      },
+                review: [
+                  {
+                    "@type": "Review",
+                    author: job?.name || "Ellie",
+                    reviewBody:
+                      job?.title ||
+                      "The lamp burned out and now I have to replace it.",
+                    name: job?.name || "Not a happy camper",
+                    reviewRating: {
+                      "@type": "Rating",
+                      bestRating: "5",
+                      ratingValue: "5",
+                      worstRating: "4.5",
                     },
-                  ],
-                }),
-              }}
-            />
-          ))}
-
-          <title>{metadata.title}</title>
-
-          <meta name="title" content={metadata.title} />
-          <meta name="description" content={metadata.description} />
-          <meta name="keywords" content={metadata.keywords} />
-          <meta property="og:title" content={metadata.openGraph.title} />
-          <meta
-            property="og:description"
-            content={metadata.openGraph.description}
+                  },
+                ],
+              }),
+            }}
           />
-          <meta property="og:url" content={metadata.openGraph.url} />
-          <meta property="og:image" content={metadata.openGraph.images} />
-          <meta name="twitter:title" content={metadata.twitter.title} />
-          <meta
-            name="twitter:description"
-            content={metadata.twitter.description}
-          />
-          <meta name="twitter:image" content={metadata.twitter.images} />
-       
+        ))}
+
+        <title>{metadata.title}</title>
+
+        <meta name="title" content={metadata.title} />
+        <meta name="description" content={metadata.description} />
+        <meta name="keywords" content={metadata.keywords} />
+        <meta property="og:title" content={metadata.openGraph.title} />
+        <meta
+          property="og:description"
+          content={metadata.openGraph.description}
+        />
+        <meta property="og:url" content={metadata.openGraph.url} />
+        <meta property="og:image" content={metadata.openGraph.images} />
+        <meta name="twitter:title" content={metadata.twitter.title} />
+        <meta
+          name="twitter:description"
+          content={metadata.twitter.description}
+        />
+        <meta name="twitter:image" content={metadata.twitter.images} />
+
         {/* Header */}
         <header
           className={`header-area formobile-menu header--fixed default-color ${
@@ -380,26 +380,34 @@ const CreativeLanding = ({ homeDetail }) => {
         </div>
         {/* End About Area */}
         <div
+          aria-hidden="true"
           className="portfolio-area pt--120 pb--140 bg_color--1"
           id="portfolio"
         >
-          <div className="rn-slick-dot">
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-6">
-                  <div className="section-title service-style--3 text-left mb--15 mb_sm--0">
+          <div  aria-hidden="true" className="rn-slick-dot">
+            <div  aria-hidden="true" className="container">
+              <div  aria-hidden="true" className="row">
+                <div  aria-hidden="true" className="col-lg-6">
+                  <div  aria-hidden="true" className="section-title service-style--3 text-left mb--15 mb_sm--0">
                     <h2 className="title">Our Portfolio</h2>
                     <p>{portfolioData && portfolioData[0]?.description}</p>
                   </div>
                 </div>
               </div>
-              <div className="row">
-                <div className="col-lg-12">
-                  <div className="slick-space-gutter--15 slickdot--20">
-                    <Slider {...slickDot}>
+              <div  aria-hidden="true" className="row">
+                <div  aria-hidden="true" className="col-lg-12">
+                  <div
+                    aria-hidden="true"
+                    className="slick-space-gutter--15 slickdot--20"
+                  >
+                    <Slider {...slickDot} aria-hidden="true">
                       {portfolioData?.map((value, index) => (
-                        <div className="portfolio" key={index}>
-                          <div className="thumbnail-inner">
+                        <div
+                          aria-hidden="true"
+                          className="portfolio"
+                          key={index}
+                        >
+                          <div   aria-hidden="true"className="thumbnail-inner">
                             <div>
                               <div
                                 className={`thumbnail ${serverurl}${value.image}`}
@@ -426,11 +434,15 @@ const CreativeLanding = ({ homeDetail }) => {
                             <div className="inner">
                               <p>{value.title}</p>
                               <h4>
-                                <Link href={`/portfolio/${value.slug}`}>
+                                <Link
+                                  aria-hidden="true"
+                                  href={`/portfolio/${value.slug}`}
+                                >
                                   {value.heading}
                                 </Link>
                               </h4>
                               <Link
+                                aria-hidden="true"
                                 className="portfolio-button rn-btn"
                                 href={`/portfolio/${value.slug}`}
                               >
@@ -515,8 +527,12 @@ const CreativeLanding = ({ homeDetail }) => {
         {/* End Testimonial Area */}
 
         {/* Start Blog Area */}
-        <div className="rn-blog-area pt--120 pb--140 bg_color--1" id="blog">
-          <div className="container">
+        <div
+          className="rn-blog-area pt--120 pb--140 bg_color--1"
+          id="blog"
+          aria-hidden="true"
+        >
+          <div className="container" aria-hidden="true">
             <div className="row align-items-end">
               <div className="col-lg-6">
                 <div className="section-title text-left">
@@ -525,13 +541,20 @@ const CreativeLanding = ({ homeDetail }) => {
                 </div>
               </div>
             </div>
-            <div className="row mt--55 mt_sm--30 rn-slick-dot slick-space-gutter--15 slickdot--20 row--0">
+            <div
+              aria-hidden="true"
+              className="row mt--55 mt_sm--30 rn-slick-dot slick-space-gutter--15 slickdot--20 row--0"
+            >
               <div className="col-lg-12">
-                <Slider {...slickDot}>
+                <Slider aria-hidden="true" {...slickDot}>
                   {newsData?.map((value, i) => (
-                    <div className="blog blog-style--1" key={i}>
+                    <div
+                      aria-hidden="true"
+                      className="blog blog-style--1"
+                      key={i}
+                    >
                       <div className="thumbnail">
-                        <Link href={`/news/${value.slug}`}>
+                        <Link aria-hidden="true" href={`/news/${value.slug}`}>
                           {/* <img src={serverurl+value?.image} alt="Blog Images" /> */}
                           {value?.image && (
                             <Image
@@ -547,12 +570,13 @@ const CreativeLanding = ({ homeDetail }) => {
                       <div className="content">
                         <p className="blogtype">{value?.title}</p>
                         <h4 className="title">
-                          <Link href={`/news/${value.slug}`}>
+                          <Link aria-hidden="true" href={`/news/${value.slug}`}>
                             {value?.content}
                           </Link>
                         </h4>
                         <div className="blog-btn">
                           <Link
+                            aria-hidden="true"
                             className="rn-btn text-white"
                             href={`/news/${value?.slug}`}
                           >

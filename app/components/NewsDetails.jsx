@@ -8,7 +8,6 @@ import Header from "./Header";
 import Footer from "./Footer";
 import error404 from "../not-found";
 import Link from "next/link";
-import { Helmet } from 'react-helmet-async';
 import { H1 } from "./Typrography";
 import NotFound from "./Notfound";
 const NewsDetail=({news})=> {

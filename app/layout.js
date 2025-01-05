@@ -1,7 +1,6 @@
 'use client';
 import "./globals.css";
 import "./index.scss";
-import { Helmet, HelmetProvider } from 'react-helmet-async';
 import React,{useState,useEffect} from "react";
 import Script from 'next/script';
 import { usePathname } from "next/navigation";
@@ -48,9 +47,7 @@ export default function RootLayout({ children }) {
 
       {/* <body className={`${geistSans.variable} ${geistMono.variable}`}> */}
         
-      <HelmetProvider>
           {children}
-        </HelmetProvider>
       </body>
     </html>
   );

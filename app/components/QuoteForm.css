@@ -90,36 +90,44 @@ h2 {
   
   /* Services Required Checkboxes */
   .checkbox-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+    display: grid; /* Enables grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
+    gap: 1rem; /* Space between items */
+    margin-top: 0.5rem;
   }
   
+  /* Individual checkbox item */
   .checkbox-item {
     display: flex;
     align-items: center;
-    font-size: 1rem;
   }
   
-  .checkbox-item label {
+  /* Input styling */
+  .checkbox-input {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
     cursor: pointer;
-    transition: color 0.3s ease;
-    padding-left: 0.5rem;
   }
   
-  .checkbox-item input {
-    margin-right: 0.5rem;
+  /* Label styling */
+  .checkbox-label {
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
   }
   
-  .checkbox-item input:checked + label {
-    color: rgb(73,143,150);
+  /* Optional: No services message */
+  .no-services {
+    font-size: 14px;
+    color: #999;
   }
   
   /* Budget and Start Time Dropdown */
   select {
     background-color: #fff;
     border: 1px solid rgb(73,143,150);
-    color: #333;
+    /* color: #333; */
     padding: 0.75rem 1rem;
     border-radius: 8px;
     font-size: 1rem;
@@ -164,7 +172,17 @@ h2 {
     font-size: 3rem;
     color: #fff;
   }
+  .error-message {
+    color: #e74c3c;  /* Red color for error */
+    font-size: 0.875rem;  /* Smaller font size */
+    margin-top: 0.25rem;  /* Small space above the message */
+    font-weight: 500;  /* Slightly bold */
+  }
   
+  .error-input {
+    border-color: #e74c3c;  /* Red border for error input */
+    box-shadow: 0 0 5px rgba(231, 76, 60, 0.6);  /* Soft red shadow */
+  }
   .rn-page-title-area .backto-top {
     position: absolute;
     bottom: 40px;
@@ -189,3 +207,4 @@ h2 {
       padding: 1.5rem;
     }
   }
+  
