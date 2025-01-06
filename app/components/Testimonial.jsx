@@ -2,8 +2,12 @@ import Slider from "react-slick";
 import Image from "next/image";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const TestimonialSlider = ({ test }) => {
+  useEffect(() => {
+    
+   
+  }, [test]);
   const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
 
   const slickSettings = {
