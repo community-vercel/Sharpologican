@@ -17,6 +17,9 @@
       aspect-ratio: 4 / 3;
     }
   }
+
+
+  
   
   @media (max-width: 480px) {
     .bg_images {

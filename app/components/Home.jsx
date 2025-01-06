@@ -18,6 +18,8 @@ import { H1, H2 } from "../components/Typrography";
 import { Suspense } from "react";
 import ServiceThreeHome from "../components/ServiceListHome";
 // import styles from '../components/home.module.css';
+
+
 import styles from '../components/home.module.css';
 const SlideList = [
   {
@@ -36,7 +38,6 @@ const slickDot = {
   slidesToShow: 3,
   slidesToScroll: 1,
   dots: true,
-  
   arrows: false,
   responsive: [
     {
