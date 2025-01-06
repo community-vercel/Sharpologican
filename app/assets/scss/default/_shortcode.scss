@@ -148,30 +148,30 @@ font-family: 'Poppins', sans-serif;
 //     background-position: center; /* Centers the background image */
 //     background-color: #f0f0f0; /* Fallback color in case the image hasn't loaded yet */
 //   }
-  .bg_images {
-    width: 100%; /* Full width of the parent container */
-    height: 950px; /* Fixed height for aspect ratio */
-    aspect-ratio: 16 / 9; /* Ensures aspect ratio is maintained */
-    background-size: cover; /* Ensures the image covers the full container */
-    background-position: center; /* Centers the image */
-    background-color: #f0f0f0; /* Fallback background color */
-    transition: background-image 1s ease-in-out; /* Smooth transition for image loading */
-  }
+//   .bg_images {
+//     width: 100%; /* Full width of the parent container */
+//     height: 950px; /* Fixed height for aspect ratio */
+//     aspect-ratio: 16 / 9; /* Ensures aspect ratio is maintained */
+//     background-size: cover; /* Ensures the image covers the full container */
+//     background-position: center; /* Centers the image */
+//     background-color: #f0f0f0; /* Fallback background color */
+//     transition: background-image 1s ease-in-out; /* Smooth transition for image loading */
+//   }
   
 
   
-  /* Optional: Adjust aspect ratio for smaller screens */
-  @media (max-width: 768px) {
-    .bg_images {
-      aspect-ratio: 4 / 3;
-    }
-  }
+//   /* Optional: Adjust aspect ratio for smaller screens */
+//   @media (max-width: 768px) {
+//     .bg_images {
+//       aspect-ratio: 4 / 3;
+//     }
+//   }
   
-  @media (max-width: 480px) {
-    .bg_images {
-      aspect-ratio: 1 / 1;
-    }
-  }
+//   @media (max-width: 480px) {
+//     .bg_images {
+//       aspect-ratio: 1 / 1;
+//     }
+//   }
   
   /* Loop through background images dynamically */
   @for $i from 1 through 34 {
@@ -179,13 +179,13 @@ font-family: 'Poppins', sans-serif;
           background-image: url(../../images/bg/bg-image-#{$i}.jpg) !important;
       }
   }
-  @for $i from 26 through 26 {
+//   @for $i from 26 through 26 {
 
-    .bg_images--#{$i} {
-        background-image: url(/bg-image-#{$i}.webp) !important;
-    }
+//     .bg_images--#{$i} {
+//         background-image: url(/bg-image-#{$i}.webp) !important;
+//     }
     
-}
+// }
 
 
 

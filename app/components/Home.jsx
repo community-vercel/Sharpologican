@@ -17,8 +17,8 @@ import Image from "next/image";
 import { H1, H2 } from "../components/Typrography";
 import { Suspense } from "react";
 import ServiceThreeHome from "../components/ServiceListHome";
-import Head from "next/head";
-
+// import styles from '../components/home.module.css';
+import styles from '../components/home.module.css';
 const SlideList = [
   {
     textPosition: "text-center",
@@ -269,8 +269,8 @@ const CreativeLanding = ({ homeDetail }) => {
 
         {/* Start Slider Area */}
         <div className="slider-activation slider-creative-agency" id="home">
-          <div className={homeDetail?.classname} data-black-overlay="6">
-            {SlideList.map((value, index) => (
+        <div className={`${styles.bg_images} ${styles.bg_images__26}`} data-black-overlay="6">
+        {SlideList.map((value, index) => (
               <div
                 className="slide slide-style-2 slider-paralax d-flex align-items-center justify-content-center"
                 key={index}
