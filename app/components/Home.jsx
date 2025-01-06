@@ -46,6 +46,7 @@ const slickDot = {
         slidesToShow: 2,
       },
     },
+    
     {
       breakpoint: 993,
       settings: {
