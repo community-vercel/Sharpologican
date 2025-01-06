@@ -83,14 +83,14 @@ useEffect(() => {
     openGraph: {
       title: metaTitle,
       description: metaDescription,
-      url: `${frontend}/service`,
+      url: `${frontend}/services`,
       images: metaImages,
     },
     twitter: {
       card: 'summary_large_image',
       title: metaTitle,
       description: metaDescription,
-      url: `${frontend}/service`,
+      url: `${frontend}/services`,
       images: metaImages,
     },
   

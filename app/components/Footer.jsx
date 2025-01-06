@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import {
   FaTwitter,
@@ -88,16 +89,16 @@ const Footer = ({ heading3 }) => {
                       <h4>Quick Link</h4>
                       <ul className="ft-link">
                         <li>
-                          <a href="/portfolio">Work</a>
+                          <Link href="/portfolio">Work</Link>
                         </li>
                         {/* <li>
                           <a href="/#about">About</a>
                         </li> */}
                         <li>
-                          <a href="/career">Career</a>
+                          <Link href="/career">Career</Link>
                         </li>
                         <li>
-                          <a href="/contact">Let's Talk</a>
+                          <Link href="/contact">Let's Talk</Link>
                         </li>
                       </ul>
                     </div>
@@ -128,7 +129,7 @@ const Footer = ({ heading3 }) => {
                         <ul className="social-share social-style--2 d-flex justify-content-start liststyle mt--15">
                           {SocialShare.map((val, i) => (
                             <li key={i}>
-                              <a href={`${val.link}`}>{val.Social}</a>
+                              <Link href={`${val.link}`}>{val.Social}</Link>
                             </li>
                           ))}
                         </ul>

@@ -18,7 +18,7 @@ const ServiceThree = ({column,service}) => {
                     <div className="row">
                     {ServiceContent?.map( (val , i) => (
                         <div className={`${column}`} key={i}>
-                            <Link href={`/service/${val.slug}`}>
+                            <Link href={`/services/${val.slug}`}>
                                 <div className="service service__style--2">
                                     <div className="icon">
                                         {/* <imgs rc={serverurl+val.image} /> */}
