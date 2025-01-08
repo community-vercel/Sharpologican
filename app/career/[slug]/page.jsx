@@ -124,11 +124,7 @@ const CareerPage = () => {
     },
   };
   
-  if(!data){
-    return(
-<NotFound />
-    )
-  }
+ 
 
   return (
     <>

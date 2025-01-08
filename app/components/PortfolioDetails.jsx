@@ -99,11 +99,7 @@ useEffect(() => {
         img.onload = () => setImageLoaded(true);
         img.onerror = () => setImageLoaded(true); // If an error occurs, still update the state to avoid infinite loading
       }, [bg_image]);
-      if(!portfolio){
-        return(
- <NotFound />
-        )
-      }
+    
       return (
     <>
       <title>{metadata.title}</title>

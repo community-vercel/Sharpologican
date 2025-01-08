@@ -1,4 +1,5 @@
 import NewsDetail from "@/app/components/NewsDetails";
+import NotFound from "@/app/components/Notfound";
 import ServiceDetails from "@/app/components/ServiceDetails";
 
 
@@ -38,7 +39,11 @@ export default async function Page({ params }) {
   const { slug } = await params
 
   const initialservice = await fetchInitialdetails(slug);
-
+  if(!initialservice){
+    return(
+<NotFound />
+    )
+  }
  
 
   return <NewsDetail news ={initialservice}  />;
