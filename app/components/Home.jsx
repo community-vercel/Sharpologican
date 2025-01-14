@@ -69,6 +69,8 @@ const slickDot = {
 };
 
 const CreativeLanding = ({ homeDetail }) => {
+
+  console.log("Home details",homeDetail)
   const [menuOpen, setMenuOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
   const [services, setServices] = useState(homeDetail?.services);
@@ -147,40 +149,44 @@ const CreativeLanding = ({ homeDetail }) => {
   return (
     <>
       <Suspense fallback={<p>Loading posts...</p>}>
-        {testimonials?.map((job) => (
-          <script
-            key={job.id}
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "Service",
-                aggregateRating: {
-                  "@type": "AggregateRating",
-                  ratingValue: "4.86",
-                  reviewCount: testimonials?.length || "877",
-                },
-
-                review: [
-                  {
-                    "@type": "Review",
-                    author: job?.name || "Ellie",
-                    reviewBody:
-                      job?.title ||
-                      "The lamp burned out and now I have to replace it.",
-                    name: job?.name || "Not a happy camper",
-                    reviewRating: {
-                      "@type": "Rating",
-                      bestRating: "5",
-                      ratingValue: "5",
-                      worstRating: "4.5",
-                    },
-                  },
-                ],
-              }),
-            }}
-          />
-        ))}
+      {testimonials?.map((job) => (
+  <script
+    key={job.id}
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name:job?.name || "Example Service Name", // Replace with the actual service name being reviewed
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "4.86",
+          reviewCount: testimonials?.length || "877",
+        },
+        review: [
+          {
+            "@type": "Review",
+            author: job?.name || "Ellie",
+            reviewBody:
+              job?.title ||
+              "The lamp burned out and now I have to replace it.",
+            name: job?.name || "Not a happy camper",
+            reviewRating: {
+              "@type": "Rating",
+              bestRating: "5",
+              ratingValue: "5",
+              worstRating: "4.5",
+            },
+            itemReviewed: {
+              "@type": "Service",
+              name:  job?.title  || "Service", // Replace with the reviewed item's name
+            },
+          },
+        ],
+      }),
+    }}
+  />
+))}
 
         <title>{metadata.title}</title>
 

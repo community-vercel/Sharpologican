@@ -6,6 +6,8 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import styles from '../Careers.module.css';
 import NotFound from "@/app/components/Notfound";
+import { toast, ToastContainer } from 'react-toastify';  // Import toastify
+import 'react-toastify/dist/ReactToastify.css';  // Import CSS for toastify
 
 const CareerPage = () => {
   const [data, setData] = useState();
@@ -57,6 +59,7 @@ const CareerPage = () => {
   const toggleModal = () => {
     setIsModalOpen((prevState) => !prevState);
   };
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -65,6 +68,7 @@ const CareerPage = () => {
     formDataToSend.append('name', formData.name);
     formDataToSend.append('email', formData.email);
     formDataToSend.append('cv', formData.cv);
+    setIsSubmitting(true); // Disable inputs and show loading indicator
 
     try {
       const response = await fetch(`${serverurls}submit-application/`, {
@@ -75,7 +79,9 @@ const CareerPage = () => {
       const result = await response.json();
 
       if (response.ok) {
-        alert("Thank you for your time, application submitted successfully. We will get in touch with you soon.");
+                toast.success("Thank you for applying ")
+                setIsSubmitting(false); // Re-enable inputs
+
         setFormData({
           name: '',
           email: '',
@@ -83,10 +89,14 @@ const CareerPage = () => {
         });
         toggleModal();
       } else {
+        setIsSubmitting(false); // Re-enable inputs
+
         // Handle error
       }
     } catch (error) {
       // Handle error
+      setIsSubmitting(false); // Re-enable inputs
+
     }
   };
   const metadata = {
@@ -206,9 +216,9 @@ const CareerPage = () => {
                     required
                   />
                 </div>
-                <button type="submit" className={styles.submitBtn}>
-                  Submit Application
-                </button>
+                <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
+          {isSubmitting ? 'Submitting...' : 'Submit Application'}
+        </button>
               </form>
             </div>
           </div>
@@ -221,6 +231,18 @@ const CareerPage = () => {
       </div>
 
       <Footer />
+         <ToastContainer 
+              position="top-right"
+              autoClose={3000} // Auto-close after 5 seconds
+              hideProgressBar={false}
+              newestOnTop
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+             
+            />
     </>
   );
 };
