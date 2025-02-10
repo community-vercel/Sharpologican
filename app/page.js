@@ -17,7 +17,7 @@ export async function fetchInitialdetails() {
       clientsResponse,
       countsResponse,
     ] = await Promise.all([
-      fetch(`${serverurls}get-home-detail/`, { cache: 'force-cache' }),
+      fetch(`${serverurls}get-home-detail/`),
       fetch(`${serverurls}services/`),
       fetch(`${serverurls}about-us/`),
       fetch(`${serverurls}portfolio/`),
