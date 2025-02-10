@@ -1,73 +1,72 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  //  headers: [
-  //   {
-  //     key: "Content-Security-Policy",
-  //     value: `
-  //       default-src 'self';
-  //       script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline';
-  //       connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com;
-  //       img-src 'self' https://www.googletagmanager.com https://www.google-analytics.com data:;
-  //       style-src 'self' 'unsafe-inline';
-  //       frame-src https://www.googletagmanager.com;
-  //     `.replace(/\n/g, ""),
-  //   },
-  // ],
- 
-  // basePath: '/new', 
-    images: {
-      // domains: [ "community-hazel.vercel.app","sharplogicians.com","sharplogicians.com/new","sharplogicians.comundefined","localhost:3000/new","localhost:3002","127.0.0.1", "127.0.0.1:8000","picsum.photos"],
-      remotePatterns: [
-        {
-          protocol: "https",
-          hostname: "*.googleusercontent.com",
-          port: "",
-          pathname: "**",
-        },
- 
-            {
-              protocol: 'https', // Specify protocol (e.g., 'http' or 'https')
-              hostname: 'sharplogicians.com', // Specify domain name
-              port: '', // Leave empty for default port
-              pathname: '/**', // Allow all paths under this domain
-            },
-            
-            {
-              protocol: 'https', // Specify protocol (e.g., 'http' or 'https')
-              hostname: 'sharplogicians.comundefined', // Specify domain name
-              port: '', // Leave empty for default port
-              pathname: '/**', // Allow all paths under this domain
-            },
-            
-            {
-              protocol: 'https', // Specify protocol (e.g., 'http' or 'https')
-              hostname: 'sharplogicians.com/api', // Specify domain name
-              port: '', // Leave empty for default port
-              pathname: '/**', // Allow all paths under this domain
-            },
-    
-            {
-              protocol: 'http', // Specify protocol (e.g., 'http' or 'https')
-              hostname: '127.0.0.1', // Specify domain name
-              port: '8000', // Leave empty for default port
-              pathname: '/**', // Allow all paths under this domain
-            },
-            {
-              protocol: 'https', // Specify protocol (e.g., 'http' or 'https')
-              hostname: 'sharplogicians.com"', // Specify domain name
-              port: '', // Leave empty for default port
-              pathname: '/**', // Allow all paths under this domain
-            },
-      ],
-      
-    },  
-    
-    experimental: {
-      workerThreads: false,
-      cpus: 1,
-    },
-    
-  };
-  
-  export default nextConfig;
+  async headers() {
+    return [
+      {
+        // Cache static assets (JS, CSS, images) for 1 year
+        source: '/_next/static/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        // Cache public static files (e.g., favicon, robots.txt) for 1 year
+        source: '/static/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        // Disable caching for HTML files and API routes
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'no-store, max-age=0',
+          },
+        ],
+      },
+    ];
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "*.googleusercontent.com",
+        port: "",
+        pathname: "**",
+      },
+      {
+        protocol: 'https',
+        hostname: 'sharplogicians.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'sharplogicians.com',
+        port: '',
+        pathname: '/api/**',
+      },
+      {
+        protocol: 'http',
+        hostname: '127.0.0.1',
+        port: '8000',
+        pathname: '/**',
+      },
+    ],
+  },
+  experimental: {
+    workerThreads: true,
+    cpus: 4,
+  },
+};
+
+export default nextConfig;
   
