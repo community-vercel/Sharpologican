@@ -4,6 +4,7 @@ import CreativeLanding from "./components/Home";
 export async function fetchInitialdetails() {
   const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
 
+  
   try {
     const [
       homeDetailResponse,
