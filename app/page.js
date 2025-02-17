@@ -17,16 +17,16 @@ export async function fetchInitialdetails() {
       clientsResponse,
       countsResponse,
     ] = await Promise.all([
-      fetch(`${serverurls}get-home-detail/`),
-      fetch(`${serverurls}services/`),
-      fetch(`${serverurls}about-us/`),
-      fetch(`${serverurls}portfolio/`),
-      fetch(`${serverurls}team/`),
-      fetch(`${serverurls}testimonials/`),
-      fetch(`${serverurls}news/`),
-      fetch(`${serverurls}contact/`),
-      fetch(`${serverurls}clients/`),
-      fetch(`${serverurls}get-count/`),
+      fetch(`${serverurls}get-home-detail/`, { cache: 'no-store' }),
+  fetch(`${serverurls}services/`, { cache: 'no-store' }),
+  fetch(`${serverurls}about-us/`, { cache: 'no-store' }),
+  fetch(`${serverurls}portfolio/`, { cache: 'no-store' }),
+  fetch(`${serverurls}team/`, { cache: 'no-store' }),
+  fetch(`${serverurls}testimonials/`, { cache: 'no-store' }),
+  fetch(`${serverurls}news/`, { cache: 'no-store' }),
+  fetch(`${serverurls}contact/`, { cache: 'no-store' }),
+  fetch(`${serverurls}clients/`, { cache: 'no-store' }),
+  fetch(`${serverurls}get-count/`, { cache: 'no-store' })
     ]);
 
     const [
