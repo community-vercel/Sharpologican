@@ -157,32 +157,28 @@ const CreativeLanding = ({ homeDetail }) => {
       __html: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "Service",
-        name:job?.name || "Example Service Name", // Replace with the actual service name being reviewed
+        name: job?.name || "Example Service Name", // Replace with the actual service name being reviewed
         aggregateRating: {
           "@type": "AggregateRating",
           ratingValue: "4.86",
           reviewCount: testimonials?.length || "877",
         },
-        review: [
-          {
-            "@type": "Review",
-            author: job?.name || "Ellie",
-            reviewBody:
-              job?.title ||
-              "The lamp burned out and now I have to replace it.",
-            name: job?.name || "Not a happy camper",
-            reviewRating: {
-              "@type": "Rating",
-              bestRating: "5",
-              ratingValue: "5",
-              worstRating: "4.5",
-            },
-            itemReviewed: {
-              "@type": "Service",
-              name:  job?.title  || "Service", // Replace with the reviewed item's name
-            },
+        review: {
+          "@type": "Review",
+          author: job?.name || "Ellie",
+          reviewBody: job?.title || "The lamp burned out and now I have to replace it.",
+          name: job?.name || "Not a happy camper",
+          reviewRating: {
+            "@type": "Rating",
+            bestRating: "5",
+            ratingValue: "5",
+            worstRating: "4.2",
           },
-        ],
+          itemReviewed: {
+            "@type": "Service",
+            name: job?.title || "Service Name", // Replace with the reviewed item's name
+          },
+        },
       }),
     }}
   />
