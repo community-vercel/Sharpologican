@@ -150,38 +150,36 @@ const CreativeLanding = ({ homeDetail }) => {
     <>
       <Suspense fallback={<p>Loading posts...</p>}>
       {testimonials?.map((job) => (
-  <script
-    key={job.id}
-    type="application/ld+json"
-    dangerouslySetInnerHTML={{
-      __html: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Service",
-        name: job?.name || "Example Service Name", // Replace with the actual service name being reviewed
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: "4.86",
-          reviewCount: testimonials?.length || "877",
-        },
-        review: {
-          "@type": "Review",
-          author: job?.name || "Ellie",
-          reviewBody: job?.title || "The lamp burned out and now I have to replace it.",
-          name: job?.name || "Not a happy camper",
-          reviewRating: {
-            "@type": "Rating",
-            bestRating: "5",
-            ratingValue: "5",
-            worstRating: "4.2",
-          },
-          itemReviewed: {
-            "@type": "Service",
-            name: job?.title || "Service Name", // Replace with the reviewed item's name
-          },
-        },
-      }),
-    }}
-  />
+        
+       
+          <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org/",
+              "@type": "Review",
+              "itemReviewed": {
+                "@type": "Restaurant",
+                "image": serverurl+'/'+job.image || "https://www.example.com/seafood-restaurant.jpg",
+                "name": job.name || "Legal Seafood",
+                "servesCuisine": job.name || "Seafood",
+             
+              },
+              
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": 4.9
+              },
+              "author": {
+                "@type": "Person",
+                "name": job.name  || "John Doe"
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": 5,
+                "bestRating": 5,
+                "ratingCount": testimonials.length || '88'
+              },
+
+            }) }}  />
 ))}
 
         <title>{metadata.title}</title>
