@@ -119,7 +119,6 @@ const News = () => {
                               <div className="portfolio-button">
                                 <Link className="rn-btn" href={`/news/${value.slug}`}>
                                   Read More
-
                         
                                 </Link>
                               </div>
