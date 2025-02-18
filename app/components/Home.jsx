@@ -149,8 +149,8 @@ const CreativeLanding = ({ homeDetail }) => {
     <>
       <Suspense fallback={<p>Loading posts...</p>}>
       {testimonials?.map((job) => (
-      
-       
+
+
           <script key={job.id} type="application/ld+json" dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org/",
@@ -160,7 +160,14 @@ const CreativeLanding = ({ homeDetail }) => {
                 "image": serverurl+'/'+job.image || "https://www.example.com/seafood-restaurant.jpg",
                 "name": job.name || "Legal Seafood",
                 "servesCuisine": job.name || "Seafood",
-             
+                "address" :{
+                  "@type": "PostalAddress",
+                  "streetAddress":job.split(" - ")[1] || "123 William St",
+                  "addressLocality":job.split(" - ")[1] || "New York",
+                  "addressRegion": job.split(" - ")[1] || "NY",
+                  "postalCode": job.split(" - ")[1] || "10038",
+                  "addressCountry":job.split(" - ")[1] || "US"
+                }
               },
               
               "reviewRating": {
