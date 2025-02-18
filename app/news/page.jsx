@@ -119,6 +119,8 @@ const News = () => {
                               <div className="portfolio-button">
                                 <Link className="rn-btn" href={`/news/${value.slug}`}>
                                   Read More
+
+                                  
                                 </Link>
                               </div>
                             </div>
@@ -130,6 +132,7 @@ const News = () => {
                 </div>
               </div>
             </div>
+
             {/* Load More Button */}
             {visibleItems < newsdata.length && (
               <div className="row mt--30">
