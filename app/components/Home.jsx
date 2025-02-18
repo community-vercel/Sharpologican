@@ -70,7 +70,6 @@ const slickDot = {
 
 const CreativeLanding = ({ homeDetail }) => {
 
-  console.log("Home details",homeDetail)
   const [menuOpen, setMenuOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
   const [services, setServices] = useState(homeDetail?.services);

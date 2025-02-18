@@ -30,6 +30,7 @@ export async function fetchInitialdetails() {
   fetch(`${serverurls}get-count/`, { cache: 'no-store' })
     ]);
 
+    
     const [
       homeDetail,
       services,
