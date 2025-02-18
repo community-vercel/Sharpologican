@@ -120,7 +120,8 @@ const News = () => {
                                 <Link className="rn-btn" href={`/news/${value.slug}`}>
                                   Read More
 
-                                  
+                        
+                        
                                 </Link>
                               </div>
                             </div>
