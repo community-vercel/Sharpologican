@@ -144,6 +144,22 @@ const CreativeLanding = ({ homeDetail }) => {
   const handleImageLoad = () => {
     setImageLoaded(true);
   };
+  function getRandomDate() {
+    const startDate = new Date();
+    const endDate = new Date(startDate.getFullYear() - 1, startDate.getMonth(), startDate.getDate()); // 1 year ago
+    
+    // Generate a random date between startDate and endDate
+    const randomTimestamp = new Date(startDate - Math.random() * (startDate - endDate)).getTime();
+    
+    const randomDate = new Date(randomTimestamp);
+    
+    // Format date as YYYY-MM-DD
+    const formattedDate = randomDate.toISOString().split('T')[0];
+    
+    return formattedDate;
+  }
+  const randomDate = getRandomDate();
+
 
   return (
     <>
@@ -154,30 +170,45 @@ const CreativeLanding = ({ homeDetail }) => {
 
           <script key={job.id} type="application/ld+json" dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              "@context": "https://schema.org/",
-              "@type": "Review",
-              "itemReviewed": {
-                "@type": "Restaurant",
-                "image": serverurl+'/'+job.image || "https://www.example.com/seafood-restaurant.jpg",
-                "name": job.name || "Legal Seafood",
-                "address" :{
-                  "@type": "PostalAddress",
-                  "streetAddress":job.name?.split(" - ")[0] || "NewYork",
-                  
-                }
-                
-              },
               
-              "reviewRating": {
-                "@type": "Rating",
-                "ratingValue": 4.9
-              },
-              "author": {
-                "@type": "Person",
-                "name": job.name  || "John Doe"
-              },
-             
-
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "Sharplogicians",
+                "url": "https://sharplogicians.com",
+                "logo": "https://sharplogicians.com/logo.png",
+                "description": "Sharplogicians is a top-tier software development company specializing in Magento, WordPress, Next.js, Odoo, Python, and cloud hosting solutions.",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "1309 Coffeen Avenue STE 1200 Sheridan Wyomin",
+                  "addressLocality": "Sheridan Wyoming ",
+                  "addressRegion": "US",
+                  "postalCode": "82801",
+                  "addressCountry": "USA"
+                },
+                "telephone": "+1 307 460 4411",
+                "aggregateRating": {
+                  "@type": "AggregateRating",
+                  "ratingValue": "4.8",
+                  "reviewCount": testimonials.length || "85"
+                },
+                "review": [
+                  {
+                    "@type": "Review",
+                    "author": {
+                      "@type": "Person",
+                      "name": job.name || "John Doe"
+                    },
+                    "reviewRating": {
+                      "@type": "Rating",
+                      "ratingValue": "5",
+                      "bestRating": "5"
+                    },
+                    "datePublished":randomDate ||  "2024-02-18",
+                    "reviewBody": job.title || "Sharplogicians provided exceptional service in developing our Magento-based eCommerce platform. Their expertise is unparalleled!"
+                  },
+                 
+                ]
+              
             }) }}  />
 ))}
 
