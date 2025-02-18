@@ -83,7 +83,7 @@ class Header extends Component {
                   <Link href="/#testimonial">Testimonial</Link>
                 </li>
                 <li>
-                  <Link href="/#blog">Blog    </Link>
+                  <Link href="/news">Blog    </Link>
                 </li>
                 <li>
                   <Link href="/contact" >Contact</Link>
