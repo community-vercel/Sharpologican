@@ -165,6 +165,7 @@ const CreativeLanding = ({ homeDetail }) => {
                   "streetAddress":job.name?.split(" - ")[0] || "NewYork",
                   
                 }
+                
               },
               
               "reviewRating": {
