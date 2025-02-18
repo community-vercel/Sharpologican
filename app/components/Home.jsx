@@ -162,11 +162,11 @@ const CreativeLanding = ({ homeDetail }) => {
                 "servesCuisine": job.name || "Seafood",
                 "address" :{
                   "@type": "PostalAddress",
-                  "streetAddress":job.split(" - ")[1] || "123 William St",
-                  "addressLocality":job.split(" - ")[1] || "New York",
-                  "addressRegion": job.split(" - ")[1] || "NY",
-                  "postalCode": job.split(" - ")[1] || "10038",
-                  "addressCountry":job.split(" - ")[1] || "US"
+                  "streetAddress":job.name?.split(" - ")[1] || "123 William St",
+                  "addressLocality":job.name?.split(" - ")[1] || "New York",
+                  "addressRegion": job.name?.split(" - ")[1] || "NY",
+                  "postalCode": job.name?.split(" - ")[1] || "10038",
+                  "addressCountry":job.name?.split(" - ")[1] || "US"
                 }
               },
               
