@@ -160,14 +160,10 @@ const CreativeLanding = ({ homeDetail }) => {
                 "@type": "Restaurant",
                 "image": serverurl+'/'+job.image || "https://www.example.com/seafood-restaurant.jpg",
                 "name": job.name || "Legal Seafood",
-                "servesCuisine": job.name || "Seafood",
                 "address" :{
                   "@type": "PostalAddress",
-                  "streetAddress":job.name?.split(" - ")[1] || "123 William St",
-                  "addressLocality":job.name?.split(" - ")[1] || "New York",
-                  "addressRegion": job.name?.split(" - ")[1] || "NY",
-                  "postalCode": job.name?.split(" - ")[1] || "10038",
-                  "addressCountry":job.name?.split(" - ")[1] || "US"
+                  "streetAddress":job.name?.split(" - ")[0] || "NewYork",
+                  
                 }
               },
               
@@ -179,12 +175,7 @@ const CreativeLanding = ({ homeDetail }) => {
                 "@type": "Person",
                 "name": job.name  || "John Doe"
               },
-              "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": 5,
-                "bestRating": 5,
-                "ratingCount": testimonials.length || '88'
-              },
+             
 
             }) }}  />
 ))}
