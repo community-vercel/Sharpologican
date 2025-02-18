@@ -121,8 +121,6 @@ const News = () => {
                                   Read More
 
                         
-                        
-                        
                                 </Link>
                               </div>
                             </div>
