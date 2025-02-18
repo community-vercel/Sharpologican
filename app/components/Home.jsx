@@ -149,9 +149,9 @@ const CreativeLanding = ({ homeDetail }) => {
     <>
       <Suspense fallback={<p>Loading posts...</p>}>
       {testimonials?.map((job) => (
-        
+      
        
-          <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{
+          <script key={job.id} type="application/ld+json" dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org/",
               "@type": "Review",
