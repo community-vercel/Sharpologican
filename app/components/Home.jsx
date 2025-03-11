@@ -682,6 +682,8 @@ const CreativeLanding = ({ homeDetail }) => {
           </ScrollToTop>
         </div>
       </Suspense>
+      <script src="https://anvobot-ai-web-agent.vercel.app/widget.js?websiteId=67bdf98b4e2df117848cfb45"></script>
+
     </>
   );
 };
