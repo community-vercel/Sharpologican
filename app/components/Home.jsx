@@ -18,6 +18,7 @@ import { H1, H2 } from "../components/Typrography";
 import { Suspense } from "react";
 import ServiceThreeHome from "../components/ServiceListHome";
 // import styles from '../components/home.module.css';
+import { useRouter } from "next/navigation"
 
 
 import styles from '../components/home.module.css';
@@ -69,6 +70,9 @@ const slickDot = {
 };
 
 const CreativeLanding = ({ homeDetail }) => {
+  const router = useRouter();
+  const { locale, locales, pathname, query } = router;
+ 
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
@@ -141,24 +145,37 @@ const CreativeLanding = ({ homeDetail }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   // Function to handle image load
-  const handleImageLoad = () => {
-    setImageLoaded(true);
+  const [randomDate, setRandomDate] = useState("");
+  
+  const languages = [
+    { code: "en", name: "English", flag: "🌐" },
+    { code: "es", name: "Español", flag: "🇪🇸" },
+    { code: "fr", name: "Français", flag: "🇫🇷" },
+    { code: "dt", name: "Dutch", flag: "🇳🇱" },
+  ];
+
+  const changeLanguage = (e) => {
+    const selectedLocale = e.target.value;
+  
+    // Dynamically construct the URL based on the selected language
+    const selectedLanguage = selectedLocale === 'en'
+      ? 'https://sharplogicians.com'
+      : `https://sharplogicians.${selectedLocale}`;
+  
+    // Open the URL in a new tab for non-English languages, in the same tab for English
+    window.open(selectedLanguage, selectedLocale === 'en' ? '_self' : '_blank');
   };
-  function getRandomDate() {
-    const startDate = new Date();
-    const endDate = new Date(startDate.getFullYear() - 1, startDate.getMonth(), startDate.getDate()); // 1 year ago
-    
-    // Generate a random date between startDate and endDate
-    const randomTimestamp = new Date(startDate - Math.random() * (startDate - endDate)).getTime();
-    
-    const randomDate = new Date(randomTimestamp);
-    
-    // Format date as YYYY-MM-DD
-    const formattedDate = randomDate.toISOString().split('T')[0];
-    
-    return formattedDate;
-  }
-  const randomDate = getRandomDate();
+  useEffect(() => {
+    function getRandomDate() {
+      const startDate = new Date();
+      const endDate = new Date(startDate.getFullYear() - 1, startDate.getMonth(), startDate.getDate());
+      const randomTimestamp = new Date(startDate - Math.random() * (startDate - endDate)).getTime();
+      return new Date(randomTimestamp).toISOString().split('T')[0];
+    }
+
+    setRandomDate(getRandomDate()); // Runs only on the client after hydration
+  }, []);
+
 
 
   return (
@@ -198,7 +215,7 @@ const CreativeLanding = ({ homeDetail }) => {
         "ratingValue": "5",
         "bestRating": "5"
       },
-      "datePublished": getRandomDate() || "2024-02-18", // Call the random date function here
+      "datePublished": randomDate || "2024-02-18", // Call the random date function here
       "reviewBody": job.title || "Sharplogicians provided exceptional service in developing our Magento-based eCommerce platform. Their expertise is unparalleled!"
     }))
   })
@@ -259,6 +276,7 @@ const CreativeLanding = ({ homeDetail }) => {
                 </Link>
               </div>
             </div>
+      
             {/* Main Menu */}
             <div className="header-right">
               <nav className="mainmenunav d-lg-block">
@@ -277,7 +295,9 @@ const CreativeLanding = ({ homeDetail }) => {
                     activeClass="is-current" // Add your active class name
                     closeMenu={closeMenu} // Pass the closeMenu function here
                   />
+                  
                 </ul>
+                
               </nav>
 
               {/* Quote Button */}
@@ -286,7 +306,20 @@ const CreativeLanding = ({ homeDetail }) => {
                   <span>Get Quote</span>
                 </Link>
               </div>
-
+              <div className="header-btn bg_color--2 p-0">
+      <select
+        id="language-select"
+        value={locale}
+        onChange={changeLanguage}
+        className="text-white bg_color--2"
+      >
+        {languages.map((loc) => (
+          <option key={loc.code} value={loc.code} className="rn-btn">
+            {loc.flag} {loc.name}
+          </option>
+        ))}
+      </select>
+    </div>
               {/* Hamburger Menu */}
               <div className="humberger-menu d-block d-lg-none pl--20">
                 <span onClick={toggleMenu} className="menutrigger text-white">

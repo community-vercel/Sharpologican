@@ -1,56 +1,69 @@
-
 import React, { Component } from "react";
-import { FiX, FiMenu } from "react-icons/fi";
+import { FiX, FiMenu, FiGlobe, FiChevronDown } from "react-icons/fi";
 import Link from "next/link";
 import Image from "next/image";
-// import logoDefault from "../assets/images/logo/logo.png";
-// import logoLight from "/logo-light.png";
-
-// import logoDark from "../assets/images/logo/logo-dark.png";
-// import logoSymbolDark from "../assets/images/logo/logo-symbol-dark.png";
-// import logoSymbolLight from "../assets/images/logo/logo-symbol-light.png";
-
 
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.menuTrigger = this.menuTrigger.bind(this);
-    this.CLoseMenuTrigger = this.CLoseMenuTrigger.bind(this);
-  
+    this.state = {
+      language: "en",
+      isDropdownOpen: false,
+    };
+    this.toggleDropdown = this.toggleDropdown.bind(this);
+    this.changeLanguage = this.changeLanguage.bind(this);
+    this.dropdownRef = React.createRef();
   }
+
   componentDidMount() {
-    // Now it's safe to use window or document
-    window.addEventListener("load", function () {
-      console.log("All assets are loaded");
+    const savedLanguage = localStorage.getItem("language") || "en";
+    this.setState({ language: savedLanguage });
+
+    document.addEventListener("click", this.handleClickOutside);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("click", this.handleClickOutside);
+  }
+
+  handleClickOutside = (event) => {
+    if (this.dropdownRef.current && !this.dropdownRef.current.contains(event.target)) {
+      this.setState({ isDropdownOpen: false });
+    }
+  };
+
+  toggleDropdown() {
+    this.setState((prevState) => ({ isDropdownOpen: !prevState.isDropdownOpen }));
+  }
+
+  changeLanguage(lang) {
+    this.setState({ language: lang, isDropdownOpen: false }, () => {
+      localStorage.setItem("language", lang);
+      window.location.reload();
     });
-  }
-
-  menuTrigger() {
-    document.querySelector(".header-wrapper").classList.toggle("menu-open");
-  }
-
-  CLoseMenuTrigger() {
-    document.querySelector(".header-wrapper").classList.remove("menu-open");
   }
 
   render() {
     const { logo, color = "default-color" } = this.props;
     let logoUrl;
     if (logo === "light") {
-      logoUrl = <Image className="logo-2" width={270} height={72} src="/logo-light.png" alt="Sharplogicians"  />;
-      // <img className="logo-1" src="/logo-light.png" alt="Logo" />
-
+      logoUrl = <Image className="logo-2" width={270} height={72} src="/logo-light.png" alt="Sharplogicians" />;
     } else if (logo === "dark") {
-      logoUrl = <Image className="logo-2" width={270} height={72} src="/logo-light.png" alt="Sharplogicians"  />;
+      logoUrl = <Image className="logo-2" width={270} height={72} src="/logo-light.png" alt="Sharplogicians" />;
     } else {
-      logoUrl = <Image className="logo-2" width={270} height={72} src="/logo-light.png" alt="Sharplogicians"  />;
+      logoUrl = <Image className="logo-2" width={270} height={72} src="/logo-light.png" alt="Sharplogicians" />;
     }
 
+    const { language, isDropdownOpen } = this.state;
+    const languages = [
+      { code: "en", name: "English", flag: "🇬🇧" },
+      { code: "es", name: "Español", flag: "🇪🇸" },
+      { code: "fr", name: "Français", flag: "🇫🇷" },
+      { code: "dt", name: "Dutch", flag: "🇳🇱" },
+    ];
 
     return (
-      <header
-        className={`header-area formobile-menu header--transparent ${color}`}
-      >
+      <header className={`header-area formobile-menu header--transparent ${color}`}>
         <div className="header-wrapper" id="header-wrapper">
           <div className="header-left">
             <div className="logo">
@@ -66,29 +79,24 @@ class Header extends Component {
                 <li>
                   <Link href="/services">Service</Link>
                 </li>
-            
-                 
                 <li>
-                  <Link href="/#about" >About</Link>
+                  <Link href="/#about">About</Link>
                 </li>
                 <li>
                   <Link href="/portfolio">Portfolio</Link>
                 </li>
-                
                 <li>
                   <Link href="/#team">Team</Link>
                 </li>
-             
                 <li>
                   <Link href="/#testimonial">Testimonial</Link>
                 </li>
                 <li>
-                  <Link href="/news">Blog    </Link>
+                  <Link href="/news">Blog</Link>
                 </li>
                 <li>
-                  <Link href="/contact" >Contact</Link>
+                  <Link href="/contact">Contact</Link>
                 </li>
-                
               </ul>
             </nav>
             <div className="header-btn">
@@ -96,12 +104,33 @@ class Header extends Component {
                 <span>Get a quote</span>
               </a>
             </div>
+
+            {/* Language Selector */}
+            <div className="language-selector" ref={this.dropdownRef}>
+              <div className="selected-language" onClick={this.toggleDropdown}>
+                <FiGlobe className="globe-icon" />
+                <span>{language.toUpperCase()}</span>
+                <FiChevronDown className="chevron-icon" />
+              </div>
+              {isDropdownOpen && (
+                <div className="language-dropdown">
+                  {languages.map((lang) => (
+                    <div
+                      key={lang.code}
+                      className="language-option"
+                      onClick={() => this.changeLanguage(lang.code)}
+                    >
+                      <span className="flag">{lang.flag}</span>
+                      <span className="name">{lang.name}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
             {/* Start Humberger Menu */}
             <div className="humberger-menu d-block d-lg-none pl--6">
-              <span
-                onClick={this.menuTrigger}
-                className="menutrigger text-white"
-              >
+              <span onClick={this.menuTrigger} className="menutrigger text-white">
                 <FiMenu />
               </span>
             </div>
