@@ -86,7 +86,7 @@ const CreativeLanding = ({ homeDetail }) => {
   const [testimonials, setTestimonials] = useState(homeDetail?.testimonials);
   const [newsData, setnewsData] = useState(homeDetail?.news);
   const [contactImage, setContactImage] = useState(
-    serverurl + homeDetail?.contact.contact_image
+    serverurl + homeDetail?.contact?.contact_image
   );
   const [clientImages, setClientImages] = useState(homeDetail?.clients);
   const [title, setnewtitle] = useState(homeDetail?.contact.title);
@@ -151,7 +151,8 @@ const CreativeLanding = ({ homeDetail }) => {
     { code: "en", name: "English", flag: "🌐" },
     { code: "es", name: "Español", flag: "🇪🇸" },
     { code: "fr", name: "Français", flag: "🇫🇷" },
-    { code: "dt", name: "Dutch", flag: "🇳🇱" },
+    { code: "nl", name: "Dutch", flag: "🇳🇱" },
+    { code: "de", name: "German", flag: "GE" },
   ];
 
   const changeLanguage = (e) => {
