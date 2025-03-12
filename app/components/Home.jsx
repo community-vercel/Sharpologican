@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect} from "react";
 import { FiChevronUp, FiX, FiMenu } from "react-icons/fi";
 import Slider from "react-slick";
 import Team from "../components/Team";
@@ -68,7 +68,7 @@ const slickDot = {
 
 const CreativeLanding = ({ homeDetail }) => {
   const router = useRouter();
-  const { locale, locales, pathname, query } = router;
+  const { locale} = router;
 
  
  
@@ -149,7 +149,6 @@ const CreativeLanding = ({ homeDetail }) => {
       images: ["/logo-light.png"],
     },
   };
-  const [imageLoaded, setImageLoaded] = useState(false);
 
   // Function to handle image load
   const [randomDate, setRandomDate] = useState("");
@@ -521,24 +520,7 @@ const CreativeLanding = ({ homeDetail }) => {
                             </div>
                           </div>
 
-                          {/* <div className="content">
-                          <div className="inner">
-                            <p>{value.title}</p>
-                            <h4>
-                              <Link href={`/portfolio/${value.slug}`}>
-                                {value.heading}
-                              </Link>
-                            </h4>
-                            <div className="portfolio-button">
-                              <Link
-                                className="rn-btn"
-                                href={`/portfolio/${value.slug}`}
-                              >
-                                {value.buttonText}
-                              </Link>
-                            </div>
-                          </div>
-                        </div> */}
+                         
                         </div>
                       ))}
                     </Slider>
@@ -582,9 +564,7 @@ const CreativeLanding = ({ homeDetail }) => {
             </div>
           </div>
         </div>
-        {/* End Team Area */}
-
-        {/* Start Testimonial Area */}
+        
 
         <div
           className="rn-testimonial-area bg_color--5 ptbss--120"
