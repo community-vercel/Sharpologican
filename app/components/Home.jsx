@@ -319,7 +319,7 @@ const CreativeLanding = ({ homeDetail }) => {
           id="language-select"
           value={locale}
           onChange={changeLanguage}
-          className="text-white p-2 bg-transparent border border-gray-400 rounded"
+          // className="text-white  "
         >
           {languages.map((loc) => (
             <option key={loc.code} value={loc.code}>

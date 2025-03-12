@@ -54,6 +54,9 @@ class Header extends Component {
       logoUrl = <Image className="logo-2" width={270} height={72} src="/logo-light.png" alt="Sharplogicians" />;
     }
 
+
+    
+
     const { language, isDropdownOpen } = this.state;
     const languages = [
       { code: "en", name: "English", flag: "🇬🇧" },
