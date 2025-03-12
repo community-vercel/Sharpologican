@@ -117,6 +117,112 @@
             }
         }
     }
+    
+    .header-btns {
+        position: relative;
+        display: inline-block;
+        padding: 5px 0;
+      
+        .select-container {
+          position: relative;
+          display: inline-block;
+          margin-left: 20px;
+          margin-top: 7px;
+          background: none;
+          font-family: 'Arial', sans-serif;
+          border-radius: 5px;
+          overflow: hidden;
+          cursor: pointer;
+      
+          select {
+            width: 100%;
+            padding: 0px 15px;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            appearance: none;
+            cursor: pointer;
+            outline: none;
+            font-weight: 600;
+            transition: all 0.3s ease-in-out;
+      
+            &:focus {
+              outline: none;
+            }
+      
+            &::after {
+              content: '▼';
+              position: absolute;
+              right: 10px;
+              top: 50%;
+              transform: translateY(-50%);
+              font-size: 16px;
+              color: #fff;
+              pointer-events: none;
+            }
+      
+            option {
+              background-color: rgb(73, 143, 150);
+              color: #fff;
+              font-size: 16px;
+              padding: 10px;
+              font-weight: normal;
+              transition: background-color 0.3s ease;
+      
+              &:hover {
+                background-color: #1abc9c;
+              }
+            }
+          }
+      
+          .flag-icon {
+            // margin-right: 10px;
+            // font-size: 18px;
+          }
+        }
+      
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+          .select-container {
+            width: 100%; /* Make the select container full width */
+            margin-left: 0;
+            // margin-top: 10px;
+            // padding: 0 10px;
+            padding: 0px 10px !important;
+
+          }
+      
+          select {
+            padding: 0px 0px;
+
+            // padding: 10px; /* Adjust padding to ensure it looks good on small screens */
+            font-size: 14px; /* Adjust font size for smaller screens */
+          }
+        }
+      
+        /* Extra small screens */
+        @media (max-width: 480px) {
+          .select-container {
+            width: 100%;
+            margin-left: 0;
+            padding: 0px 0px !important;
+
+            // margin-top: 10px;
+          }
+      
+          select {
+            font-size: 12px; /* Even smaller font size for very small screens */
+            // padding: 8px;
+            padding: 0px 80px;
+
+          }
+      
+          .flag-icon {
+            // font-size: 14px; /* Reduce flag size for smaller screens */
+          }
+        }
+      }
 
     // Static Header 
     &.header--static {

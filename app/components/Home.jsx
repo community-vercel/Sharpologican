@@ -17,10 +17,7 @@ import Image from "next/image";
 import { H1, H2 } from "../components/Typrography";
 import { Suspense } from "react";
 import ServiceThreeHome from "../components/ServiceListHome";
-// import styles from '../components/home.module.css';
 import { useRouter } from "next/navigation"
-
-
 import styles from '../components/home.module.css';
 const SlideList = [
   {
@@ -72,7 +69,17 @@ const slickDot = {
 const CreativeLanding = ({ homeDetail }) => {
   const router = useRouter();
   const { locale, locales, pathname, query } = router;
+
  
+ 
+  const languages = [
+    { code: "en", name: "English", flag: "🌐" },
+    { code: "es", name: "Español", flag: "🇪🇸" },
+    { code: "fr", name: "Français", flag: "🇫🇷" },
+    { code: "nl", name: "Dutch", flag: "🇳🇱" },
+    { code: "de", name: "German", flag: "🇩🇪" },
+  ];
+
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
@@ -147,13 +154,6 @@ const CreativeLanding = ({ homeDetail }) => {
   // Function to handle image load
   const [randomDate, setRandomDate] = useState("");
   
-  const languages = [
-    { code: "en", name: "English", flag: "🌐" },
-    { code: "es", name: "Español", flag: "🇪🇸" },
-    { code: "fr", name: "Français", flag: "🇫🇷" },
-    { code: "nl", name: "Dutch", flag: "🇳🇱" },
-    { code: "de", name: "German", flag: "GE" },
-  ];
 
   const changeLanguage = (e) => {
     const selectedLocale = e.target.value;
@@ -277,7 +277,11 @@ const CreativeLanding = ({ homeDetail }) => {
                 </Link>
               </div>
             </div>
-      
+            <div className="humberger-menu d-block d-lg-none pl--20">
+                <span onClick={toggleMenu} className="menutrigger text-white">
+                  {isMenuOpen ? <FiX /> : <FiMenu />}
+                </span>
+              </div>
             {/* Main Menu */}
             <div className="header-right">
               <nav className="mainmenunav d-lg-block">
@@ -307,26 +311,27 @@ const CreativeLanding = ({ homeDetail }) => {
                   <span>Get Quote</span>
                 </Link>
               </div>
-              <div className="header-btn bg_color--2 p-0">
-      <select
-        id="language-select"
-        value={locale}
-        onChange={changeLanguage}
-        className="text-white bg_color--2"
-      >
-        {languages.map((loc) => (
-          <option key={loc.code} value={loc.code} className="rn-btn">
-            {loc.flag} {loc.name}
-          </option>
-        ))}
-      </select>
+              {/* <div className="pl--20">
+              <LanguageSelector />
+              </div> */}
+              <div className="header-btns p-0">
+      <div className="select-container">
+        <select
+          id="language-select"
+          value={locale}
+          onChange={changeLanguage}
+          className="text-white p-2 bg-transparent border border-gray-400 rounded"
+        >
+          {languages.map((loc) => (
+            <option key={loc.code} value={loc.code}>
+              {loc.flag} {loc.name}
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
               {/* Hamburger Menu */}
-              <div className="humberger-menu d-block d-lg-none pl--20">
-                <span onClick={toggleMenu} className="menutrigger text-white">
-                  {isMenuOpen ? <FiX /> : <FiMenu />}
-                </span>
-              </div>
+              
             </div>
           </div>
         </header>

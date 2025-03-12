@@ -54,6 +54,7 @@ export async function fetchInitialdetails() {
       clientsResponse.json(),
       countsResponse.json(),
     ]);
+    const limitednews =news.data.slice(0, 9);
 
     return {
       homeDetail: homeDetail,
@@ -62,7 +63,7 @@ export async function fetchInitialdetails() {
       portfolio: portfolio.data,
       team: team.data,
       testimonials: testimonials.data,
-      news: news.data,
+      news: limitednews,
       contact: contact.data,
       clients: clients.data,
       counts: counts.data,

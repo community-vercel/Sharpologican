@@ -24,6 +24,7 @@ const SocialShare = [
 
 const Footer = ({ heading3 }) => {
   const [heading, setheading] = useState(heading3 || "");
+  const currentYear = new Date().getFullYear(); // Get the current year dynamically
 
   const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
   const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
@@ -140,7 +141,7 @@ const Footer = ({ heading3 }) => {
 
                   <div className="col-lg-12">
                     <div className="copyright-text">
-                      <p>Copyright © 2024 All rights reserved..</p>
+                    <p>Copyright © {currentYear} All rights reserved.</p>
                     </div>
                   </div>
                 </div>

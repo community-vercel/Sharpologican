@@ -1,15 +1,12 @@
 import React from "react";
 import {
   FaTwitter,
-  FaInstagram,
   FaFacebookF,
   FaLinkedinIn,
   FaWordpress,
 } from "react-icons/fa";
 
-import logo from "../assets/images/logo/logo-light.png";
-import Image from "next/image";
-import logoLight from "../assets/images/logo/logo-light.png";
+
 import Link from "next/link";
 
 const SocialShare = [
@@ -26,6 +23,8 @@ const SocialShare = [
 ];
 
 const FooterTwo = () => {
+  const currentYear = new Date().getFullYear(); // Get the current year dynamically
+
   return (
     <div
       className="footer-style-2 ptb--30 bg_image bg_image--1"
@@ -77,7 +76,9 @@ const FooterTwo = () => {
               </ul>
               </div>
               <div className="text">
-                <p>Copyright © 2024 Sharpologicans. All Rights Reserved.</p>
+              <p>Copyright © {currentYear} Sharpologicans. All Rights Reserved.</p>
+
+                {/* <p>Copyright © 2024 Sharpologicans. All Rights Reserved.</p> */}
               </div>
             
           </div>
