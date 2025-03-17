@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { FiX, FiMenu, FiGlobe, FiChevronDown } from "react-icons/fi";
 import Link from "next/link";
 import Image from "next/image";
+import LanguageSelectors from "./Customdropdown3";
+import styles from '../components/home.module.css';
 
 class Header extends Component {
   constructor(props) {
@@ -111,27 +113,9 @@ class Header extends Component {
             </div>
 
             {/* Language Selector */}
-            <div className="language-selector" ref={this.dropdownRef}>
-              <div className="selected-language" onClick={this.toggleDropdown}>
-                <FiGlobe className="globe-icon" />
-                <span>{language.toUpperCase()}</span>
-                <FiChevronDown className="chevron-icon" />
-              </div>
-              {isDropdownOpen && (
-                <div className="language-dropdown">
-                  {languages.map((lang) => (
-                    <div
-                      key={lang.code}
-                      className="language-option"
-                      onClick={() => this.changeLanguage(lang.code)}
-                    >
-                      <span className="flag">{lang.flag}</span>
-                      <span className="name">{lang.name}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
+            <div className="header-btns p-0">
+ <LanguageSelectors />
+    </div>
 
             {/* Start Humberger Menu */}
             <div className="humberger-menu d-block d-lg-none pl--6">

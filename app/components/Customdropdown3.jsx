@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation"
 
-const LanguageSelector = () => {
+const LanguageSelectorss = () => {
 
    const router = useRouter();
    const { locale} = router;
@@ -35,7 +35,7 @@ const LanguageSelector = () => {
           id="language-select"
           value={locale}
           onChange={changeLanguage}
-          // className="text-white  "
+          // className="selects"
         >
           {languages.map((loc) => (
             <option key={loc.code} value={loc.code}>
@@ -47,4 +47,4 @@ const LanguageSelector = () => {
   );
 };
 
-export default LanguageSelector;
+export default LanguageSelectorss;

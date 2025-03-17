@@ -17,8 +17,8 @@ import Image from "next/image";
 import { H1, H2 } from "../components/Typrography";
 import { Suspense } from "react";
 import ServiceThreeHome from "../components/ServiceListHome";
-import { useRouter } from "next/navigation"
 import styles from '../components/home.module.css';
+import LanguageSelector from "./Customdropdown";
 const SlideList = [
   {
     textPosition: "text-center",
@@ -67,18 +67,6 @@ const slickDot = {
 };
 
 const CreativeLanding = ({ homeDetail }) => {
-  const router = useRouter();
-  const { locale} = router;
-
- 
- 
-  const languages = [
-    { code: "en", name: "English", flag: "🌐" },
-    { code: "es", name: "Español", flag: "🇪🇸" },
-    { code: "fr", name: "Français", flag: "🇫🇷" },
-    { code: "nl", name: "Dutch", flag: "🇳🇱" },
-    { code: "de", name: "German", flag: "🇩🇪" },
-  ];
 
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -314,20 +302,7 @@ const CreativeLanding = ({ homeDetail }) => {
               <LanguageSelector />
               </div> */}
               <div className="header-btns p-0">
-      <div className="select-container">
-        <select
-          id="language-select"
-          value={locale}
-          onChange={changeLanguage}
-          // className="text-white  "
-        >
-          {languages.map((loc) => (
-            <option key={loc.code} value={loc.code}>
-              {loc.flag} {loc.name}
-            </option>
-          ))}
-        </select>
-      </div>
+ <LanguageSelector />
     </div>
               {/* Hamburger Menu */}
               
