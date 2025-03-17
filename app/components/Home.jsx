@@ -312,7 +312,7 @@ const CreativeLanding = ({ homeDetail }) => {
         {/* End Header Area */}
 
         {/* Start Slider Area */}
-        <div className="slider-activation slider-creative-agency" id="home">
+        <div className="slider-activation slider-creative-agency" id="startseite">
         <div className={`${styles.bg_images} ${styles.bg_images__26}`} data-black-overlay="6">
         {SlideList.map((value, index) => (
               <div
@@ -359,7 +359,7 @@ const CreativeLanding = ({ homeDetail }) => {
         {/* Start Service Area */}
         <div
           className="service-area creative-service-wrapper ptb--120 bg_color--1"
-          id="service"
+          id="dienstleistung"
         >
           <div className="container">
             <div className="row creative-service">
@@ -376,7 +376,7 @@ const CreativeLanding = ({ homeDetail }) => {
         {/* End Service Area */}
 
         {/* Start About Area */}
-        <div className="about-area ptb--120 bg_color--5" id="about">
+        <div className="about-area ptb--120 bg_color--5" id="über-uns">
           <div className="about-wrapper">
             <div className="container">
               <div className="row row--35 align-items-center">
@@ -543,7 +543,7 @@ const CreativeLanding = ({ homeDetail }) => {
 
         <div
           className="rn-testimonial-area bg_color--5 ptbss--120"
-          id="testimonial"
+          id="kontakt"
         >
           <div className="container">
             <Testimonial test={testimonials} />
@@ -619,7 +619,7 @@ const CreativeLanding = ({ homeDetail }) => {
         {/* End Blog Area */}
 
         {/* Start Contact Area */}
-        <div className="rn-contact-us ptb--120 bg_color--5" id="contact">
+        <div className="rn-contact-us ptb--120 bg_color--5" id="kontakt">
           <Contact image={contactImage} title={title} />
         </div>
         <div className="rn-brand-area bg_color--1 ptb--120">

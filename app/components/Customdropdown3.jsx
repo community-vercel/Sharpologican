@@ -2,31 +2,39 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation"
 
 const LanguageSelectorss = () => {
-
-   const router = useRouter();
-   const { locale} = router;
- 
+  const router = useRouter();
+  const { locale } = router;
   
+  const languages = [
+    { code: "en", name: "English", flag: "🌐" },
+    { code: "fr", name: "Français", flag: "🇫🇷" },
+    { code: "nl", name: "Dutch", flag: "🇳🇱" },
+    { code: "de", name: "German", flag: "🇩🇪" },
+  ];
   
-   const languages = [
-     { code: "en", name: "English", flag: "🌐" },
-     { code: "fr", name: "Français", flag: "🇫🇷" },
-     { code: "nl", name: "Dutch", flag: "🇳🇱" },
-     { code: "de", name: "German", flag: "🇩🇪" },
-   ];
- 
-
-
+  // Check URL to determine the locale
+  let selectedLocale = "en";  
+  if (typeof window !== "undefined") {
+    const domain = window.location.hostname;
+  
+    if (domain.includes(".de")) {
+      selectedLocale = "de";
+    } else if (domain.includes(".fr")) {
+      selectedLocale = "fr";
+    } else if (domain.includes(".nl")) {
+      selectedLocale = "nl";
+    }
+  }
+  
   const changeLanguage = (e) => {
-    const selectedLocale = e.target.value;
+    const newLocale = e.target.value;
   
-    // Dynamically construct the URL based on the selected language
-    const selectedLanguage = selectedLocale === 'en'
-      ? 'https://sharplogicians.com'
-      : `https://sharplogicians.${selectedLocale}`;
+    const selectedLanguage =
+      newLocale === "en"
+        ? "https://sharplogicians.com"
+        : `https://sharplogicians.${newLocale}`;
   
-    // Open the URL in a new tab for non-English languages, in the same tab for English
-    window.open(selectedLanguage, selectedLocale === 'en' ? '_self' : '_blank');
+    window.open(selectedLanguage, newLocale === "en" ? "_self" : "_blank");
   };
   return (
     <div className="select-container">
