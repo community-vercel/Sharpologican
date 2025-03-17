@@ -13,7 +13,7 @@ const LanguageSelectorss = () => {
   ];
   
   // Check URL to determine the locale
-  let selectedLocale = "en";  
+  let selectedLocale = "de";  
   if (typeof window !== "undefined") {
     const domain = window.location.hostname;
   
