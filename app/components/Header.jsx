@@ -60,14 +60,7 @@ class Header extends Component {
     
 
     const { language, isDropdownOpen } = this.state;
-    const languages = [
-      { code: "en", name: "English", flag: "🇬🇧" },
-      { code: "es", name: "Español", flag: "🇪🇸" },
-      { code: "fr", name: "Français", flag: "🇫🇷" },
-      { code: "nl", name: "Dutch", flag: "🇳🇱" },
-      { code: "de", name: "German", flag: "GE" },
-
-    ];
+   
 
     return (
       <header className={`header-area formobile-menu header--transparent ${color}`}>
@@ -79,36 +72,36 @@ class Header extends Component {
           </div>
           <div className="header-right">
             <nav className="mainmenunav d-lg-block">
-              <ul className="mainmenu">
-                <li>
-                  <Link href="/">Home</Link>
-                </li>
-                <li>
-                  <Link href="/services">Service</Link>
-                </li>
-                <li>
-                  <Link href="/#about">About</Link>
-                </li>
-                <li>
-                  <Link href="/portfolio">Portfolio</Link>
-                </li>
-                <li>
-                  <Link href="/#team">Team</Link>
-                </li>
-                <li>
-                  <Link href="/#testimonial">Testimonial</Link>
-                </li>
-                <li>
-                  <Link href="/news">Blog</Link>
-                </li>
-                <li>
-                  <Link href="/contact">Contact</Link>
-                </li>
-              </ul>
+            <ul className="mainmenu">
+  <li>
+    <Link href="/">Startseite</Link>
+  </li>
+  <li>
+    <Link href="/services">Dienstleistungen</Link>
+  </li>
+  <li>
+    <Link href="/#about">Über uns</Link>
+  </li>
+  <li>
+    <Link href="/portfolio">Portfolio</Link>
+  </li>
+  <li>
+    <Link href="/#team">Team</Link>
+  </li>
+  <li>
+    <Link href="/#testimonial">Kundenstimmen</Link>
+  </li>
+  <li>
+    <Link href="/news">Blog</Link>
+  </li>
+  <li>
+    <Link href="/contact">Kontakt</Link>
+  </li>
+</ul>
             </nav>
             <div className="header-btn">
               <a className="rn-btn" href="/quote">
-                <span>Get a quote</span>
+              <span>Angebot anfordern</span>
               </a>
             </div>
 

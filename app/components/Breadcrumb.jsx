@@ -16,7 +16,7 @@ class Breadcrumb extends Component {
                   <h2 className="title">{title}</h2>
                   <ul className="page-list">
                     <li className="breadcrumb-item">
-                      <Link href={`/`}>Home</Link>
+                      <Link href={`/`}>Startseite</Link>
                     </li>
                     {parent ? (
                       <li className="breadcrumb-item">{parent}</li>

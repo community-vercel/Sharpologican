@@ -45,38 +45,38 @@ function ContactForm() {
   return (
     <>
       <form ref={formRef} onSubmit={sendEmail}>
-        <div className="rn-form-group">
-          <input type="text" name="from_name" placeholder="Your Name" required />
-        </div>
+  <div className="rn-form-group">
+    <input type="text" name="from_name" placeholder="Ihr Name" required />
+  </div>
 
-        <div className="rn-form-group">
-          <input type="email" name="from_email" placeholder="Your Email" required />
-        </div>
+  <div className="rn-form-group">
+    <input type="email" name="from_email" placeholder="Ihre E-Mail" required />
+  </div>
 
-        <div className="rn-form-group">
-          <input type="text" name="from_phone" placeholder="Phone Number" required />
-        </div>
+  <div className="rn-form-group">
+    <input type="text" name="from_phone" placeholder="Telefonnummer" required />
+  </div>
 
-        <div className="rn-form-group">
-          <input type="text" name="from_subject" placeholder="Subject" required />
-        </div>
+  <div className="rn-form-group">
+    <input type="text" name="from_subject" placeholder="Betreff" required />
+  </div>
 
-        <div className="rn-form-group">
-          <textarea name="message" placeholder="Your Message" required></textarea>
-        </div>
+  <div className="rn-form-group">
+    <textarea name="message" placeholder="Ihre Nachricht" required></textarea>
+  </div>
 
-        <div className="rn-form-group">
-          <button
-            className="rn-button-style--2 btn-solid"
-            type="submit"
-            value="submit"
-            name="submit"
-            id="mc-embedded-subscribe"
-          >
-            Submit Now
-          </button>
-        </div>
-      </form>
+  <div className="rn-form-group">
+    <button
+      className="rn-button-style--2 btn-solid"
+      type="submit"
+      value="submit"
+      name="submit"
+      id="mc-embedded-subscribe"
+    >
+      Jetzt absenden
+    </button>
+  </div>
+  </form>
 
       {/* ToastContainer is needed to show the toasts */}
       <ToastContainer 

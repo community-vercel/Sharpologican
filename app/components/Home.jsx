@@ -26,7 +26,7 @@ const SlideList = [
     title: "Welcome to Sharplogicians!",
     description:
       "Improve performance through design, development, & digital marketing.",
-    buttonText: "Contact Us",
+    buttonText: "Kontaktieren Sie uns",
     buttonLink: "/contact",
   },
 ];
@@ -190,13 +190,13 @@ const CreativeLanding = ({ homeDetail }) => {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.8",
-      "reviewCount": testimonials.length || "85"
+      "reviewCount": testimonials?.length || "85"
     },
-    "review": testimonials.map((job) => ({
+    "review": testimonials?.map((job) => ({
       "@type": "Review",
       "author": {
         "@type": "Person",
-        "name": job.name || "John Doe"
+        "name": job?.name || "John Doe"
       },
       "reviewRating": {
         "@type": "Rating",
@@ -204,7 +204,7 @@ const CreativeLanding = ({ homeDetail }) => {
         "bestRating": "5"
       },
       "datePublished": randomDate || "2024-02-18", // Call the random date function here
-      "reviewBody": job.title || "Sharplogicians provided exceptional service in developing our Magento-based eCommerce platform. Their expertise is unparalleled!"
+      "reviewBody": job?.title || "Sharplogicians provided exceptional service in developing our Magento-based eCommerce platform. Their expertise is unparalleled!"
     }))
   })
 }} />
@@ -275,14 +275,14 @@ const CreativeLanding = ({ homeDetail }) => {
                 <ul className="mainmenu">
                   <ScrollSpy
                     sectionIds={[
-                      "#home",
-                      "#service",
-                      "#about",
-                      "#portfolio",
-                      "#team",
-                      "#testimonial",
-                      "#blog",
-                      "#contact",
+                    "#startseite",
+"#dienstleistung",
+"#über-uns",
+"#portfolio",
+"#team",
+"#referenzen",
+"#blog",
+"#kontakt",
                     ]}
                     activeClass="is-current" // Add your active class name
                     closeMenu={closeMenu} // Pass the closeMenu function here
@@ -295,7 +295,7 @@ const CreativeLanding = ({ homeDetail }) => {
               {/* Quote Button */}
               <div className="header-btn">
                 <Link className="rn-btn" href="/quote">
-                  <span>Get Quote</span>
+                  <span>Angebot anfordern</span>
                 </Link>
               </div>
               {/* <div className="pl--20">
@@ -433,7 +433,7 @@ const CreativeLanding = ({ homeDetail }) => {
               <div  aria-hidden="true" className="row">
                 <div  aria-hidden="true" className="col-lg-6">
                   <div  aria-hidden="true" className="section-title service-style--3 text-left mb--15 mb_sm--0">
-                    <h2 className="title">Our Portfolio</h2>
+                    <h2 className="title">Unser Portfolio</h2>
                     <p>{portfolioData && portfolioData[0]?.description}</p>
                   </div>
                 </div>
@@ -526,7 +526,7 @@ const CreativeLanding = ({ homeDetail }) => {
             <div className="row">
               <div className="col-lg-6">
                 <div className="section-title service-style--3 text-left mb--25 mb_sm--0">
-                  <h2 className="title">Skilled Team</h2>
+                  <h2 className="title">Kompetentes Team</h2>
                   <p>{teamData && teamData[0]?.description}</p>
                 </div>
               </div>
@@ -561,7 +561,7 @@ const CreativeLanding = ({ homeDetail }) => {
             <div className="row align-items-end">
               <div className="col-lg-6">
                 <div className="section-title text-left">
-                  <h2>Latest News</h2>
+                  <h2>Aktuelle Nachrichten</h2>
                   <p>{newsData && newsData[0]?.description}</p>
                 </div>
               </div>
@@ -605,7 +605,7 @@ const CreativeLanding = ({ homeDetail }) => {
                             className="rn-btn text-white"
                             href={`/news/${value?.slug}`}
                           >
-                            Read More
+                          Weiterlesen
                           </Link>
                         </div>
                       </div>

@@ -86,7 +86,7 @@ const metadata = {
            
             <div className="header-btn">
               <a className="rn-btn" href="/quote">
-                <span>Get a quote</span>
+              <span> Angebot einholen </span>
               </a>
             </div>
             </div>
@@ -102,7 +102,7 @@ const metadata = {
                         <div className="row">
                             <div className="col-lg-12">
                                 <div className="section-title text-center mb--30">
-                                    <h2>Our Services</h2>
+                                <h2>Unsere Dienstleistungen</h2>
                                 </div>
                             </div>
                         </div>

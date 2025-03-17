@@ -219,7 +219,7 @@ const [formErrors, setFormErrors] = useState({
             </div>
  <div className="quote-form-container mt-8 max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-lg">
  <form ref={formRef} className="quote-form space-y-6" onSubmit={handleSubmit}>
-  <h2 className="text-2xl font-bold text-center text-gray-800">Get a Quote</h2>
+  <h2 className="text-2xl font-bold text-center text-gray-800">Angebot anfordern</h2>
 
   {/* First Name and Last Name */}
   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
