@@ -10,7 +10,6 @@ const LanguageSelectorss = () => {
   
    const languages = [
      { code: "en", name: "English", flag: "🌐" },
-     { code: "es", name: "Español", flag: "🇪🇸" },
      { code: "fr", name: "Français", flag: "🇫🇷" },
      { code: "nl", name: "Dutch", flag: "🇳🇱" },
      { code: "de", name: "German", flag: "🇩🇪" },
