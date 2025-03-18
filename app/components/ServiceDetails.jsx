@@ -109,7 +109,6 @@ const [sanitizedHTMLS,setsanitizedhtmls]=useState()
     <header
         className={`header-area formobile-menu header--transparent `}
       >
-        
         <div className="header-wrapper" id="header-wrapper">
           <div className="header-left">
           <div className="logo">
@@ -120,7 +119,7 @@ const [sanitizedHTMLS,setsanitizedhtmls]=useState()
            
             <div className="header-btn">
               <a className="rn-btn" href="/quote">
-              <span> Angebot einholen </span>
+                <span>Get a quote</span>
               </a>
             </div>
             </div>
@@ -272,8 +271,11 @@ const [sanitizedHTMLS,setsanitizedhtmls]=useState()
                   onMouseEnter={() => setHovered(true)}  // When the mouse enters, change color
                   onMouseLeave={() => setHovered(false)}
                 >
-  <span> Angebot einholen </span>
-  </a>
+    <span
+     
+    >
+      Get a quote
+    </span>                  </a>
               </div>
            
             </div>

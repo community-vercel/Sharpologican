@@ -87,8 +87,8 @@ const Service = () => {
               <div className="row">
                 <div className="col-lg-6">
                   <div className="section-title service-style--3 text-left mb--15 mb_sm--0">
-                  <h2 className="title">Unser Portfolio</h2>
-                  <p>
+                    <h2 className="title">Our Portfolio</h2>
+                    <p>
                {portfolioData && portfolioData[0]?.description}
                     </p>
                   </div>
