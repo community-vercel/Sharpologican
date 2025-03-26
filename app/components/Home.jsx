@@ -274,6 +274,7 @@ const CreativeLanding = ({ homeDetail }) => {
               <nav className="mainmenunav d-lg-block">
                 <ul className="mainmenu">
                   <ScrollSpy
+                  
                     sectionIds={[
                       "#accueil",
                       "#service",
