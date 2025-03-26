@@ -59,24 +59,24 @@ const FooterTwo = () => {
             <div className="footer-linkss">
               <ul className="footer-navs">
                 <li>
-                  <Link href="/portfolio">Work     |</Link>
+                  <Link href="/portfolio"> Travail     |</Link>
                 </li>
              
                 <li>
-                  <Link href="/career">Career     |</Link>
+                  <Link href="/career">Carrière    |</Link>
                 </li>
             
                 <li>
-                  <Link href="/#about">About   |</Link>
+                  <Link href="/#about"> À propos   |</Link>
                 </li>
                 <li>
                   
-                  <Link href="/contact">Let's Talk</Link>
+                  <Link href="/contact">Parlons-en</Link>
                 </li>
               </ul>
               </div>
               <div className="text">
-              <p>Copyright © {currentYear} Sharpologicans. All Rights Reserved.</p>
+              <p>Copyright © {currentYear} Sharpologicans. Tous droits réservés.</p>
 
                 {/* <p>Copyright © 2024 Sharpologicans. All Rights Reserved.</p> */}
               </div>

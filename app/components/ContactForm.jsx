@@ -44,39 +44,38 @@ function ContactForm() {
 
   return (
     <>
-      <form ref={formRef} onSubmit={sendEmail}>
-        <div className="rn-form-group">
-          <input type="text" name="from_name" placeholder="Your Name" required />
-        </div>
+     <form ref={formRef} onSubmit={sendEmail}>
+  <div className="rn-form-group">
+    <input type="text" name="from_name" placeholder="Votre Nom" required />
+  </div>
 
-        <div className="rn-form-group">
-          <input type="email" name="from_email" placeholder="Your Email" required />
-        </div>
+  <div className="rn-form-group">
+    <input type="email" name="from_email" placeholder="Votre Email" required />
+  </div>
 
-        <div className="rn-form-group">
-          <input type="text" name="from_phone" placeholder="Phone Number" required />
-        </div>
+  <div className="rn-form-group">
+    <input type="text" name="from_phone" placeholder="Numéro de Téléphone" required />
+  </div>
 
-        <div className="rn-form-group">
-          <input type="text" name="from_subject" placeholder="Subject" required />
-        </div>
+  <div className="rn-form-group">
+    <input type="text" name="from_subject" placeholder="Sujet" required />
+  </div>
 
-        <div className="rn-form-group">
-          <textarea name="message" placeholder="Your Message" required></textarea>
-        </div>
+  <div className="rn-form-group">
+    <textarea name="message" placeholder="Votre Message" required></textarea>
+  </div>
 
-        <div className="rn-form-group">
-          <button
-            className="rn-button-style--2 btn-solid"
-            type="submit"
-            value="submit"
-            name="submit"
-            id="mc-embedded-subscribe"
-          >
-            Submit Now
-          </button>
-        </div>
-      </form>
+  <div className="rn-form-group">
+    <button
+      className="rn-button-style--2 btn-solid"
+      type="submit"
+      value="submit"
+      name="submit"
+      id="mc-embedded-subscribe"
+    >
+      Envoyer Maintenant
+    </button>
+ </div></form>
 
       {/* ToastContainer is needed to show the toasts */}
       <ToastContainer 

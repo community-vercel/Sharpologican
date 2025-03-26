@@ -77,7 +77,7 @@ const News = () => {
       />
 
       {/* Start Breadcrumb Area */}
-      <Breadcrumb title={"News"} />
+      <Breadcrumb title={"Actualités"} />
       {/* End Breadcrumb Area */}
 
       {/* Start Service Area */}
@@ -87,7 +87,8 @@ const News = () => {
             <div className="row">
               <div className="col-lg-6">
                 <div className="section-title service-style--3 text-left mb--15 mb_sm--0">
-                  <h2 className="title">All News</h2>
+                  <h2 className="title">Toutes les actualités
+                  </h2>
                 </div>
               </div>
             </div>
@@ -118,7 +119,7 @@ const News = () => {
                               </h4>
                               <div className="portfolio-button">
                                 <Link className="rn-btn" href={`/news/${value.slug}`}>
-                                  Read More
+                                Lire la suite
                         
                                 </Link>
                               </div>
@@ -137,7 +138,8 @@ const News = () => {
             {visibleItems < newsdata.length && (
               <div className="row mt--30">
                 <div className="col-lg-12 text-center">
-                  <button className="rn-btn" onClick={loadMore}>      Load More
+                  <button className="rn-btn" onClick={loadMore}>     Charger plus
+
               
                   </button>
                 </div>

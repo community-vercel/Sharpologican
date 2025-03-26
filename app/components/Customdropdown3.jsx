@@ -6,9 +6,9 @@ const LanguageSelectorss = () => {
   const { locale } = router;
   
   const languages = [
+    { code: "fr", name: "Français", flag: "🇫🇷" },
 
     { code: "en", name: "English", flag: "🌐" },
-    { code: "fr", name: "Français", flag: "🇫🇷" },
     { code: "nl", name: "Dutch", flag: "🇳🇱" },
     { code: "de", name: "German", flag: "🇩🇪" },
 

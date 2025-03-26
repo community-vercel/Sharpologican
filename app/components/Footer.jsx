@@ -65,7 +65,7 @@ const Footer = ({ heading3 }) => {
             <div className="col-lg-6">
               <div className="footer-left">
                 <div className="inner">
-                  <span>Ready To Do This</span>
+                <span>Prêt à passer à l'action</span>
 
                   {heading3 && heading3 ? (
                     heading3 && <h2>{heading3 ? heading : ""}</h2>
@@ -73,7 +73,7 @@ const Footer = ({ heading3 }) => {
                     <h2>{heading && heading ? heading : ""}</h2>
                   )}
                   <a className="rn-button-style--2" href="/contact">
-                    <span>Contact Us</span>
+                    <span>Contactez-nous</span>
                   </a>
                 </div>
               </div>
@@ -87,29 +87,26 @@ const Footer = ({ heading3 }) => {
                   {/* Start Single Widget  */}
                   <div className="col-lg-6 col-sm-6 col-12">
                     <div className="footer-link">
-                      <h4>Quick Link</h4>
-                      <ul className="ft-link">
-                        <li>
-                          <Link href="/portfolio">Work</Link>
-                        </li>
-                        {/* <li>
-                          <a href="/#about">About</a>
-                        </li> */}
-                        <li>
-                          <Link href="/career">Career</Link>
-                        </li>
-                        <li>
-                          <Link href="/contact">Let's Talk</Link>
-                        </li>
-                      </ul>
+                    <h4>Liens Rapides</h4>
+<ul className="ft-link">
+  <li>
+    <Link href="/portfolio">Travail</Link>
+  </li>
+  <li>
+    <Link href="/career">Carrière</Link>
+  </li>
+  <li>
+    <Link href="/contact">Parlons-en</Link>
+  </li>
+</ul>
                     </div>
                   </div>
                   {/* End Single Widget  */}
                   {/* Start Single Widget  */}
                   <div className="col-lg-6 col-sm-6 col-12 mt_mobile--30">
                     <div className="footer-link">
-                      <h4>Say Hello</h4>
-                      <ul className="ft-link">
+                    <h4>Dites Bonjour</h4>
+                    <ul className="ft-link">
                         <li>
                           <a href={`mailto:${homeDetail?.footeremail}`}>
                             {homeDetail && homeDetail
@@ -141,7 +138,7 @@ const Footer = ({ heading3 }) => {
 
                   <div className="col-lg-12">
                     <div className="copyright-text">
-                    <p>Copyright © {currentYear} All rights reserved.</p>
+                    <p>Copyright © {currentYear} Sharpologicans. Tous droits réservés.</p>
                     </div>
                   </div>
                 </div>

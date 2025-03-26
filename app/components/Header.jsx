@@ -72,36 +72,35 @@ class Header extends Component {
           </div>
           <div className="header-right">
             <nav className="mainmenunav d-lg-block">
-              <ul className="mainmenu">
-                <li>
-                  <Link href="/">Home</Link>
-                </li>
-                <li>
-                  <Link href="/services">Service</Link>
-                </li>
-                <li>
-                  <Link href="/#about">About</Link>
-                </li>
-                <li>
-                  <Link href="/portfolio">Portfolio</Link>
-                </li>
-                <li>
-                  <Link href="/#team">Team</Link>
-                </li>
-                <li>
-                  <Link href="/#testimonial">Testimonial</Link>
-                </li>
-                <li>
-                  <Link href="/news">Blog</Link>
-                </li>
-                <li>
-                  <Link href="/contact">Contact</Link>
-                </li>
-              </ul>
-            </nav>
+            <ul className="mainmenu">
+  <li>
+    <Link href="/">Accueil</Link>
+  </li>
+  <li>
+    <Link href="/services">Service</Link>
+  </li>
+  <li>
+    <Link href="/#about">À propos</Link>
+  </li>
+  <li>
+    <Link href="/portfolio">Portfolio</Link>
+  </li>
+  <li>
+    <Link href="/#team">Équipe</Link>
+  </li>
+  <li>
+    <Link href="/#testimonial">Témoignages</Link>
+  </li>
+  <li>
+    <Link href="/news">Blog</Link>
+  </li>
+  <li>
+    <Link href="/contact">Contact</Link>
+  </li>
+</ul>            </nav>
             <div className="header-btn">
               <a className="rn-btn" href="/quote">
-                <span>Get a quote</span>
+              <span>Obtenir un devis</span>
               </a>
             </div>
 
