@@ -26,7 +26,7 @@ const SlideList = [
     title: "Welcome to Sharplogicians!",
     description:
       "Improve performance through design, development, & digital marketing.",
-    buttonText: "Contact Us",
+    buttonText: "Neem contact met ons op",
     buttonLink: "/contact",
   },
 ];
@@ -276,11 +276,11 @@ const CreativeLanding = ({ homeDetail }) => {
                   <ScrollSpy
                     sectionIds={[
                       "#home",
-                      "#service",
-                      "#about",
+                      "#dienst",
+                      "#over-ons",
                       "#portfolio",
                       "#team",
-                      "#testimonial",
+                      "#getuigenis",
                       "#blog",
                       "#contact",
                     ]}
@@ -295,7 +295,7 @@ const CreativeLanding = ({ homeDetail }) => {
               {/* Quote Button */}
               <div className="header-btn">
                 <Link className="rn-btn" href="/quote">
-                  <span>Get Quote</span>
+                <span>Offerte</span>
                 </Link>
               </div>
               {/* <div className="pl--20">
@@ -359,7 +359,7 @@ const CreativeLanding = ({ homeDetail }) => {
         {/* Start Service Area */}
         <div
           className="service-area creative-service-wrapper ptb--120 bg_color--1"
-          id="service"
+          id="dienst"
         >
           <div className="container">
             <div className="row creative-service">
@@ -376,7 +376,7 @@ const CreativeLanding = ({ homeDetail }) => {
         {/* End Service Area */}
 
         {/* Start About Area */}
-        <div className="about-area ptb--120 bg_color--5" id="about">
+        <div className="about-area ptb--120 bg_color--5" id="over-ons">
           <div className="about-wrapper">
             <div className="container">
               <div className="row row--35 align-items-center">
@@ -433,7 +433,7 @@ const CreativeLanding = ({ homeDetail }) => {
               <div  aria-hidden="true" className="row">
                 <div  aria-hidden="true" className="col-lg-6">
                   <div  aria-hidden="true" className="section-title service-style--3 text-left mb--15 mb_sm--0">
-                    <h2 className="title">Our Portfolio</h2>
+                    <h2 className="title">Ons portfolio</h2>
                     <p>{portfolioData && portfolioData[0]?.description}</p>
                   </div>
                 </div>
@@ -511,8 +511,8 @@ const CreativeLanding = ({ homeDetail }) => {
               <div className="col-lg-12">
                 <div className="section-title text-center">
                   <h3 className="fontWeight500">
-                    {counts && counts[0]?.title}
-                  </h3>
+
+                  Leuke weetjes over ons                  </h3>
                 </div>
               </div>
             </div>
@@ -526,7 +526,7 @@ const CreativeLanding = ({ homeDetail }) => {
             <div className="row">
               <div className="col-lg-6">
                 <div className="section-title service-style--3 text-left mb--25 mb_sm--0">
-                  <h2 className="title">Skilled Team</h2>
+                  <h2 className="title">Vakkundig team</h2>
                   <p>{teamData && teamData[0]?.description}</p>
                 </div>
               </div>
@@ -543,7 +543,7 @@ const CreativeLanding = ({ homeDetail }) => {
 
         <div
           className="rn-testimonial-area bg_color--5 ptbss--120"
-          id="testimonial"
+          id="getuigenis"
         >
           <div className="container">
             <Testimonial test={testimonials} />
@@ -561,7 +561,7 @@ const CreativeLanding = ({ homeDetail }) => {
             <div className="row align-items-end">
               <div className="col-lg-6">
                 <div className="section-title text-left">
-                  <h2>Latest News</h2>
+                  <h2>Laatste nieuws</h2>
                   <p>{newsData && newsData[0]?.description}</p>
                 </div>
               </div>
@@ -605,7 +605,7 @@ const CreativeLanding = ({ homeDetail }) => {
                             className="rn-btn text-white"
                             href={`/news/${value?.slug}`}
                           >
-                            Read More
+                            Lees meer
                           </Link>
                         </div>
                       </div>

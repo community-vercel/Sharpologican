@@ -65,7 +65,7 @@ const Footer = ({ heading3 }) => {
             <div className="col-lg-6">
               <div className="footer-left">
                 <div className="inner">
-                  <span>Ready To Do This</span>
+                  <span>Klaar om dit te doen</span>
 
                   {heading3 && heading3 ? (
                     heading3 && <h2>{heading3 ? heading : ""}</h2>
@@ -87,28 +87,26 @@ const Footer = ({ heading3 }) => {
                   {/* Start Single Widget  */}
                   <div className="col-lg-6 col-sm-6 col-12">
                     <div className="footer-link">
-                      <h4>Quick Link</h4>
+                      <h4>Snelle link</h4>
                       <ul className="ft-link">
-                        <li>
-                          <Link href="/portfolio">Work</Link>
-                        </li>
-                        {/* <li>
-                          <a href="/#about">About</a>
-                        </li> */}
-                        <li>
-                          <Link href="/career">Career</Link>
-                        </li>
-                        <li>
-                          <Link href="/contact">Let's Talk</Link>
-                        </li>
-                      </ul>
+    <li>
+        <Link href="/portfolio">Werk</Link> {/* "Work" → "Werk" */}
+    </li>
+ 
+    <li>
+        <Link href="/career">Carrière</Link> {/* "Career" → "Carrière" */}
+    </li>
+    <li>
+        <Link href="/contact">Laten we praten</Link> {/* "Let's Talk" → "Laten we praten" */}
+    </li>
+</ul>
                     </div>
                   </div>
                   {/* End Single Widget  */}
                   {/* Start Single Widget  */}
                   <div className="col-lg-6 col-sm-6 col-12 mt_mobile--30">
                     <div className="footer-link">
-                      <h4>Say Hello</h4>
+                      <h4>Zeg Hallo</h4>
                       <ul className="ft-link">
                         <li>
                           <a href={`mailto:${homeDetail?.footeremail}`}>
@@ -141,7 +139,8 @@ const Footer = ({ heading3 }) => {
 
                   <div className="col-lg-12">
                     <div className="copyright-text">
-                    <p>Copyright © {currentYear} All rights reserved.</p>
+                    <p>Auteursrecht © {currentYear} Sharpologicans. Alle rechten voorbehouden.</p>
+
                     </div>
                   </div>
                 </div>

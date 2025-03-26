@@ -72,36 +72,36 @@ class Header extends Component {
           </div>
           <div className="header-right">
             <nav className="mainmenunav d-lg-block">
-              <ul className="mainmenu">
-                <li>
-                  <Link href="/">Home</Link>
-                </li>
-                <li>
-                  <Link href="/services">Service</Link>
-                </li>
-                <li>
-                  <Link href="/#about">About</Link>
-                </li>
-                <li>
-                  <Link href="/portfolio">Portfolio</Link>
-                </li>
-                <li>
-                  <Link href="/#team">Team</Link>
-                </li>
-                <li>
-                  <Link href="/#testimonial">Testimonial</Link>
-                </li>
-                <li>
-                  <Link href="/news">Blog</Link>
-                </li>
-                <li>
-                  <Link href="/contact">Contact</Link>
-                </li>
-              </ul>
+            <ul className="mainmenu">
+    <li>
+        <Link href="/">Home</Link>
+    </li>
+    <li>
+        <Link href="/services">Diensten</Link> {/* "Service" → "Diensten" */}
+    </li>
+    <li>
+        <Link href="/#about">Over ons</Link> {/* "About" → "Over ons" */}
+    </li>
+    <li>
+        <Link href="/portfolio">Portfolio</Link>
+    </li>
+    <li>
+        <Link href="/#team">Team</Link>
+    </li>
+    <li>
+        <Link href="/#testimonial">Getuigenis</Link> {/* "Testimonial" → "Getuigenis" */}
+    </li>
+    <li>
+        <Link href="/news">Blog</Link>
+    </li>
+    <li>
+        <Link href="/contact">Contact</Link>
+    </li>
+</ul>
             </nav>
             <div className="header-btn">
               <a className="rn-btn" href="/quote">
-                <span>Get a quote</span>
+                <span>Offerte</span>
               </a>
             </div>
 

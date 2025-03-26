@@ -44,39 +44,39 @@ function ContactForm() {
 
   return (
     <>
-      <form ref={formRef} onSubmit={sendEmail}>
-        <div className="rn-form-group">
-          <input type="text" name="from_name" placeholder="Your Name" required />
-        </div>
+  <form ref={formRef} onSubmit={sendEmail}>
+    <div className="rn-form-group">
+        <input type="text" name="from_name" placeholder="Uw naam" required />
+    </div>
 
-        <div className="rn-form-group">
-          <input type="email" name="from_email" placeholder="Your Email" required />
-        </div>
+    <div className="rn-form-group">
+        <input type="email" name="from_email" placeholder="Uw e-mail" required />
+    </div>
 
-        <div className="rn-form-group">
-          <input type="text" name="from_phone" placeholder="Phone Number" required />
-        </div>
+    <div className="rn-form-group">
+        <input type="text" name="from_phone" placeholder="Telefoonnummer" required />
+    </div>
 
-        <div className="rn-form-group">
-          <input type="text" name="from_subject" placeholder="Subject" required />
-        </div>
+    <div className="rn-form-group">
+        <input type="text" name="from_subject" placeholder="Onderwerp" required />
+    </div>
 
-        <div className="rn-form-group">
-          <textarea name="message" placeholder="Your Message" required></textarea>
-        </div>
+    <div className="rn-form-group">
+        <textarea name="message" placeholder="Uw bericht" required></textarea>
+    </div>
 
-        <div className="rn-form-group">
-          <button
+    <div className="rn-form-group">
+        <button
             className="rn-button-style--2 btn-solid"
             type="submit"
             value="submit"
             name="submit"
             id="mc-embedded-subscribe"
-          >
-            Submit Now
-          </button>
-        </div>
-      </form>
+        >
+            Verstuur Nu
+        </button>
+    </div>
+</form>
 
       {/* ToastContainer is needed to show the toasts */}
       <ToastContainer 

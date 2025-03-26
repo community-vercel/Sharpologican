@@ -14,7 +14,7 @@ import Image from "next/image";
           <div className="row row--35 align-items-start">
             <div className="col-lg-6 order-2 order-lg-1">
               <div className="section-title text-left mb--50">
-                <h2 className="title">Contact Us.</h2>
+                <h2 className="title">Neem contact met ons op</h2>
                 <p className="description">
                 {title && title?title:''}
                 </p>
