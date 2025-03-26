@@ -295,7 +295,7 @@ const CreativeLanding = ({ homeDetail }) => {
               {/* Quote Button */}
               <div className="header-btn">
                 <Link className="rn-btn" href="/quote">
-                  <span>Obtenir un devis
+                  <span>Devis
                   </span>
                 </Link>
               </div>
