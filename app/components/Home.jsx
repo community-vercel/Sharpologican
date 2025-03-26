@@ -274,6 +274,7 @@ const CreativeLanding = ({ homeDetail }) => {
               <nav className="mainmenunav d-lg-block">
                 <ul className="mainmenu">
                   <ScrollSpy
+                  
                     sectionIds={[
                       "#home",
                       "#dienst",
@@ -312,7 +313,7 @@ const CreativeLanding = ({ homeDetail }) => {
         {/* End Header Area */}
 
         {/* Start Slider Area */}
-        <div className="slider-activation slider-creative-agency" id="home">
+        <div className="slider-activation slider-creative-agency" id="#accueil">
         <div className={`${styles.bg_images} ${styles.bg_images__26}`} data-black-overlay="6">
         {SlideList.map((value, index) => (
               <div
@@ -521,7 +522,7 @@ const CreativeLanding = ({ homeDetail }) => {
         </div>
 
         {/* Start Team Area */}
-        <div className="rn-team-area ptb--120 bg_color--1" id="team">
+        <div className="rn-team-area ptb--120 bg_color--1" id="équipe">
           <div className="container">
             <div className="row">
               <div className="col-lg-6">

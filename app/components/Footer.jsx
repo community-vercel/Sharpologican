@@ -73,7 +73,7 @@ const Footer = ({ heading3 }) => {
                     <h2>{heading && heading ? heading : ""}</h2>
                   )}
                   <a className="rn-button-style--2" href="/contact">
-                    <span>Contact Us</span>
+                    <span>Contactez-nous</span>
                   </a>
                 </div>
               </div>
