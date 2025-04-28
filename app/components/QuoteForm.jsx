@@ -24,6 +24,7 @@ const QuoteForm = ({ data }) => {
   });
 
   useEffect(() => {}, [data]);
+  const recaptchaRef = useRef();
 
   const [formErrors, setFormErrors] = useState({
     firstName: '',
@@ -40,6 +41,8 @@ const QuoteForm = ({ data }) => {
   const [servicesOptions, setServicesOptions] = useState([]); // State to hold dynamic services
   const formRef = useRef();
   const [recaptchaToken, setRecaptchaToken] = useState(null); // State for storing reCAPTCHA token
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
 
@@ -71,6 +74,7 @@ const QuoteForm = ({ data }) => {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
   };
+ 
 
   const validateForm = () => {
     const errors = {};
@@ -108,11 +112,25 @@ const QuoteForm = ({ data }) => {
     return Object.keys(errors).length === 0; // Return true if no errors
     // return Object.keys(errors).length === 0;  
 };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
+    if (!recaptchaRef.current) {
+      toast.error('Recaptcha not ready!');
+      return;
+    }
     // Validate the form first
     if (validateForm()) {
+      const token = await recaptchaRef.current.executeAsync(); // ✅ Execute invisible captcha
+      recaptchaRef.current.reset(); // ✅ Always reset after execution
+
+      if (!token) {
+        toast.error('Please complete the CAPTCHA verification!');
+        setIsSubmitting(false);
+        return;
+      }
+      
       // Verify reCAPTCHA token
       // if (!recaptchaToken) {
       //   toast.error("Please verify you are not a robot.");
@@ -157,9 +175,7 @@ const QuoteForm = ({ data }) => {
     }
   };
 
-  const handleRecaptchaChange = (token) => {
-    setRecaptchaToken(token); // Set the reCAPTCHA token
-  };
+
 
   const metaTitle = data?.metanamequote;
   const metaDescription = data?.metadescriptionquote;
@@ -405,8 +421,7 @@ const QuoteForm = ({ data }) => {
     </div>
     <div className="form-group">
     <ReCAPTCHA
-                  onChange={handleRecaptchaChange} // Triggered when user completes CAPTCHA
-
+          ref={recaptchaRef}
           sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
           size="invisible" // ✅ important for invisible mode
           badge="bottomright" // can also be 'inline' or 'bottomleft'
