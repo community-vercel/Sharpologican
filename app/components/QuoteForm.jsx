@@ -1,17 +1,15 @@
 'use client';
-import React, { useRef, useState, useEffect } from "react";
-import { toast, ToastContainer } from 'react-toastify';  // Import toastify
-import 'react-toastify/dist/ReactToastify.css';  // Import CSS for toastify
-// import QuoteForm from '../components/QuoteForm.css'
+
+import React, { useRef, useState, useEffect } from 'react';
+import { toast, ToastContainer } from 'react-toastify'; // Import toastify
+import 'react-toastify/dist/ReactToastify.css'; // Import CSS for toastify
+import ReCAPTCHA from 'react-google-recaptcha'; // Import reCAPTCHA
 import "../components/QuoteForm.css";
 import Header from "../components/Header";
 import ScrollToTop from "react-scroll-up";
 import Footer from "../components/Footer";
 
-
-const QuoteForm = ({data}) => {
-    console.log(data);
-
+const QuoteForm = ({ data }) => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -26,88 +24,58 @@ const QuoteForm = ({data}) => {
     readyToStart: "",
   });
 
-useEffect(() => {
-}, [data])
-
-const [formErrors, setFormErrors] = useState({
+  const [formErrors, setFormErrors] = useState({
     firstName: '',
     lastName: '',
     phoneNumber: '',
     email: '',
     projectOverview: '',
-    website:'',
+    website: '',
     companyName: '',
     budget: '',
     readyToStart: ''
   });
+
+  const [captchaVerified, setCaptchaVerified] = useState(false); // Track captcha state
+  const formRef = useRef();
+  const recaptchaRef = useRef();
+
+  const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
+  const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
   
   const validateForm = () => {
     const errors = {};
+    if (!formData.firstName) errors.firstName = 'First name is required';
+    if (!formData.lastName) errors.lastName = 'Last name is required';
+    if (!formData.website) errors.website = 'Correct website is required';
+    if (!formData.companyName) errors.companyName = 'Company name is required';
+    if (!formData.phoneNumber) errors.phoneNumber = 'Phone number is required';
+    if (!formData.email || !/\S+@\S+\.\S+/.test(formData.email)) errors.email = 'Valid email is required';
+    if (!formData.projectOverview) errors.projectOverview = 'Project overview is required';
+    if (!formData.budget) errors.budget = 'Budget is required';
+    if (!formData.readyToStart) errors.readyToStart = 'Please select when you are ready to start';
     
-    if (!formData.firstName) {
-      errors.firstName = 'First name is required';
-    }
-    if (!formData.lastName) {
-      errors.lastName = 'Last name is required';
-    }
-    if (!formData.website) {
-        errors.website= 'Correct website is required';
-      }
-      if (!formData.companyName) {
-        errors.companyName= 'company  is required';
-      }
-    if (!formData.phoneNumber) {
-      errors.phoneNumber = 'Phone number is required';
-    }
-    if (!formData.email || !/\S+@\S+\.\S+/.test(formData.email)) {
-      errors.email = 'Valid email is required';
-    }
-    if (!formData.projectOverview) {
-      errors.projectOverview = 'Project overview is required';
-    }
-    if (!formData.budget) {
-      errors.budget = 'Budget is required';
-    }
-    if (!formData.readyToStart) {
-      errors.readyToStart = 'Please select when you are ready to start';
-    }
-  
-    setFormErrors(errors,'errors');
-
+    setFormErrors(errors);
     return Object.keys(errors).length === 0; // Return true if no errors
-    // return Object.keys(errors).length === 0;  
-};
-// console.log(formErrors); // Check if the errors are being set correctly
+  };
 
-  const [servicesOptions, setServicesOptions] = useState([]); // State to hold dynamic services
-  const formRef = useRef();
+  const [servicesOptions, setServicesOptions] = useState([]); // Dynamic services options
 
-  const budgetOptions = ["$10-$99", "$100-$500", "$500+"];
-  const startOptions = ["Immediately", "Within a week", "Within a month", "Later"];
-  const serverurl = process.env.NEXT_PUBLIC_DJANGO_URL;
-  const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
-
-   
   useEffect(() => {
     const fetchServices = async () => {
       try {
         const response = await fetch(`${serverurls}services/`);
-      
         const data = await response.json();
-        
-        setServicesOptions(data.data.map((value)=>value.title)); // Assuming the response contains an array of services
+        setServicesOptions(data.data.map((value) => value.title)); // Assuming response contains services
       } catch (error) {
-        console.error("Error fetching Quote Form:", error);
-        // toast.error("An error occurred while fetching  Quote Form");
+        console.error("Error fetching services:", error);
       }
     };
-
     fetchServices();
-  }, []); // Empty dependency array to run once on mount
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    // For the phoneNumber field, allow only numeric input.
     if (name === "phoneNumber") {
       const sanitizedValue = value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
       setFormData((prev) => ({ ...prev, phoneNumber: sanitizedValue }));
@@ -118,49 +86,61 @@ const [formErrors, setFormErrors] = useState({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    // Initialize an object to hold validation errors
-  
-//    console.log("calling submit");
-   
+
+    if (!captchaVerified) {
+      toast.error('Please verify the captcha first!');
+      return;
+    }
+
     if (validateForm()) {
+      const selectedServices = formData.servicesRequired.map((service) => service.trim());
+      const updatedFormData = { ...formData, servicesRequired: selectedServices };
 
-    // Prepare the form data
-    const selectedServices = formData.servicesRequired.map(service => service.trim());
-    const updatedFormData = { ...formData, servicesRequired: selectedServices };
+      try {
+        const response = await fetch(`${serverurls}submit-quote/`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(updatedFormData),
+        });
 
-    // Submit the data (fetch or other methods)
-    fetch(`${serverurls}submit-quote/`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(updatedFormData),
-    })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.error('Error:', error));
-
-    toast.success("Thank you for submitting a Quote, We Will contact you soon!");
-    setFormData({
-      firstName: '',
-      lastName: '',
-      email: '',
-      areaCode: '',
-      phoneNumber: '',
-      companyName: '',
-      website: '',
-      servicesRequired: "",
-      projectOverview: '',
-      budget: '',
-      readyToStart: '',
-    });
-  
+        if (response.ok) {
+          toast.success("Thank you for submitting a Quote, We will contact you soon!");
+          setFormData({
+            firstName: '',
+            lastName: '',
+            email: '',
+            areaCode: '',
+            phoneNumber: '',
+            companyName: '',
+            website: '',
+            servicesRequired: "",
+            projectOverview: '',
+            budget: '',
+            readyToStart: '',
+          });
+          recaptchaRef.current.reset(); // Reset captcha after successful submit
+          setCaptchaVerified(false);
+        } else {
+          toast.error("There was an issue submitting your quote.");
+        }
+      } catch (error) {
+        console.error("Error submitting form:", error);
+        toast.error("An error occurred, please try again.");
       }
-    // Update the state with errors
-  
-   
+    }
   };
+
+  const handleRecaptchaChange = (token) => {
+    setCaptchaVerified(token ? true : false); // Update captcha state
+  };
+
+  const budgetOptions = ["$10-$99", "$100-$500", "$500+"];
+  const startOptions = ["Immediately", "Within a week", "Within a month", "Later"];
+
+   
+
   const metaTitle = data?.metanamequote;
   const metaDescription = data?.metadescriptionquote;
   const metaKeywords =data?.keywordsquote;
@@ -219,7 +199,7 @@ const [formErrors, setFormErrors] = useState({
             </div>
  <div className="quote-form-container mt-8 max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-lg">
  <form ref={formRef} className="quote-form space-y-6" onSubmit={handleSubmit}>
-  <h2 className="text-2xl font-bold text-center text-gray-800">Get a Quote</h2>
+ <h2 className="text-2xl font-bold text-center text-gray-800">Vraag een offerte aan</h2>
 
   {/* First Name and Last Name */}
   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -404,29 +384,31 @@ const [formErrors, setFormErrors] = useState({
     {formErrors.readyToStart && <p className="error-message">{formErrors.readyToStart}</p>}
     </div>
 
-  {/* Submit Button */}
-  <button type="submit" className="submit-btn">Submit</button>
-</form>
-</div>
-<div className="backto-top mt-20">
-          <ScrollToTop showUnder={160}>
-          </ScrollToTop>
-        </div>
-        {/* End Back To Top */}
+   {/* reCAPTCHA */}
+          <div className="form-group mt-4">
+          
+               <ReCAPTCHA
+                             onChange={handleRecaptchaChange}
 
-        <Footer />
-         <ToastContainer 
-              position="top-right"
-              autoClose={3000} // Auto-close after 5 seconds
-              hideProgressBar={false}
-              newestOnTop
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-           
-            />
+          ref={recaptchaRef}
+          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+          size="invisible" // ✅ important for invisible mode
+          badge="bottomright" // can also be 'inline' or 'bottomleft'
+        />
+            {formErrors.recaptcha && <p className="error-message">{formErrors.recaptcha}</p>}
+          </div>
+
+          {/* Submit Button */}
+          <button type="submit" className="submit-btn" disabled={!captchaVerified}>Submit</button>
+        </form>
+      </div>
+
+      <div className="backto-top mt-20">
+        <ScrollToTop showUnder={160}></ScrollToTop>
+      </div>
+
+      <Footer />
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
     </>
   );
 };
