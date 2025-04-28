@@ -130,6 +130,7 @@ const QuoteForm = ({ data }) => {
         setIsSubmitting(false);
         return;
       }
+      setIsSubmitting(true)
       
       // Verify reCAPTCHA token
       // if (!recaptchaToken) {
@@ -172,6 +173,7 @@ const QuoteForm = ({ data }) => {
         budget: '',
         readyToStart: '',
       });
+      setIsSubmitting(false)
     }
   };
 
@@ -428,7 +430,11 @@ const QuoteForm = ({ data }) => {
         />
           </div>
   {/* Submit Button */}
-  <button type="submit" className="submit-btn">Submit</button>
+  <button disabled={isSubmitting} type="submit" className="submit-btn">  {isSubmitting ? (
+              <div className="spinner" />
+            ) : (
+              'Submit'
+            )}</button>
 </form>
 </div>
 <div className="backto-top mt-20">
