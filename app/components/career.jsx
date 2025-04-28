@@ -177,7 +177,7 @@ console.log(data);
         <p>Welcome to the team!</p>
       </div>
     </div>
-  </section>
+</section>
 
   {/* Benefits Section */}
   <section className={styles.benefitsSection}>
