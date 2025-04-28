@@ -3,26 +3,15 @@
 import React, { useEffect, useState } from "react"
 
 const LanguageSelectorss = () => {
-<<<<<<< HEAD
   const [currentLang, setCurrentLang] = useState("en")
   const [fullPath, setFullPath] = useState("/")
 
   const languages = [
     { code: "en", name: "English", flag: "🌐" },
+
     { code: "fr", name: "Français", flag: "🇫🇷" },
 
     { code: "nl", name: "Dutch", flag: "🇳🇱" },
-=======
-  const router = useRouter();
-  const { locale } = router;
-  
-  const languages = [
-        { code: "nl", name: "Dutch", flag: "🇳🇱" },
-        { code: "en", name: "English", flag: "🌐" },
-
-    { code: "fr", name: "Français", flag: "🇫🇷" },
-
->>>>>>> da4a5444f6481b228744ed5c8936b64dbfbd07df
     { code: "de", name: "German", flag: "🇩🇪" },
   ]
 
