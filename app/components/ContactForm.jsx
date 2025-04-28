@@ -34,12 +34,13 @@ export default function ContactForm() {
 
       const formData = new FormData(formRef.current);
 
+    
       const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        subject: formData.get('subject'),
-        message: formData.get('message'),
-        recaptchaToken: token, // ✅ Optionally you can send token to backend
+        from_name: formData.get("name"),
+        from_email: formData.get("email"),
+        from_phone: formData.get("phone"),
+        from_subject: formData.get("subject"),
+        message: formData.get("message"),
       };
 
 
@@ -75,6 +76,10 @@ export default function ContactForm() {
         <div>
           <input type="email" name="email" placeholder="Your Email" required />
         </div>
+        <div >
+    <input type="text" name="phone" placeholder="Your Phone" required />
+  </div>
+
         <div>
           <input type="text" name="subject" placeholder="Subject" required />
         </div>
