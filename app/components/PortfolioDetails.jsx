@@ -162,7 +162,8 @@ useEffect(() => {
                   <div className="portfolio-view-list d-flex flex-wrap">
                     <div className="port-view">
                       <span>
-                      <strong>Geschäft</strong>
+                        <strong>Onderneming
+                        </strong>
                       </span>
                       <h4>
                         <strong>{portfolio?.branch}</strong>
@@ -171,7 +172,8 @@ useEffect(() => {
 
                     <div className="port-view">
                       <span>
-                      <strong>Projektarten</strong>
+                        <strong>Soorten projecten
+                        </strong>
                       </span>
                       <h4>
                         <strong>{portfolio?.types}</strong>
@@ -180,7 +182,8 @@ useEffect(() => {
 
                     <div className="port-view">
                       <span>
-                      <strong>Programm</strong>
+                        <strong>Programma
+                        </strong>
                       </span>
                       <h4>
                         <strong>{portfolio?.progam}</strong>
@@ -224,8 +227,11 @@ useEffect(() => {
                   onMouseLeave={() => setHovered(false)}
                   href="/quote"
                 >
-   <span> Angebot einholen </span>
-   </a>
+    <span
+     
+    >
+Vraag een offerte aan
+</span>                  </a>
               </div>
                 </div>
               </div>

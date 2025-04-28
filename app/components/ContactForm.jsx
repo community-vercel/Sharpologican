@@ -1,98 +1,113 @@
 'use client';
-import React, { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
-import { toast, ToastContainer } from 'react-toastify';  // Import toastify
-import 'react-toastify/dist/ReactToastify.css';  // Import CSS for toastify
 
-function ContactForm() {
-  const [result, showresult] = useState(false);
-  const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
+import { useRef, useState } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-  const formRef = useRef();
+export default function ContactForm() {
+  const formRef = useRef(null);
+  const recaptchaRef = useRef(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const sendEmail = async (e) => {
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData(formRef.current);
 
-    const data = {
-      from_name: formData.get("from_name"),
-      from_email: formData.get("from_email"),
-      from_phone: formData.get("from_phone"),
-      from_subject: formData.get("from_subject"),
-      message: formData.get("message"),
-    };
+    if (!recaptchaRef.current) {
+      toast.error('Recaptcha not ready!');
+      return;
+    }
 
     try {
-      const response = await fetch(`${serverurls}add-contactss/`, {
-        method: "POST",
+      setIsSubmitting(true);
+
+      const token = await recaptchaRef.current.executeAsync(); // ✅ Execute invisible captcha
+      recaptchaRef.current.reset(); // ✅ Always reset after execution
+
+      if (!token) {
+        toast.error('Please complete the CAPTCHA verification!');
+        setIsSubmitting(false);
+        return;
+      }
+
+      const formData = new FormData(formRef.current);
+
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        subject: formData.get('subject'),
+        message: formData.get('message'),
+        recaptchaToken: token, // ✅ Optionally you can send token to backend
+      };
+
+      const response = await fetch(`${backendUrl}/contact/`, {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
       });
 
       if (response.ok) {
-        toast.success("Thank you for contacting with us ")
+        toast.success('Thank you for contacting us!');
         formRef.current.reset();
       } else {
-        toast.error("not sumitte sucessfully")
-        const errorData = await response.json();
+        toast.error('Form submission failed.');
       }
     } catch (error) {
+      console.error(error);
+      toast.error('An unexpected error occurred.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <>
-      <form ref={formRef} onSubmit={sendEmail}>
-  <div className="rn-form-group">
-    <input type="text" name="from_name" placeholder="Ihr Name" required />
-  </div>
+    <div>
+      <form ref={formRef} onSubmit={handleSubmit}>
+        <div>
+          <input type="text" name="name" placeholder="Your Name" required />
+        </div>
+        <div>
+          <input type="email" name="email" placeholder="Your Email" required />
+        </div>
+        <div>
+          <input type="text" name="subject" placeholder="Subject" required />
+        </div>
+        <div>
+          <textarea name="message" placeholder="Your Message" required />
+        </div>
 
-  <div className="rn-form-group">
-    <input type="email" name="from_email" placeholder="Ihre E-Mail" required />
-  </div>
+        {/* Invisible CAPTCHA */}
+        <ReCAPTCHA
+          ref={recaptchaRef}
+          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+          size="invisible" // ✅ important for invisible mode
+          badge="bottomright" // can also be 'inline' or 'bottomleft'
+        />
 
-  <div className="rn-form-group">
-    <input type="text" name="from_phone" placeholder="Telefonnummer" required />
-  </div>
+<div className="rn-form-group">
+        
+          <button disabled={isSubmitting} className="rn-button-style--2 btn-solid"
+            type="submit"
+            value="submit"
+            name="submit"
+            id="mc-embedded-subscribe">
+            {isSubmitting ? (
+              <div className="spinner" />
+            ) : (
+              'Submit'
+            )}
+          </button>
+        </div>
+      </form>
 
-  <div className="rn-form-group">
-    <input type="text" name="from_subject" placeholder="Betreff" required />
-  </div>
+      <ToastContainer position="top-right" autoClose={3000} />
 
-  <div className="rn-form-group">
-    <textarea name="message" placeholder="Ihre Nachricht" required></textarea>
-  </div>
-
-  <div className="rn-form-group">
-    <button
-      className="rn-button-style--2 btn-solid"
-      type="submit"
-      value="submit"
-      name="submit"
-      id="mc-embedded-subscribe"
-    >
-      Jetzt absenden
-    </button>
-  </div>
-  </form>
-
-      {/* ToastContainer is needed to show the toasts */}
-      <ToastContainer 
-        position="top-right"
-        autoClose={3000} // Auto-close after 5 seconds
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-       
-      />
-    </>
+      {/* Spinner Styles */}
+     
+    </div>
   );
 }
-
-export default ContactForm;

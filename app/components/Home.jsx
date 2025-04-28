@@ -26,7 +26,7 @@ const SlideList = [
     title: "Welcome to Sharplogicians!",
     description:
       "Improve performance through design, development, & digital marketing.",
-    buttonText: "Kontaktieren Sie uns",
+    buttonText: "Contact Us",
     buttonLink: "/contact",
   },
 ];
@@ -275,14 +275,14 @@ const CreativeLanding = ({ homeDetail }) => {
                 <ul className="mainmenu">
                   <ScrollSpy
                     sectionIds={[
-                    "#startseite",
-"#dienstleistung",
-"#über-uns",
-"#portfolio",
-"#team",
-"#referenzen",
-"#blog",
-"#kontakt",
+                      "#home",
+                      "#service",
+                      "#about",
+                      "#portfolio",
+                      "#team",
+                      "#testimonial",
+                      "#blog",
+                      "#contact",
                     ]}
                     activeClass="is-current" // Add your active class name
                     closeMenu={closeMenu} // Pass the closeMenu function here
@@ -295,7 +295,7 @@ const CreativeLanding = ({ homeDetail }) => {
               {/* Quote Button */}
               <div className="header-btn">
                 <Link className="rn-btn" href="/quote">
-                  <span>Angebot anfordern</span>
+                  <span>Get Quote</span>
                 </Link>
               </div>
               {/* <div className="pl--20">
@@ -312,7 +312,7 @@ const CreativeLanding = ({ homeDetail }) => {
         {/* End Header Area */}
 
         {/* Start Slider Area */}
-        <div className="slider-activation slider-creative-agency" id="startseite">
+        <div className="slider-activation slider-creative-agency" id="home">
         <div className={`${styles.bg_images} ${styles.bg_images__26}`} data-black-overlay="6">
         {SlideList.map((value, index) => (
               <div
@@ -359,7 +359,7 @@ const CreativeLanding = ({ homeDetail }) => {
         {/* Start Service Area */}
         <div
           className="service-area creative-service-wrapper ptb--120 bg_color--1"
-          id="dienstleistung"
+          id="service"
         >
           <div className="container">
             <div className="row creative-service">
@@ -376,7 +376,7 @@ const CreativeLanding = ({ homeDetail }) => {
         {/* End Service Area */}
 
         {/* Start About Area */}
-        <div className="about-area ptb--120 bg_color--5" id="über-uns">
+        <div className="about-area ptb--120 bg_color--5" id="about">
           <div className="about-wrapper">
             <div className="container">
               <div className="row row--35 align-items-center">
@@ -433,7 +433,7 @@ const CreativeLanding = ({ homeDetail }) => {
               <div  aria-hidden="true" className="row">
                 <div  aria-hidden="true" className="col-lg-6">
                   <div  aria-hidden="true" className="section-title service-style--3 text-left mb--15 mb_sm--0">
-                    <h2 className="title">Unser Portfolio</h2>
+                    <h2 className="title">Our Portfolio</h2>
                     <p>{portfolioData && portfolioData[0]?.description}</p>
                   </div>
                 </div>
@@ -526,7 +526,7 @@ const CreativeLanding = ({ homeDetail }) => {
             <div className="row">
               <div className="col-lg-6">
                 <div className="section-title service-style--3 text-left mb--25 mb_sm--0">
-                  <h2 className="title">Kompetentes Team</h2>
+                  <h2 className="title">Skilled Team</h2>
                   <p>{teamData && teamData[0]?.description}</p>
                 </div>
               </div>
@@ -543,7 +543,7 @@ const CreativeLanding = ({ homeDetail }) => {
 
         <div
           className="rn-testimonial-area bg_color--5 ptbss--120"
-          id="kontakt"
+          id="testimonial"
         >
           <div className="container">
             <Testimonial test={testimonials} />
@@ -561,7 +561,7 @@ const CreativeLanding = ({ homeDetail }) => {
             <div className="row align-items-end">
               <div className="col-lg-6">
                 <div className="section-title text-left">
-                  <h2>Aktuelle Nachrichten</h2>
+                  <h2>Latest News</h2>
                   <p>{newsData && newsData[0]?.description}</p>
                 </div>
               </div>
@@ -605,7 +605,7 @@ const CreativeLanding = ({ homeDetail }) => {
                             className="rn-btn text-white"
                             href={`/news/${value?.slug}`}
                           >
-                          Weiterlesen
+                            Read More
                           </Link>
                         </div>
                       </div>
@@ -619,7 +619,7 @@ const CreativeLanding = ({ homeDetail }) => {
         {/* End Blog Area */}
 
         {/* Start Contact Area */}
-        <div className="rn-contact-us ptb--120 bg_color--5" id="kontakt">
+        <div className="rn-contact-us ptb--120 bg_color--5" id="contact">
           <Contact image={contactImage} title={title} />
         </div>
         <div className="rn-brand-area bg_color--1 ptb--120">

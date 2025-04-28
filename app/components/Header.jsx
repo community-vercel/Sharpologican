@@ -70,38 +70,39 @@ class Header extends Component {
               <a href="/">{logoUrl}</a>
             </div>
           </div>
+          
           <div className="header-right">
             <nav className="mainmenunav d-lg-block">
             <ul className="mainmenu">
-  <li>
-    <Link href="/">Startseite</Link>
-  </li>
-  <li>
-    <Link href="/services">Dienstleistungen</Link>
-  </li>
-  <li>
-    <Link href="/#about">Über uns</Link>
-  </li>
-  <li>
-    <Link href="/portfolio">Portfolio</Link>
-  </li>
-  <li>
-    <Link href="/#team">Team</Link>
-  </li>
-  <li>
-    <Link href="/#testimonial">Kundenstimmen</Link>
-  </li>
-  <li>
-    <Link href="/news">Blog</Link>
-  </li>
-  <li>
-    <Link href="/contact">Kontakt</Link>
-  </li>
+    <li>
+        <Link href="/">Home</Link>
+    </li>
+    <li>
+        <Link href="/services">Diensten</Link> {/* "Service" → "Diensten" */}
+    </li>
+    <li>
+        <Link href="/#about">Over ons</Link> {/* "About" → "Over ons" */}
+    </li>
+    <li>
+        <Link href="/portfolio">Portfolio</Link>
+    </li>
+    <li>
+        <Link href="/#team">Team</Link>
+    </li>
+    <li>
+        <Link href="/#testimonial">Getuigenis</Link> {/* "Testimonial" → "Getuigenis" */}
+    </li>
+    <li>
+        <Link href="/news">Blog</Link>
+    </li>
+    <li>
+        <Link href="/contact">Contact</Link>
+    </li>
 </ul>
             </nav>
             <div className="header-btn">
               <a className="rn-btn" href="/quote">
-              <span>Angebot anfordern</span>
+                <span>Offerte</span>
               </a>
             </div>
 

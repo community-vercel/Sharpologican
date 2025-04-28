@@ -6,14 +6,17 @@ const LanguageSelectorss = () => {
   const { locale } = router;
   
   const languages = [
-    { code: "en", name: "English", flag: "🌐" },
+        { code: "nl", name: "Dutch", flag: "🇳🇱" },
+        { code: "en", name: "English", flag: "🌐" },
+
     { code: "fr", name: "Français", flag: "🇫🇷" },
-    { code: "nl", name: "Dutch", flag: "🇳🇱" },
+
     { code: "de", name: "German", flag: "🇩🇪" },
+
   ];
   
   // Check URL to determine the locale
-  let selectedLocale = "en";  
+  let selectedLocale = "de";  
   if (typeof window !== "undefined") {
     const domain = window.location.hostname;
   

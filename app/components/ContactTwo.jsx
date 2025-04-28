@@ -14,7 +14,7 @@ import Image from "next/image";
           <div className="row row--35 align-items-start">
             <div className="col-lg-6 order-2 order-lg-1">
               <div className="section-title text-left mb--50">
-                <h2 className="title">Kontaktieren Sie uns.</h2>
+                <h2 className="title">Neem contact met ons op</h2>
                 <p className="description">
                 {title && title?title:''}
                 </p>
@@ -27,7 +27,7 @@ import Image from "next/image";
               <div className="thumbnail mb_md--30 mb_sm--30">
              {/* {image && <img src={image?image:''} alt="trydo" /> } */}
 {image &&
-  <Image width={550} height={665} src={image?image:''} alt="Kontaktieren Sie uns"  layout="responsive" 
+  <Image width={550} height={665} src={image?image:''} alt="Contact Us"  layout="responsive" 
                 />
 }
                 
