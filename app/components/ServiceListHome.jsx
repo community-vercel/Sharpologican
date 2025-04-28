@@ -7,7 +7,18 @@ import { FiCast , FiLayers , FiUsers , FiMonitor } from "react-icons/fi";
 const ServiceThreeHome = ({column,service}) => {
     const serverurl=process.env.NEXT_PUBLIC_DJANGO_URL;
 
-        const ServiceContent = service?.slice(0 , service?.length);
+        const ServiceContent = service?.slice(0 , 6);
+//         const aiDevService = ServiceContent.find(val => val.slug === "ai-development");
+    
+//         // Filter out "ai-development" from the rest and take the first (5) others
+//         const filteredServices = ServiceContent
+//             .filter(val => val.slug !== "ai-development")
+//             .slice(0, 5);
+        
+//         // Combine "ai-development" service with the other 5
+//  const finalServices = aiDevService 
+//  ? [aiDevService, ...filteredServices] 
+//  : filteredServices.slice(0, 6);
 
         
         return(
@@ -15,7 +26,7 @@ const ServiceThreeHome = ({column,service}) => {
             
             <>
                     <div className="row">
-                    { ServiceContent?.slice(0, 6).map( (val , i) => (
+                    {ServiceContent?.slice(0, 6).map( (val , i) => (
                         <div className={`${column}`} key={i}>
                             <Link href={`/services/${val.slug}`}>
                                 <div className="service service__style--2">
