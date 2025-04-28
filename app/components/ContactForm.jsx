@@ -77,6 +77,8 @@ export default function ContactForm() {
           <input type="email" name="email" placeholder="Your Email" required />
         </div>
         <div >
+
+          
     <input type="text" name="phone" placeholder="Your Phone" required />
   </div>
 
