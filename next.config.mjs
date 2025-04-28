@@ -51,14 +51,7 @@ const nextConfig = {
               port: '', // Leave empty for default port
               pathname: '/**', // Allow all paths under this domain
             },
-            {
-              protocol: 'https', // Specify protocol (e.g., 'http' or 'https')
-              hostname: 'sharplogicians.comnull', // Specify domain name
-              port: '', // Leave empty for default port
-              pathname: '/**', // Allow all paths under this domain
-            },
             
-        
             {
               protocol: 'https', // Specify protocol (e.g., 'http' or 'https')
               hostname: 'sharplogicians.com/api', // Specify domain name

@@ -162,8 +162,7 @@ useEffect(() => {
                   <div className="portfolio-view-list d-flex flex-wrap">
                     <div className="port-view">
                       <span>
-                        <strong>Onderneming
-                        </strong>
+                        <strong>Business </strong>
                       </span>
                       <h4>
                         <strong>{portfolio?.branch}</strong>
@@ -172,8 +171,7 @@ useEffect(() => {
 
                     <div className="port-view">
                       <span>
-                        <strong>Soorten projecten
-                        </strong>
+                        <strong>Project Types </strong>
                       </span>
                       <h4>
                         <strong>{portfolio?.types}</strong>
@@ -182,8 +180,7 @@ useEffect(() => {
 
                     <div className="port-view">
                       <span>
-                        <strong>Programma
-                        </strong>
+                        <strong>Program</strong>
                       </span>
                       <h4>
                         <strong>{portfolio?.progam}</strong>
@@ -230,8 +227,8 @@ useEffect(() => {
     <span
      
     >
-Vraag een offerte aan
-</span>                  </a>
+      Get a quote
+    </span>                  </a>
               </div>
                 </div>
               </div>

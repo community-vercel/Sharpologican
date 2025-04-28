@@ -158,30 +158,30 @@ console.log(data);
 
   {/* How We Hire Section */}
   <section className={styles.howWeHireSection}>
-    <h2 className={styles.sectionTitle}>Hoe wij werven</h2>
+    <h2 className={styles.sectionTitle}>How We Hire</h2>
     <div className={styles.steps}>
-        <div className={styles.step}>
-            <h3>Stap 1</h3>
-            <p>Dien je sollicitatie in</p>
-        </div>
-        <div className={styles.step}>
-            <h3>Stap 2</h3>
-            <p>Initiële interview</p>
-        </div>
-        <div className={styles.step}>
-            <h3>Stap 3</h3>
-            <p>Laatste beoordeling</p>
-        </div>
-        <div className={styles.step}>
-            <h3>Stap 4</h3>
-            <p>Welkom bij het team!</p>
-        </div>
+      <div className={styles.step}>
+        <h3>Step 1</h3>
+        <p>Submit your application</p>
+      </div>
+      <div className={styles.step}>
+        <h3>Step 2</h3>
+        <p>Initial interview</p>
+      </div>
+      <div className={styles.step}>
+        <h3>Step 3</h3>
+        <p>Final assessment</p>
+      </div>
+      <div className={styles.step}>
+        <h3>Step 4</h3>
+        <p>Welcome to the team!</p>
+      </div>
     </div>
-</section>
+  </section>
 
   {/* Benefits Section */}
   <section className={styles.benefitsSection}>
-    <h2 className={styles.sectionTitle}>Onze voordelen</h2>
+    <h2 className={styles.sectionTitle}>Our Benefits</h2>
     <div className={styles.benefitsGrid}>
     {data.data?.benefits.map((benefit, index) => (
    <div key={index} className={styles.benefit}>

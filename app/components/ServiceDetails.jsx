@@ -119,7 +119,7 @@ const [sanitizedHTMLS,setsanitizedhtmls]=useState()
            
             <div className="header-btn">
               <a className="rn-btn" href="/quote">
-              <span>Obtenir un devis</span>
+                <span>Get a quote</span>
               </a>
             </div>
             </div>
@@ -154,7 +154,7 @@ const [sanitizedHTMLS,setsanitizedhtmls]=useState()
 
 <div className="header-btns">
   <a className="rn-btn" href="/quote">
-  <span>Obtenir un devis</span>
+    <span>Get a quote</span>
   </a>
 </div>
 
@@ -271,8 +271,11 @@ const [sanitizedHTMLS,setsanitizedhtmls]=useState()
                   onMouseEnter={() => setHovered(true)}  // When the mouse enters, change color
                   onMouseLeave={() => setHovered(false)}
                 >
-                  <span>Obtenir un devis</span>
-                  </a>
+    <span
+     
+    >
+      Get a quote
+    </span>                  </a>
               </div>
            
             </div>

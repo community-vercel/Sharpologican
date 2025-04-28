@@ -1,60 +1,57 @@
-import React, { useState } from "react";
-import { useRouter } from "next/navigation"
+'use client'
+
+import React, { useEffect, useState } from "react"
 
 const LanguageSelectorss = () => {
-  const router = useRouter();
-  const { locale } = router;
-  
+  const [currentLang, setCurrentLang] = useState("en")
+  const [fullPath, setFullPath] = useState("/")
+
   const languages = [
-        { code: "nl", name: "Dutch", flag: "🇳🇱" },
         { code: "en", name: "English", flag: "🌐" },
 
     { code: "fr", name: "Français", flag: "🇫🇷" },
 
+    { code: "nl", name: "Dutch", flag: "🇳🇱" },
     { code: "de", name: "German", flag: "🇩🇪" },
+  ]
 
-  ];
-  
-  // Check URL to determine the locale
-  let selectedLocale = "de";  
-  if (typeof window !== "undefined") {
-    const domain = window.location.hostname;
-  
-    if (domain.includes(".de")) {
-      selectedLocale = "de";
-    } else if (domain.includes(".fr")) {
-      selectedLocale = "fr";
-    } else if (domain.includes(".nl")) {
-      selectedLocale = "nl";
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const domain = window.location.hostname
+      const path = window.location.pathname + window.location.search
+      setFullPath(path)
+
+      if (domain.includes(".fr")) setCurrentLang("fr")
+      else if (domain.includes(".de")) setCurrentLang("de")
+      else if (domain.includes(".nl")) setCurrentLang("nl")
+      else setCurrentLang("en")
     }
-  }
-  
+  }, [])
+
   const changeLanguage = (e) => {
-    const newLocale = e.target.value;
-  
-    const selectedLanguage =
-      newLocale === "en"
-        ? "https://sharplogicians.com"
-        : `https://sharplogicians.${newLocale}`;
-  
-    window.open(selectedLanguage, newLocale === "en" ? "_self" : "_blank");
-  };
+    const newLocale = e.target.value
+    const newDomain = newLocale === "en"
+      ? "sharplogicians.com"
+      : `sharplogicians.${newLocale}`
+
+    window.open(`https://${newDomain}${fullPath}`, "_self")
+  }
+
   return (
     <div className="select-container">
-        <select
-          id="language-select"
-          value={locale}
-          onChange={changeLanguage}
-          // className="selects"
-        >
-          {languages.map((loc) => (
-            <option key={loc.code} value={loc.code}>
-              {loc.flag} {loc.name}
-            </option>
-          ))}
-        </select>
-      </div>
-  );
-};
+      <select
+        id="language-select"
+        value={currentLang}
+        onChange={changeLanguage}
+      >
+        {languages.map((loc) => (
+          <option key={loc.code} value={loc.code}>
+            {loc.flag} {loc.name}
+          </option>
+        ))}
+      </select>
+    </div>
+  )
+}
 
-export default LanguageSelectorss;
+export default LanguageSelectorss
