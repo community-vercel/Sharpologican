@@ -10,7 +10,7 @@ export default function ContactForm() {
   const recaptchaRef = useRef(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+  const serverurls = process.env.NEXT_PUBLIC_DJANGO_URLS;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,7 +42,7 @@ export default function ContactForm() {
         recaptchaToken: token, // ✅ Optionally you can send token to backend
       };
 
-      const response = await fetch(`${backendUrl}/contact/`, {
+      const response = await fetch(`${serverurls}add-contactss/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
