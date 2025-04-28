@@ -70,6 +70,7 @@ class Header extends Component {
               <a href="/">{logoUrl}</a>
             </div>
           </div>
+          
           <div className="header-right">
             <nav className="mainmenunav d-lg-block">
               <ul className="mainmenu">

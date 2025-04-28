@@ -274,6 +274,7 @@ const CreativeLanding = ({ homeDetail }) => {
               <nav className="mainmenunav d-lg-block">
                 <ul className="mainmenu">
                   <ScrollSpy
+                  
                     sectionIds={[
                       "#home",
                       "#service",
@@ -511,8 +512,8 @@ const CreativeLanding = ({ homeDetail }) => {
               <div className="col-lg-12">
                 <div className="section-title text-center">
                   <h3 className="fontWeight500">
-                    {counts && counts[0]?.title}
-                  </h3>
+
+                  Leuke weetjes over ons                  </h3>
                 </div>
               </div>
             </div>
@@ -521,7 +522,7 @@ const CreativeLanding = ({ homeDetail }) => {
         </div>
 
         {/* Start Team Area */}
-        <div className="rn-team-area ptb--120 bg_color--1" id="team">
+        <div className="rn-team-area ptb--120 bg_color--1" id="équipe">
           <div className="container">
             <div className="row">
               <div className="col-lg-6">

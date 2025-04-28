@@ -154,7 +154,7 @@ const [sanitizedHTMLS,setsanitizedhtmls]=useState()
 
 <div className="header-btns">
   <a className="rn-btn" href="/quote">
-    <span>Get a quote</span>
+  <span>Obtenir un devis</span>
   </a>
 </div>
 
