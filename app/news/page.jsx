@@ -77,7 +77,7 @@ const News = () => {
       />
 
       {/* Start Breadcrumb Area */}
-      <Breadcrumb title={"Nieuws"} />
+      <Breadcrumb title={"News"} />
       {/* End Breadcrumb Area */}
 
       {/* Start Service Area */}

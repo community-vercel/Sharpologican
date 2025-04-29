@@ -93,7 +93,7 @@ const metadata = {
             </div>
             </header>
                 {/* Start Breadcrump Area */}
-                <Breadcrumb title={ 'Diensten'}   />
+                <Breadcrumb title={ 'Services'}   />
                 {/* End Breadcrump Area */}
 
                 {/* Start Service Area */}
